@@ -24,3 +24,14 @@ Then, run Nest as usual:
 
 `npm run start`
 
+
+## Repeted function
+this code use in every delete function
+.then(r=>{
+      res.status(HttpStatus.ACCEPTED).send({message: "Deleted", data: r});
+    }).catch( err => {
+      res.status(HttpStatus.NO_CONTENT).send(err.parent);
+  }); 
+
+## Issues
+Need to find way for get record after create and update
