@@ -3,7 +3,6 @@ import { WarehouseList } from './models/warehouseList.model';
 import { WarehouseListService } from './warehouseList.service';
 import { Body, Controller, Delete, Get, Param, Post,HttpStatus, Res, Put} from '@nestjs/common';
 import { Response } from 'express';
-import { BelongsToMany } from 'sequelize-typescript';
 
 @Controller('warehouse-list')
 export class WarehouseListController {
@@ -13,7 +12,12 @@ export class WarehouseListController {
   create(@Body() createWarehouseListDto: CreateWarehouseListDto, @Res() res: Response): Promise<void | WarehouseList> {
     return this.WarehouseListsService.create(createWarehouseListDto)
     .then(rec => {
-      res.status(HttpStatus.CREATED).send(rec);
+      let t = this.WarehouseListsService.findById(rec.id).then(r => {
+        res.status(HttpStatus.CREATED).send(r);  
+      })
+      .catch( err => {
+        res.status(HttpStatus.NO_CONTENT).send(err.parent);
+      });      
     })
     .catch( err => {
         res.status(HttpStatus.BAD_REQUEST).send(err.parent);
@@ -24,7 +28,9 @@ export class WarehouseListController {
   update(@Param('code') code: string,@Body() updateWarehouseListDto: CreateWarehouseListDto, @Res() res: Response) {
     this.WarehouseListsService.update(code,updateWarehouseListDto)
     .then(rec => {
-        res.status(HttpStatus.OK).send({message: "record updated"});
+        this.WarehouseListsService.findOne(code).then(r=>{
+          res.status(HttpStatus.OK).send({message: "Record Updated", data: r});
+        });
     })
     .catch( err => {
         res.status(HttpStatus.BAD_REQUEST).send(err.parent);
@@ -42,8 +48,12 @@ export class WarehouseListController {
   }
 
   @Delete(':code')
-  remove(@Param('code') code: string): Promise<void> {
-    return this.WarehouseListsService.remove(code);
+  remove(@Param('code') code: string, @Res() res: Response): Promise<void | WarehouseList> {
+    return this.WarehouseListsService.remove(code).then(r => {
+      res.status(HttpStatus.ACCEPTED).send({message: "Deleted", data: r});
+    }).catch( err => {
+      res.status(HttpStatus.NO_CONTENT).send(err.parent);
+  });   
   }
   
 }

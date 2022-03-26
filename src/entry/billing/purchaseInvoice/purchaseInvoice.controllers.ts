@@ -39,13 +39,8 @@ export class PurchaseInvoiceController {
 
   @Get(':code')
   findOne(@Param('code') code: string): Promise<BillingMaster> {
-    console.log("details");
+    console.log("details",code);
     return this.PurchaseInvoicesService.findOne(code);
-  }
-
-  @Delete(':code')
-  remove(@Param('code') code: string): Promise<void> {
-    return this.PurchaseInvoicesService.remove(code);
   }
   
 }

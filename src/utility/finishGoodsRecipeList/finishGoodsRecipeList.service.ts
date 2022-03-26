@@ -2,7 +2,6 @@ import { finishGoodsRecipeList } from './models/finishGoodsRecipeList.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreatefinishGoodsRecipeListDto } from './dto/create-finishGoodsRecipeList.dto';
-import { where } from 'sequelize/dist';
 
 @Injectable()
 export class finishGoodsRecipeListService {

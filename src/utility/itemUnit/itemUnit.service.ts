@@ -33,6 +33,14 @@ export class ItemUnitService {
     });
   }
 
+  findById(id: number): Promise<ItemUnit> {
+    return this.ItemUnitModel.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
   async remove(id: string): Promise<void> {
     const user = await this.findOne(id);
     await user.destroy();

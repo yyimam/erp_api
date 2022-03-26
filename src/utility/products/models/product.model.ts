@@ -3,6 +3,12 @@ import { Column, Model, Table, PrimaryKey,  CreatedAt,UpdatedAt,DeletedAt, } fro
 @Table({tableName: 'product'})
 export class Product extends Model {
 
+  @Column({ 
+    autoIncrement: true,
+    unique:true
+  })
+  id: number;
+  
   @PrimaryKey
   @Column
   code: string;

@@ -2,6 +2,12 @@ import { Column, Model, Table, PrimaryKey, CreatedAt,UpdatedAt,DeletedAt, } from
 
 @Table({tableName: 'itemtype'})
 export class ItemType extends Model {
+  
+  @Column({ 
+    autoIncrement: true,
+    unique:true
+  })
+  id: number;
 
   @PrimaryKey
   @Column

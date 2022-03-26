@@ -7,8 +7,7 @@ export class ModuleList extends Model {
   @PrimaryKey
   @ForeignKey(() => RoleDetail)
   @Column({
-      type: DataType.STRING
-  })
+      type: DataType.STRING})
   moduletype: string;
 
   @Column

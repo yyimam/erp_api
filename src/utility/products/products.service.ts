@@ -2,7 +2,6 @@ import { Product } from './models/product.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateProductDto } from './dto/create-product.dto';
-import { where } from 'sequelize/dist';
 
 @Injectable()
 export class ProductsService {
@@ -33,8 +32,17 @@ export class ProductsService {
     });
   }
 
-  async remove(id: string): Promise<void> {
-    const user = await this.findOne(id);
-    await user.destroy();
+  findById(id: number): Promise<Product> {
+    return this.productModel.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
+  async remove(id: number): Promise<Product> {
+    const product = await this.findById(id);
+    let u = await product.destroy().then(t => t);
+    return product;
   }
 }

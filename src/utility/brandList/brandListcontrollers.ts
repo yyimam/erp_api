@@ -1,36 +1,43 @@
 import { CreateBrandListDto } from './dto/create-brandList.dto';
 import { BrandList } from './models/brandList.model';
 import { BrandListService } from './BrandList.service';
-import { Body, Controller, Delete, Get, Param, Post,HttpStatus, Res, Put} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, HttpStatus, Res, Put } from '@nestjs/common';
 import { Response } from 'express';
-import { BelongsToMany } from 'sequelize-typescript';
 
 @Controller('brand-list')
 export class BrandListController {
-  constructor(private readonly BrandListsService: BrandListService) {}
+  constructor(private readonly BrandListsService: BrandListService) { }
 
   @Post()
   create(@Body() createBrandListDto: CreateBrandListDto, @Res() res: Response): Promise<void | BrandList> {
     return this.BrandListsService.create(createBrandListDto)
-    .then(rec => {
-      res.status(HttpStatus.CREATED).send(rec);
-    })
-    .catch( err => {
+      .then(rec => {
+        this.BrandListsService.findById(rec.id).then(t => {
+          res.status(HttpStatus.CREATED).send(t);
+        }).catch(err => {
+          res.status(HttpStatus.NO_CONTENT).send(err.parent);
+        });
+      })
+      .catch(err => {
         res.status(HttpStatus.BAD_REQUEST).send(err.parent);
-    });    
+      });
   }
-  
+
   @Put(':code')
-  update(@Param('code') code: string,@Body() updateBrandListDto: CreateBrandListDto, @Res() res: Response) {
-    this.BrandListsService.update(code,updateBrandListDto)
-    .then(rec => {
-        res.status(HttpStatus.OK).send({message: "record updated"});
-    })
-    .catch( err => {
+  update(@Param('code') code: string, @Body() updateBrandListDto: CreateBrandListDto, @Res() res: Response) {
+    this.BrandListsService.update(code, updateBrandListDto)
+      .then(rec => {
+        this.BrandListsService.findOne(code).then(r => {
+          res.status(HttpStatus.OK).send({ message: "Record Updated", data: r });
+        }).catch(err => {
+          res.status(HttpStatus.NO_CONTENT).send(err.parent);
+        })
+      })
+      .catch(err => {
         res.status(HttpStatus.BAD_REQUEST).send(err.parent);
-    });    
+      });
   }
-  
+
   @Get()
   findAll(): Promise<BrandList[]> {
     return this.BrandListsService.findAll();
@@ -42,8 +49,12 @@ export class BrandListController {
   }
 
   @Delete(':code')
-  remove(@Param('code') code: string): Promise<void> {
-    return this.BrandListsService.remove(code);
+  remove(@Param('code') code: string, @Res() res: Response): Promise<void | BrandList> {
+    return this.BrandListsService.remove(code).then(r => {
+      res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
+    }).catch(err => {
+      res.status(HttpStatus.NO_CONTENT).send(err.parent);
+    });
   }
-  
+
 }

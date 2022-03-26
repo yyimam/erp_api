@@ -33,6 +33,14 @@ export class BrandListService {
     });
   }
 
+  findById(id: number): Promise<BrandList> {
+    return this.BrandListModel.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
   async remove(id: string): Promise<void> {
     const user = await this.findOne(id);
     await user.destroy();

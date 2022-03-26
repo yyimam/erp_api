@@ -1,10 +1,15 @@
-import { Column, Model, Table, PrimaryKey, CreatedAt,UpdatedAt,DeletedAt, } from 'sequelize-typescript';
+import { Column, Model, Table, CreatedAt, UpdatedAt, DeletedAt, PrimaryKey } from 'sequelize-typescript';
 
 @Table({tableName: 'Warehouse_list'})
 export class WarehouseList extends Model {
 
-  @PrimaryKey
-  @Column
+  @Column({ 
+    autoIncrement: true,
+    primaryKey: true
+  })
+  id: number;
+
+  @Column({})
   code: string;
 
   @Column

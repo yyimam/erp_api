@@ -1,7 +1,9 @@
+import { BillingDetails } from './../../../entities/billingDetails.entity';
 import { BillingMaster } from '../../../entities/billingMaster.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreatePurchaseInvoiceDto } from './dto/create-purchaseInvoice.dto';
+import { Op } from 'sequelize';
 
 @Injectable()
 export class PurchaseInvoiceService {
@@ -26,14 +28,15 @@ export class PurchaseInvoiceService {
 
   findOne(code: string): Promise<BillingMaster> {
     return this.BillingMasterModel.findOne({
-      where: {
-        code,
-      },
-    });
+        include:[BillingDetails],
+        where:{idno:code}
+      });
   }
 
-  async remove(id: string): Promise<void> {
-    const user = await this.findOne(id);
-    await user.destroy();
-  }
+
+  
+//   async remove(id: string): Promise<void> {
+//     const user = await this.findOne(id);
+//     await user.destroy();
+//   }
 }

@@ -12,7 +12,7 @@ export class ItemCatService {
   ) {}
 
   create(CreateItemCatDto: CreateItemCatDto): Promise<ItemCat> {
-    let t:{}= CreateItemCatDto
+    let t:any = CreateItemCatDto
     return this.ItemCatModel.create(t);
   }
 
@@ -33,8 +33,17 @@ export class ItemCatService {
     });
   }
 
-  async remove(id: string): Promise<void> {
-    const user = await this.findOne(id);
-    await user.destroy();
+  findById(id: number): Promise<ItemCat> {
+    return this.ItemCatModel.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
+  async remove(code: string): Promise<ItemCat> {
+    const rec = await this.findOne(code);
+    await rec.destroy().then( t => t);
+    return rec;
   }
 }

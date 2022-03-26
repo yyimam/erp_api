@@ -2,7 +2,12 @@ import { Column, Model, Table, PrimaryKey, CreatedAt,UpdatedAt,DeletedAt, } from
 
 @Table({tableName: 'itembrandlist'})
 export class BrandList extends Model {
-
+  @Column({ 
+    autoIncrement: true,
+    unique:true
+  })
+  id: number;
+  
   @PrimaryKey
   @Column
   code: string;

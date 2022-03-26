@@ -33,8 +33,17 @@ export class ItemSubCatListService {
     });
   }
 
-  async remove(id: string): Promise<void> {
-    const user = await this.findOne(id);
-    await user.destroy();
+  findById(id: number): Promise<ItemSubCatList> {
+    return this.ItemSubCatListModel.findOne({
+      where: {
+        id,
+      },
+    });
+  }
+
+  async remove(code: string): Promise<ItemSubCatList> {
+    const rec = await this.findOne(code);
+    let u = await rec.destroy().then(t => t);
+    return rec;
   }
 }

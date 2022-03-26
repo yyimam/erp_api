@@ -1,9 +1,9 @@
 import { BillingMaster } from './billingMaster.entity';
-import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, ForeignKey, BelongsTo } from 'sequelize-typescript';
-
+import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, HasMany, ForeignKey, BelongsTo } from 'sequelize-typescript';
 @Table({tableName: 'billing_detail'})
 export class BillingDetails extends Model {
 
+  
   @PrimaryKey
   @Column
   idno: number;
@@ -15,162 +15,164 @@ export class BillingDetails extends Model {
   @Column
   estatus: string;
   
-  // @Column
-  // itemcode: string;
+  @Column
+  itemcode: string;
   
-  // @Column
-  // description: string;
+  @Column
+  description: string;
   
-  // @Column
-  // itemunit: string;
+  @Column
+  itemunit: string;
   
-  // @Column
-  // amount: number;
+  @Column
+  amount: number;
   
-  // @Column
-  // sed: number;
+  @Column
+  sed: number;
   
-  // @Column
-  // sedamount: number;
+  @Column
+  sedamount: number;
   
-  // @Column
-  // gst: number;
+  @Column
+  gst: number;
   
-  // @Column
-  // gstamount: number;
+  @Column
+  gstamount: number;
   
-  // @Column
-  // netamount: number;
+  @Column
+  netamount: number;
   
-  // @Column
-  // itemdiscount: number;
+  @Column
+  itemdiscount: number;
   
-  // @Column
-  // expiry_date: Date;
+  @Column
+  expiry_date: Date;
   
-  // @Column
-  // loose_qty: number;
+  @Column
+  loose_qty: number;
   
-  // @Column
-  // qty_in_pcs: number;
+  @Column
+  qty_in_pcs: number;
   
-  // @Column
-  // pcspctn: number;
+  @Column
+  pcspctn: number;
   
-  // @Column
-  // bonuspcs: number;
+  @Column
+  bonuspcs: number;
   
-  // @Column
-  // itemdiscount_P: number;
+  @Column
+  itemdiscount_P: number;
   
-  // @Column
-  // schmper: number;
+  @Column
+  schmper: number;
   
-  // @Column
-  // schmamt: number;
+  @Column
+  schmamt: number;
   
-  // @Column
-  // xschmper: number;
+  @Column
+  xschmper: number;
   
-  // @Column
-  // xschmamt: number;
+  @Column
+  xschmamt: number;
   
-  // @Column
-  // oschmper: number;
+  @Column
+  oschmper: number;
   
-  // @Column
-  // oschmamt: number;
+  @Column
+  oschmamt: number;
   
-  // @Column
-  // qty: number;
+  @Column
+  qty: number;
   
-  // @Column
-  // rate: number;
+  @Column
+  rate: number;
   
-  // @Column
-  // Warehouse_Code: string;
+  @Column
+  Warehouse_Code: string;
   
-  // @Column
-  // fitemcode: string;
+  @Column
+  fitemcode: string;
   
-  // @Column
-  // Warehouse_CodeInto: string;
+  @Column
+  Warehouse_CodeInto: string;
   
-  // @Column
-  // rate_change: number;
+  @Column
+  rate_change: number;
   
-  // @Column
-  // MRP: number;
+  @Column
+  MRP: number;
   
-  // @Column
-  // QC_Posted: number;
+  @Column
+  QC_Posted: number;
   
-  // @Column
-  // QC_Remarks: string;
+  @Column
+  QC_Remarks: string;
   
-  // @Column
-  // QC_Post_Date: Date;
+  @Column
+  QC_Post_Date: Date;
   
-  // @Column
-  // batch_qty: number;
+  @Column
+  batch_qty: number;
   
-  // @Column
-  // iss_qty: number;
+  @Column
+  iss_qty: number;
   
-  // @Column
-  // req_qty: number;
+  @Column
+  req_qty: number;
   
-  // @Column
-  // batch_id: string;
+  @Column
+  batch_id: string;
   
-  // @Column
-  // promotion_sales: number;
+  @Column
+  promotion_sales: number;
   
-  // @Column
-  // Batch_Code: string;
+  @Column
+  Batch_Code: string;
   
-  // @Column
-  // itaxAmount: number;
+  @Column
+  itaxAmount: number;
   
-  // @Column
-  // qty_yards: number;
+  @Column
+  qty_yards: number;
   
-  // @Column
-  // rate_yards: number;
+  @Column
+  rate_yards: number;
   
-  // @Column
-  // amount_yards: number;
+  @Column
+  amount_yards: number;
   
-  // @Column
-  // tailor_ac: string;
+  @Column
+  tailor_ac: string;
   
-  // @Column
-  // particular: string;
+  @Column
+  particular: string;
   
-  // @Column
-  // size: number;
+  @Column
+  size: number;
   
-  // @Column
-  // debit_Ac: string;
+  @Column
+  debit_Ac: string;
   
-  // @Column
-  // credit_Ac: string;
+  @Column
+  credit_Ac: string;
   
-  // @Column
-  // discountD: number;
+  @Column
+  discountD: number;
 
-  // @CreatedAt
-  // @Column({ field: 'created_at' })
-  // createdAt: Date;
+  @CreatedAt
+  @Column({ field: 'created_at' })
+  createdAt: Date;
 
-  // @UpdatedAt
-  // @Column({ field: 'updated_at' })
-  // updatedAt: Date;
+  @UpdatedAt
+  @Column({ field: 'updated_at' })
+  updatedAt: Date;
 
-  // @DeletedAt
-  // @Column({ field: 'deleted_at' })
-  // deletedAt: Date;
+  @DeletedAt
+  @Column({ field: 'deleted_at' })
+  deletedAt: Date;
 
-  @BelongsTo(() => BillingMaster )
-  BillingMaster: BillingMaster
+  // @HasMany(() => BillingMaster)
+  // players: BillingMaster[]
+    @BelongsTo(() => BillingMaster)
+  billingDetails: BillingMaster; 
 }
