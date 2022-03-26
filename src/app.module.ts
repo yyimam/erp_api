@@ -29,13 +29,14 @@ import { ItemSubCatListModule } from './utility/itemSubCategoryList/ItemSubCatLi
       // database: 'yousufdb',
       autoLoadModels: true,
       synchronize: true,
-      // pool: {
-      //   max: 15,
-      //   min: 5,
-      //   idle: 20000,
-      //   evict: 15000,
-      //   acquire: 30000
-      // },
+      pool: {
+        max: 15,
+        min: 5,
+        idle: 20000,
+        evict: 15000,
+        acquire: 30000
+      },
+      dialectModule: require('mysql2')
     }),
     UsersModule,
     ProductsModule,

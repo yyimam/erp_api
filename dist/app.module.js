@@ -34,6 +34,14 @@ AppModule = __decorate([
                 database: 'halfmaneng_yousufdb',
                 autoLoadModels: true,
                 synchronize: true,
+                pool: {
+                    max: 15,
+                    min: 5,
+                    idle: 20000,
+                    evict: 15000,
+                    acquire: 30000
+                },
+                dialectModule: require('mysql2')
             }),
             users_module_1.UsersModule,
             products_module_1.ProductsModule,
