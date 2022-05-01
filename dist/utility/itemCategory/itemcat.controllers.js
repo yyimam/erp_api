@@ -20,7 +20,7 @@ let ItemCatController = class ItemCatController {
     constructor(ItemCatsService) {
         this.ItemCatsService = ItemCatsService;
     }
-    create(createItemCatDto, res) {
+    async create(createItemCatDto, res) {
         return this.ItemCatsService.create(createItemCatDto)
             .then(rec => {
             this.ItemCatsService.findById(rec.id).then(t => {
@@ -33,7 +33,7 @@ let ItemCatController = class ItemCatController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updateItemCatDto, res) {
+    async update(code, updateItemCatDto, res) {
         this.ItemCatsService.update(code, updateItemCatDto)
             .then(rec => {
             this.ItemCatsService.findOne(code).then(r => {
@@ -46,13 +46,13 @@ let ItemCatController = class ItemCatController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    findAll() {
+    async findAll() {
         return this.ItemCatsService.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.ItemCatsService.findOne(code);
     }
-    remove(code, res) {
+    async remove(code, res) {
         return this.ItemCatsService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
@@ -75,7 +75,7 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_itemcat_dto_1.CreateItemCatDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ItemCatController.prototype, "update", null);
 __decorate([
     common_1.Get(),

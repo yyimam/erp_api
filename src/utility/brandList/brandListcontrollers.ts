@@ -9,7 +9,7 @@ export class BrandListController {
   constructor(private readonly BrandListsService: BrandListService) { }
 
   @Post()
-  create(@Body() createBrandListDto: CreateBrandListDto, @Res() res: Response): Promise<void | BrandList> {
+  async create(@Body() createBrandListDto: CreateBrandListDto, @Res() res: Response): Promise<void | BrandList> {
     return this.BrandListsService.create(createBrandListDto)
       .then(rec => {
         this.BrandListsService.findById(rec.id).then(t => {
@@ -24,7 +24,7 @@ export class BrandListController {
   }
 
   @Put(':code')
-  update(@Param('code') code: string, @Body() updateBrandListDto: CreateBrandListDto, @Res() res: Response) {
+  async update(@Param('code') code: string, @Body() updateBrandListDto: CreateBrandListDto, @Res() res: Response) {
     this.BrandListsService.update(code, updateBrandListDto)
       .then(rec => {
         this.BrandListsService.findOne(code).then(r => {
@@ -39,17 +39,17 @@ export class BrandListController {
   }
 
   @Get()
-  findAll(): Promise<BrandList[]> {
+  async findAll(): Promise<BrandList[]> {
     return this.BrandListsService.findAll();
   }
 
   @Get(':code')
-  findOne(@Param('code') code: string): Promise<BrandList> {
+  async findOne(@Param('code') code: string): Promise<BrandList> {
     return this.BrandListsService.findOne(code);
   }
 
   @Delete(':code')
-  remove(@Param('code') code: string, @Res() res: Response): Promise<void | BrandList> {
+  async remove(@Param('code') code: string, @Res() res: Response): Promise<void | BrandList> {
     return this.BrandListsService.remove(code).then(r => {
       res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
     }).catch(err => {

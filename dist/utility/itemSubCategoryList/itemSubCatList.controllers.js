@@ -20,7 +20,7 @@ let ItemSubCatListController = class ItemSubCatListController {
     constructor(ItemSubCatListsService) {
         this.ItemSubCatListsService = ItemSubCatListsService;
     }
-    create(createItemSubCatListDto, res) {
+    async create(createItemSubCatListDto, res) {
         return this.ItemSubCatListsService.create(createItemSubCatListDto)
             .then(rec => {
             this.ItemSubCatListsService.findById(rec.id).then(r => {
@@ -33,7 +33,7 @@ let ItemSubCatListController = class ItemSubCatListController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updateItemSubCatListDto, res) {
+    async update(code, updateItemSubCatListDto, res) {
         this.ItemSubCatListsService.update(code, updateItemSubCatListDto)
             .then(rec => {
             this.ItemSubCatListsService.findOne(code).then(r => {
@@ -46,13 +46,13 @@ let ItemSubCatListController = class ItemSubCatListController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    findAll() {
+    async findAll() {
         return this.ItemSubCatListsService.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.ItemSubCatListsService.findOne(code);
     }
-    remove(code, res) {
+    async remove(code, res) {
         return this.ItemSubCatListsService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
@@ -75,7 +75,7 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_itemSubCatList_dto_1.CreateItemSubCatListDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ItemSubCatListController.prototype, "update", null);
 __decorate([
     common_1.Get(),

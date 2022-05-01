@@ -6,7 +6,7 @@ export declare class RoleDetailController {
     private readonly RoleDetailsService;
     constructor(RoleDetailsService: RoleDetailService);
     create(createRoleDetailDto: CreateRoleDetailDto, res: Response): Promise<void | RoleDetail>;
-    update(code: string, updateRoleDetailDto: CreateRoleDetailDto, res: Response): void;
+    update(code: string, updateRoleDetailDto: CreateRoleDetailDto, res: Response): Promise<void>;
     findAll(): Promise<RoleDetail[]>;
     findOne(code: string): Promise<RoleDetail>;
     remove(code: string): Promise<void>;

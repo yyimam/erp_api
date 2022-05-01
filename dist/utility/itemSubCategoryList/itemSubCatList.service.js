@@ -31,14 +31,14 @@ let ItemSubCatListService = class ItemSubCatListService {
     async findAll() {
         return this.ItemSubCatListModel.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.ItemSubCatListModel.findOne({
             where: {
                 code,
             },
         });
     }
-    findById(id) {
+    async findById(id) {
         return this.ItemSubCatListModel.findOne({
             where: {
                 id,

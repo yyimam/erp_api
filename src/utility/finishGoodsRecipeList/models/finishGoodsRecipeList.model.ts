@@ -1,13 +1,19 @@
-import { Column, Model, Table, PrimaryKey, CreatedAt,UpdatedAt,DeletedAt, } from 'sequelize-typescript';
+import { FinishGoodsRecipeMaster } from './../../../entities/finishGoodsRecipeMaster.model';
+import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, ForeignKey, BelongsTo, Index } from 'sequelize-typescript';
 
-@Table({tableName: 'assembling_list'})
-export class finishGoodsRecipeList extends Model {
-
+@Table({
+  tableName: 'assembling_list',
+  timestamps: true})
+export class FinishGoodsRecipeList extends Model {
 
   @PrimaryKey
-  @Column
-  idno: number;
+  @Column({
+    autoIncrement: true,
+    field: 'idno'
+  })
+  id: number;
   
+  @ForeignKey(() => FinishGoodsRecipeMaster)
   @Column
   mainitemcode: string;
   
@@ -48,6 +54,7 @@ export class finishGoodsRecipeList extends Model {
   @Column({ field: 'deleted_at' })
   deletedAt: Date;
 
-
+  @BelongsTo(() => FinishGoodsRecipeMaster) 
+  FinishGoodsRecipeMaster: FinishGoodsRecipeMaster;
 
 }

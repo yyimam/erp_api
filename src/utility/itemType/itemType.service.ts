@@ -11,7 +11,7 @@ export class ItemTypeService {
     private readonly ItemTypeModel: typeof ItemType,
   ) {}
 
-  create(CreateItemTypeDto: CreateItemTypeDto): Promise<ItemType> {
+  async create(CreateItemTypeDto: CreateItemTypeDto): Promise<ItemType> {
     let t:{}= CreateItemTypeDto
     return this.ItemTypeModel.create(t);
   }
@@ -25,7 +25,7 @@ export class ItemTypeService {
     return this.ItemTypeModel.findAll();
   }
 
-  findOne(code: string): Promise<ItemType> {
+  async findOne(code: string): Promise<ItemType> {
     return this.ItemTypeModel.findOne({
       where: {
         code,
@@ -33,9 +33,10 @@ export class ItemTypeService {
     });
   }
 
-  async remove(id: string): Promise<void> {
-    const user = await this.findOne(id);
-    await user.destroy();
+  async remove(id: string): Promise<ItemType> {
+    const type = await this.findOne(id);
+    let u = await type.destroy().then(t => t);
+    return type;
   }
   
 }

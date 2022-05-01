@@ -20,7 +20,7 @@ let finishGoodsRecipeListController = class finishGoodsRecipeListController {
     constructor(finishGoodsRecipeListsService) {
         this.finishGoodsRecipeListsService = finishGoodsRecipeListsService;
     }
-    create(createfinishGoodsRecipeListDto, res) {
+    async create(createfinishGoodsRecipeListDto, res) {
         return this.finishGoodsRecipeListsService.create(createfinishGoodsRecipeListDto)
             .then(rec => {
             res.status(common_1.HttpStatus.CREATED).send(rec);
@@ -29,20 +29,27 @@ let finishGoodsRecipeListController = class finishGoodsRecipeListController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updatefinishGoodsRecipeListDto, res) {
+    async update(code, updatefinishGoodsRecipeListDto, res) {
         this.finishGoodsRecipeListsService.update(code, updatefinishGoodsRecipeListDto)
             .then(rec => {
-            res.status(common_1.HttpStatus.OK).send({ message: "record updated", record: rec });
+            res.status(common_1.HttpStatus.OK).send({ message: "record updated", data: rec });
         })
             .catch(err => {
-            res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
+            res.status(common_1.HttpStatus.BAD_REQUEST).send({ message: "Error", data: err.parent });
         });
     }
-    findAll(code) {
-        return this.finishGoodsRecipeListsService.findAll(code);
+    async findAll() {
+        return this.finishGoodsRecipeListsService.findAll();
     }
-    remove(code) {
-        return this.finishGoodsRecipeListsService.remove(code);
+    async findOne(code) {
+        return this.finishGoodsRecipeListsService.findOne(code);
+    }
+    async remove(code, res) {
+        return this.finishGoodsRecipeListsService.remove(code).then(r => {
+            res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
+        }).catch(err => {
+            res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);
+        });
     }
 };
 __decorate([
@@ -50,7 +57,7 @@ __decorate([
     __param(0, common_1.Body()),
     __param(1, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Array, Object]),
+    __metadata("design:paramtypes", [create_finishGoodsRecipeList_dto_1.CreatefinishGoodsRecipeListDto, Object]),
     __metadata("design:returntype", Promise)
 ], finishGoodsRecipeListController.prototype, "create", null);
 __decorate([
@@ -60,24 +67,31 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_finishGoodsRecipeList_dto_1.CreatefinishGoodsRecipeListDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], finishGoodsRecipeListController.prototype, "update", null);
+__decorate([
+    common_1.Get(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], finishGoodsRecipeListController.prototype, "findAll", null);
 __decorate([
     common_1.Get(':code'),
     __param(0, common_1.Param('code')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], finishGoodsRecipeListController.prototype, "findAll", null);
+], finishGoodsRecipeListController.prototype, "findOne", null);
 __decorate([
     common_1.Delete(':code'),
     __param(0, common_1.Param('code')),
+    __param(1, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], finishGoodsRecipeListController.prototype, "remove", null);
 finishGoodsRecipeListController = __decorate([
-    common_1.Controller('assembling-list'),
+    common_1.Controller('finish-goods-recipe-list'),
     __metadata("design:paramtypes", [finishGoodsRecipeList_service_1.finishGoodsRecipeListService])
 ], finishGoodsRecipeListController);
 exports.finishGoodsRecipeListController = finishGoodsRecipeListController;

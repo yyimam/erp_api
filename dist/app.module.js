@@ -21,6 +21,7 @@ const users_module_1 = require("./users/users.module");
 const products_module_1 = require("./utility/products/products.module");
 const itemcat_module_1 = require("./utility/itemCategory/itemcat.module");
 const ItemSubCatList_module_1 = require("./utility/itemSubCategoryList/ItemSubCatList.module");
+const ac_module_1 = require("./entry/chartOfAccounts/ac.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -28,9 +29,9 @@ AppModule = __decorate([
         imports: [
             sequelize_1.SequelizeModule.forRoot({
                 dialect: 'mysql',
-                host: '43.255.154.114',
-                username: 'halfmaneng_user',
-                password: '%09_xC*ee9Z&',
+                host: 'localhost',
+                username: 'halfmaneng_yousufdb',
+                password: 'ApQ.V@iP6q0BxbU3',
                 database: 'halfmaneng_yousufdb',
                 autoLoadModels: true,
                 synchronize: true,
@@ -41,7 +42,6 @@ AppModule = __decorate([
                     evict: 15000,
                     acquire: 30000
                 },
-                dialectModule: require('mysql2')
             }),
             users_module_1.UsersModule,
             products_module_1.ProductsModule,
@@ -54,7 +54,8 @@ AppModule = __decorate([
             finishGoodsRecipeList_module_1.finishGoodsRecipeListModule,
             itemType_module_1.ItemTypeModule,
             itemUnit_module_1.ItemUnitModule,
-            purchaseInvoice_module_1.PurchaseInvoiceModule
+            purchaseInvoice_module_1.PurchaseInvoiceModule,
+            ac_module_1.AcModule
         ]
     })
 ], AppModule);

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
+const finishGoodsRecipeMaster_model_1 = require("./../../../entities/finishGoodsRecipeMaster.model");
 const sequelize_typescript_1 = require("sequelize-typescript");
 let Product = class Product extends sequelize_typescript_1.Model {
 };
@@ -23,6 +24,7 @@ __decorate([
 __decorate([
     sequelize_typescript_1.PrimaryKey,
     sequelize_typescript_1.Column,
+    sequelize_typescript_1.ForeignKey(() => finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster),
     __metadata("design:type", String)
 ], Product.prototype, "code", void 0);
 __decorate([
@@ -152,6 +154,10 @@ __decorate([
     sequelize_typescript_1.Column({ field: 'deleted_at' }),
     __metadata("design:type", Date)
 ], Product.prototype, "deletedAt", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster),
+    __metadata("design:type", finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster)
+], Product.prototype, "FinishGoodsRecipeMaster", void 0);
 Product = __decorate([
     sequelize_typescript_1.Table({ tableName: 'product' })
 ], Product);

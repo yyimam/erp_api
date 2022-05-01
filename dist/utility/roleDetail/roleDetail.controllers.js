@@ -20,7 +20,7 @@ let RoleDetailController = class RoleDetailController {
     constructor(RoleDetailsService) {
         this.RoleDetailsService = RoleDetailsService;
     }
-    create(createRoleDetailDto, res) {
+    async create(createRoleDetailDto, res) {
         return this.RoleDetailsService.create(createRoleDetailDto)
             .then(rec => {
             res.status(common_1.HttpStatus.CREATED).send(rec);
@@ -29,7 +29,7 @@ let RoleDetailController = class RoleDetailController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updateRoleDetailDto, res) {
+    async update(code, updateRoleDetailDto, res) {
         this.RoleDetailsService.update(code, updateRoleDetailDto)
             .then(rec => {
             res.status(common_1.HttpStatus.OK).send({ message: "record updated" });
@@ -38,13 +38,13 @@ let RoleDetailController = class RoleDetailController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    findAll() {
+    async findAll() {
         return this.RoleDetailsService.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.RoleDetailsService.findOne(code);
     }
-    remove(code) {
+    async remove(code) {
         return this.RoleDetailsService.remove(code);
     }
 };
@@ -63,7 +63,7 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_roleDetail_dto_1.CreateRoleDetailDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], RoleDetailController.prototype, "update", null);
 __decorate([
     common_1.Get(),

@@ -6,7 +6,7 @@ export declare class ModuleListController {
     private readonly ModuleListsService;
     constructor(ModuleListsService: ModuleListService);
     create(createModuleListDto: CreateModuleListDto, res: Response): Promise<void | ModuleList>;
-    update(code: string, updateModuleListDto: CreateModuleListDto, res: Response): void;
+    update(code: string, updateModuleListDto: CreateModuleListDto, res: Response): Promise<void>;
     findAll(id: string): Promise<ModuleList[]>;
     remove(id: string): Promise<void>;
 }

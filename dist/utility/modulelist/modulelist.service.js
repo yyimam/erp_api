@@ -23,7 +23,7 @@ let ModuleListService = class ModuleListService {
         this.ModuleListModel = ModuleListModel;
         this.inc = ["dependent", "serialNo", "menus", "modulename", "moduletype", [sequelize_2.literal('`roleDetail`.`can_access`'), 'canAccess'], [sequelize_2.literal('`roleDetail`.`can_add`'), "canAdd"], [sequelize_2.literal('`roleDetail`.`can_edit`'), "canEdit"], [sequelize_2.literal('`roleDetail`.`can_delete`'), "canDelete"], [sequelize_2.literal('`roleDetail`.`can_print`'), "canPrint"], [sequelize_2.literal('`roleDetail`.`can_docs`'), "canDocs"]];
     }
-    create(CreateModuleListDto) {
+    async create(CreateModuleListDto) {
         let t = CreateModuleListDto;
         return this.ModuleListModel.create(t);
     }
@@ -44,7 +44,7 @@ let ModuleListService = class ModuleListService {
             attributes: { include: this.inc }
         });
     }
-    findOne(code) {
+    async findOne(code) {
         return this.ModuleListModel.findOne({
             where: {
                 code,

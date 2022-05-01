@@ -1,17 +1,17 @@
+import { FinishGoodsRecipeMaster } from './../../entities/finishGoodsRecipeMaster.model';
 import { CreatefinishGoodsRecipeListDto } from './dto/create-finishGoodsRecipeList.dto';
-import { finishGoodsRecipeList } from './models/finishGoodsRecipeList.model';
+import { FinishGoodsRecipeList } from './models/finishGoodsRecipeList.model';
 import { finishGoodsRecipeListService } from './finishGoodsRecipeList.service';
 import { Body, Controller, Delete, Get, Param, Post,HttpStatus, Res, Put} from '@nestjs/common';
 import { Response } from 'express';
 import { Console } from 'console';
 
-@Controller('assembling-list')
+@Controller('finish-goods-recipe-list')
 export class finishGoodsRecipeListController {
   constructor(private readonly finishGoodsRecipeListsService: finishGoodsRecipeListService) {}
 
   @Post()
-  create(@Body() createfinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto[], @Res() res: Response): Promise<void | finishGoodsRecipeList> {
-    
+  async create(@Body() createfinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto, @Res() res: Response): Promise<void | FinishGoodsRecipeList> {
     return this.finishGoodsRecipeListsService.create(createfinishGoodsRecipeListDto)
     .then(rec => {
       res.status(HttpStatus.CREATED).send(rec);
@@ -22,29 +22,33 @@ export class finishGoodsRecipeListController {
   }
   
   @Put(':code')
-  update(@Param('code') code: string,@Body() updatefinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto, @Res() res: Response) {
+  async update(@Param('code') code: string,@Body() updatefinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto, @Res() res: Response) {
     this.finishGoodsRecipeListsService.update(code,updatefinishGoodsRecipeListDto)
     .then(rec => {
-        res.status(HttpStatus.OK).send({message: "record updated", record:rec});
+        res.status(HttpStatus.OK).send({message: "record updated", data:rec});
     })
     .catch( err => {
-        res.status(HttpStatus.BAD_REQUEST).send(err.parent);
+        res.status(HttpStatus.BAD_REQUEST).send({message: "Error", data:err.parent});
     });    
   }
   
-  @Get(':code')
-  findAll(@Param('code') code: string): Promise<finishGoodsRecipeList[]> {
-    return this.finishGoodsRecipeListsService.findAll(code);
+  @Get()
+  async findAll(): Promise<FinishGoodsRecipeMaster[]> {
+    return this.finishGoodsRecipeListsService.findAll();
   }
 
-  // @Get(':code')
-  // findOne(@Param('code') code: string): Promise<finishGoodsRecipeList> {
-  //   return this.finishGoodsRecipeListsService.findOne(code);
-  // }
+  @Get(':code')
+  async findOne(@Param('code') code: string): Promise<FinishGoodsRecipeMaster> {
+    return this.finishGoodsRecipeListsService.findOne(code);
+  }
 
   @Delete(':code')
-  remove(@Param('code') code: string): Promise<void> {
-    return this.finishGoodsRecipeListsService.remove(code);
+  async remove(@Param('code') code: string , @Res() res: Response): Promise<void | FinishGoodsRecipeMaster> {
+    return this.finishGoodsRecipeListsService.remove(code).then(r => {
+      res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
+    }).catch(err => {
+      res.status(HttpStatus.NO_CONTENT).send(err.parent);
+    });
   }
   
 }

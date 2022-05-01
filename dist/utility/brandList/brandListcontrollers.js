@@ -20,7 +20,7 @@ let BrandListController = class BrandListController {
     constructor(BrandListsService) {
         this.BrandListsService = BrandListsService;
     }
-    create(createBrandListDto, res) {
+    async create(createBrandListDto, res) {
         return this.BrandListsService.create(createBrandListDto)
             .then(rec => {
             this.BrandListsService.findById(rec.id).then(t => {
@@ -33,7 +33,7 @@ let BrandListController = class BrandListController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updateBrandListDto, res) {
+    async update(code, updateBrandListDto, res) {
         this.BrandListsService.update(code, updateBrandListDto)
             .then(rec => {
             this.BrandListsService.findOne(code).then(r => {
@@ -46,13 +46,13 @@ let BrandListController = class BrandListController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    findAll() {
+    async findAll() {
         return this.BrandListsService.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.BrandListsService.findOne(code);
     }
-    remove(code, res) {
+    async remove(code, res) {
         return this.BrandListsService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
@@ -75,7 +75,7 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_brandList_dto_1.CreateBrandListDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], BrandListController.prototype, "update", null);
 __decorate([
     common_1.Get(),

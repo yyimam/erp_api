@@ -20,7 +20,7 @@ let ItemTypeService = class ItemTypeService {
     constructor(ItemTypeModel) {
         this.ItemTypeModel = ItemTypeModel;
     }
-    create(CreateItemTypeDto) {
+    async create(CreateItemTypeDto) {
         let t = CreateItemTypeDto;
         return this.ItemTypeModel.create(t);
     }
@@ -31,7 +31,7 @@ let ItemTypeService = class ItemTypeService {
     async findAll() {
         return this.ItemTypeModel.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.ItemTypeModel.findOne({
             where: {
                 code,
@@ -39,8 +39,9 @@ let ItemTypeService = class ItemTypeService {
         });
     }
     async remove(id) {
-        const user = await this.findOne(id);
-        await user.destroy();
+        const type = await this.findOne(id);
+        let u = await type.destroy().then(t => t);
+        return type;
     }
 };
 ItemTypeService = __decorate([

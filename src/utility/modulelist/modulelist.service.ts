@@ -14,7 +14,7 @@ export class ModuleListService {
     private readonly ModuleListModel: typeof ModuleList,
   ) {}
 
-  create(CreateModuleListDto: CreateModuleListDto): Promise<ModuleList> {
+  async create(CreateModuleListDto: CreateModuleListDto): Promise<ModuleList> {
     let t:{}= CreateModuleListDto
     return this.ModuleListModel.create(t);
   }
@@ -38,7 +38,7 @@ export class ModuleListService {
     });
   }
 
-  findOne(code: string): Promise<ModuleList> {
+  async findOne(code: string): Promise<ModuleList> {
     return this.ModuleListModel.findOne({
       where: {
         code,

@@ -25,7 +25,7 @@ export class ItemSubCatListService {
     return this.ItemSubCatListModel.findAll();
   }
 
-  findOne(code: string): Promise<ItemSubCatList> {
+  async findOne(code: string): Promise<ItemSubCatList> {
     return this.ItemSubCatListModel.findOne({
       where: {
         code,
@@ -33,7 +33,7 @@ export class ItemSubCatListService {
     });
   }
 
-  findById(id: number): Promise<ItemSubCatList> {
+  async findById(id: number): Promise<ItemSubCatList> {
     return this.ItemSubCatListModel.findOne({
       where: {
         id,

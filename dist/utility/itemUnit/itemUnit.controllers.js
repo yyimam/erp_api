@@ -20,7 +20,7 @@ let ItemUnitController = class ItemUnitController {
     constructor(itemUnitService) {
         this.itemUnitService = itemUnitService;
     }
-    create(createItemUnitDto, res) {
+    async create(createItemUnitDto, res) {
         return this.itemUnitService.create(createItemUnitDto)
             .then(rec => {
             this.itemUnitService.findById(rec.id).then(t => {
@@ -33,10 +33,10 @@ let ItemUnitController = class ItemUnitController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updateItemUnitDto, res) {
+    async update(code, updateItemUnitDto, res) {
         this.itemUnitService.update(code, updateItemUnitDto)
             .then(rec => {
-            this.itemUnitService.findById(rec.id).then(r => {
+            this.itemUnitService.findOne(code).then(r => {
                 res.status(common_1.HttpStatus.OK).send({ message: "Record Updated", data: r });
             }).catch(err => {
                 res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);
@@ -46,14 +46,14 @@ let ItemUnitController = class ItemUnitController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    findAll() {
+    async findAll() {
         console.log("check rec");
         return this.itemUnitService.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.itemUnitService.findOne(code);
     }
-    remove(code, res) {
+    async remove(code, res) {
         return this.itemUnitService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
@@ -76,7 +76,7 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_itemUnit_dto_1.CreateItemUnitDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ItemUnitController.prototype, "update", null);
 __decorate([
     common_1.Get(),

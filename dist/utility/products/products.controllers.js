@@ -20,10 +20,10 @@ let ProductsController = class ProductsController {
     constructor(productsService) {
         this.productsService = productsService;
     }
-    create(createProductDto, res) {
+    async create(createProductDto, res) {
         return this.productsService.create(createProductDto)
             .then(rec => {
-            let t = this.productsService.findById(rec.id).then(r => {
+            this.productsService.findById(rec.id).then(r => {
                 res.status(common_1.HttpStatus.CREATED).send(r);
             })
                 .catch(err => {
@@ -34,7 +34,7 @@ let ProductsController = class ProductsController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updateProductDto, res) {
+    async update(code, updateProductDto, res) {
         this.productsService.update(code, updateProductDto)
             .then(rec => {
             this.productsService.findOne(code).then(r => {
@@ -45,13 +45,16 @@ let ProductsController = class ProductsController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    findAll() {
+    async findAll() {
         return this.productsService.findAll();
     }
-    findOne(id) {
+    async findOne(id) {
         return this.productsService.findById(id);
     }
-    remove(id, res) {
+    async findByString(ref, para) {
+        return this.productsService.findByItemType(para);
+    }
+    async remove(id, res) {
         return this.productsService.remove(id).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
@@ -74,7 +77,7 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_product_dto_1.CreateProductDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "update", null);
 __decorate([
     common_1.Get(),
@@ -89,6 +92,14 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "findOne", null);
+__decorate([
+    common_1.Get('/:ref/:para'),
+    __param(0, common_1.Param('ref')),
+    __param(1, common_1.Param('para')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", Promise)
+], ProductsController.prototype, "findByString", null);
 __decorate([
     common_1.Delete(':id'),
     __param(0, common_1.Param('id')),

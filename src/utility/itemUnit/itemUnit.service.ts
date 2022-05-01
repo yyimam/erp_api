@@ -25,7 +25,7 @@ export class ItemUnitService {
     return this.ItemUnitModel.findAll();
   }
 
-  findOne(code: string): Promise<ItemUnit> {
+  async findOne(code: string): Promise<ItemUnit> {
     return this.ItemUnitModel.findOne({
       where: {
         code,
@@ -33,7 +33,7 @@ export class ItemUnitService {
     });
   }
 
-  findById(id: number): Promise<ItemUnit> {
+  async findById(id: number): Promise<ItemUnit> {
     return this.ItemUnitModel.findOne({
       where: {
         id,
@@ -41,9 +41,10 @@ export class ItemUnitService {
     });
   }
 
-  async remove(id: string): Promise<void> {
-    const user = await this.findOne(id);
-    await user.destroy();
+  async remove(code: string): Promise<ItemUnit> {
+    const res = await this.findOne(code);
+    let u = await res.destroy().then(t => t);
+    return res;
   }
   
 }

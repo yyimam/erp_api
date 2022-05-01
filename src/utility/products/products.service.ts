@@ -10,9 +10,11 @@ export class ProductsService {
     private readonly productModel: typeof Product,
   ) {}
 
-  create(CreateProductDto: CreateProductDto): Promise<Product> {
+  async create(CreateProductDto: CreateProductDto): Promise<Product> {
     let t:{}= CreateProductDto
-    return this.productModel.create(t);
+    return this.productModel.create(t)
+    .then(rec => rec)
+    .catch(err => err);
   }
 
   async update(code: string, UpdateProductDto: CreateProductDto): Promise<any>{
@@ -24,7 +26,7 @@ export class ProductsService {
     return this.productModel.findAll();
   }
 
-  findOne(code: string): Promise<Product> {
+  async findOne(code: string): Promise<Product> {
     return this.productModel.findOne({
       where: {
         code,
@@ -32,12 +34,20 @@ export class ProductsService {
     });
   }
 
-  findById(id: number): Promise<Product> {
+  async findById(id: number): Promise<Product> {
     return this.productModel.findOne({
       where: {
         id,
       },
     });
+  }
+
+  async findByItemType(itemtype: string): Promise<Product[]>{
+    return this.productModel.findAll({
+      where:{
+        itemtype
+      }
+    })
   }
 
   async remove(id: number): Promise<Product> {

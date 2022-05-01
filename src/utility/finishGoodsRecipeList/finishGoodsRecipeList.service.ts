@@ -1,4 +1,6 @@
-import { finishGoodsRecipeList } from './models/finishGoodsRecipeList.model';
+import { Product } from './../products/models/product.model';
+import { FinishGoodsRecipeMaster } from './../../entities/finishGoodsRecipeMaster.model';
+import { FinishGoodsRecipeList } from './models/finishGoodsRecipeList.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreatefinishGoodsRecipeListDto } from './dto/create-finishGoodsRecipeList.dto';
@@ -6,42 +8,46 @@ import { CreatefinishGoodsRecipeListDto } from './dto/create-finishGoodsRecipeLi
 @Injectable()
 export class finishGoodsRecipeListService {
   constructor(
-    @InjectModel(finishGoodsRecipeList)
-    private readonly finishGoodsRecipeListModel: typeof finishGoodsRecipeList,
-  ) {}
+    @InjectModel(FinishGoodsRecipeMaster)
+    private readonly FinishGoodsRecipeMasterModel: typeof FinishGoodsRecipeMaster,
+    @InjectModel(FinishGoodsRecipeList)
+    private readonly FinishGoodsRecipeListModel: typeof FinishGoodsRecipeList
+  ) { }
 
-  create(CreatefinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto[]): Promise<finishGoodsRecipeList[]> {
-    let t:any= CreatefinishGoodsRecipeListDto
-    
-    return this.finishGoodsRecipeListModel.bulkCreate(t);
+  async create(CreatefinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto): Promise<FinishGoodsRecipeMaster> {
+    let t: any = CreatefinishGoodsRecipeListDto
+    return this.FinishGoodsRecipeMasterModel.create(t, {
+      include: [FinishGoodsRecipeList, Product]
+    })
+      .then(t => t.reload().then(t => t))
+      .catch(err => err);
   }
 
-  async update(code: string, UpdatefinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto): Promise<any>{
+  async update(code: string, UpdatefinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto): Promise<any> {
     let t: any = UpdatefinishGoodsRecipeListDto;
-    return this.finishGoodsRecipeListModel.bulkCreate(t,{updateOnDuplicate:["mainitemcode","subitemcode","qty","wastage_qty"]});
+    return this.FinishGoodsRecipeListModel.bulkCreate(t.finishGoodsRecipeList, { individualHooks: true, updateOnDuplicate: ["description", "disabled", "entryno", "mainitemcode", "qty", "subitemcode"] })
+      .then(t => t)
+      .catch(err => err);
   }
 
-  async findAll(idno: string): Promise<finishGoodsRecipeList[]> {
-    return this.finishGoodsRecipeListModel.findAll({
-      where: {
-        mainitemcode:idno,
-      },
+
+  async findAll(): Promise<FinishGoodsRecipeMaster[]> {
+    return this.FinishGoodsRecipeMasterModel.findAll({
+      include: [Product, FinishGoodsRecipeList]
     });
   }
 
-  findOne(code: string): Promise<finishGoodsRecipeList> {
-    return this.finishGoodsRecipeListModel.findOne({
-      where: {
-        code,
-      },
+  async findOne(code: string): Promise<FinishGoodsRecipeMaster> {
+    return this.FinishGoodsRecipeMasterModel.findOne({
+      include: [FinishGoodsRecipeList, Product],
+      where: { mainitemcode: code }
     });
   }
 
-  async remove(id: string): Promise<void> {
-    await this.finishGoodsRecipeListModel.destroy({
-      where: {
-        mainitemcode:id,
-      },
-    });
+  async remove(code: string): Promise<FinishGoodsRecipeMaster> {
+    const rec = await this.findOne(code);
+    let u = await rec.destroy().then(t => t);
+    return rec;
+
   }
 }

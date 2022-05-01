@@ -13,47 +13,52 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.finishGoodsRecipeListService = void 0;
+const product_model_1 = require("./../products/models/product.model");
+const finishGoodsRecipeMaster_model_1 = require("./../../entities/finishGoodsRecipeMaster.model");
 const finishGoodsRecipeList_model_1 = require("./models/finishGoodsRecipeList.model");
 const common_1 = require("@nestjs/common");
 const sequelize_1 = require("@nestjs/sequelize");
 let finishGoodsRecipeListService = class finishGoodsRecipeListService {
-    constructor(finishGoodsRecipeListModel) {
-        this.finishGoodsRecipeListModel = finishGoodsRecipeListModel;
+    constructor(FinishGoodsRecipeMasterModel, FinishGoodsRecipeListModel) {
+        this.FinishGoodsRecipeMasterModel = FinishGoodsRecipeMasterModel;
+        this.FinishGoodsRecipeListModel = FinishGoodsRecipeListModel;
     }
-    create(CreatefinishGoodsRecipeListDto) {
+    async create(CreatefinishGoodsRecipeListDto) {
         let t = CreatefinishGoodsRecipeListDto;
-        return this.finishGoodsRecipeListModel.bulkCreate(t);
+        return this.FinishGoodsRecipeMasterModel.create(t, {
+            include: [finishGoodsRecipeList_model_1.FinishGoodsRecipeList, product_model_1.Product]
+        })
+            .then(t => t.reload().then(t => t))
+            .catch(err => err);
     }
     async update(code, UpdatefinishGoodsRecipeListDto) {
         let t = UpdatefinishGoodsRecipeListDto;
-        return this.finishGoodsRecipeListModel.bulkCreate(t, { updateOnDuplicate: ["mainitemcode", "subitemcode", "qty", "wastage_qty"] });
+        return this.FinishGoodsRecipeListModel.bulkCreate(t.finishGoodsRecipeList, { individualHooks: true, updateOnDuplicate: ["description", "disabled", "entryno", "mainitemcode", "qty", "subitemcode"] })
+            .then(t => t)
+            .catch(err => err);
     }
-    async findAll(idno) {
-        return this.finishGoodsRecipeListModel.findAll({
-            where: {
-                mainitemcode: idno,
-            },
+    async findAll() {
+        return this.FinishGoodsRecipeMasterModel.findAll({
+            include: [product_model_1.Product, finishGoodsRecipeList_model_1.FinishGoodsRecipeList]
         });
     }
-    findOne(code) {
-        return this.finishGoodsRecipeListModel.findOne({
-            where: {
-                code,
-            },
+    async findOne(code) {
+        return this.FinishGoodsRecipeMasterModel.findOne({
+            include: [finishGoodsRecipeList_model_1.FinishGoodsRecipeList, product_model_1.Product],
+            where: { mainitemcode: code }
         });
     }
-    async remove(id) {
-        await this.finishGoodsRecipeListModel.destroy({
-            where: {
-                mainitemcode: id,
-            },
-        });
+    async remove(code) {
+        const rec = await this.findOne(code);
+        let u = await rec.destroy().then(t => t);
+        return rec;
     }
 };
 finishGoodsRecipeListService = __decorate([
     common_1.Injectable(),
-    __param(0, sequelize_1.InjectModel(finishGoodsRecipeList_model_1.finishGoodsRecipeList)),
-    __metadata("design:paramtypes", [Object])
+    __param(0, sequelize_1.InjectModel(finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster)),
+    __param(1, sequelize_1.InjectModel(finishGoodsRecipeList_model_1.FinishGoodsRecipeList)),
+    __metadata("design:paramtypes", [Object, Object])
 ], finishGoodsRecipeListService);
 exports.finishGoodsRecipeListService = finishGoodsRecipeListService;
 //# sourceMappingURL=finishGoodsRecipeList.service.js.map

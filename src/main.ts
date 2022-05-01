@@ -1,11 +1,21 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Sequelize } from 'sequelize-typescript';
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {cors:true}); 
-  app.setGlobalPrefix('/api/');
-  await app.listen(3000);
-  console.log(`Application is running on: ${await app.getUrl()}`);
-}
+import * as express from 'express';
+import * as functions from 'firebase-functions';
+import {ExpressAdapter, NestExpressApplication} from '@nestjs/platform-express';
 
-bootstrap();
+const server: express.Express = express();
+export const createNestServer = async (expressInstance: express.Express) => {
+  const adapter = new ExpressAdapter(expressInstance);
+  const app = await NestFactory.create<NestExpressApplication>(
+    AppModule, adapter, {},
+  );
+  app.enableCors();
+  app.listen(3000);
+  app.setGlobalPrefix('api');
+  return app.init();
+};
+createNestServer(server)
+  .then(v => console.log('Nest Ready'))
+  .catch(err => console.error('Nest broken', err));
+export const api: functions.HttpsFunction = functions.https.onRequest(server);

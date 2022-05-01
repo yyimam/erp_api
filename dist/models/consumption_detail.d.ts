@@ -1,0 +1,56 @@
+import * as Sequelize from 'sequelize';
+import { Model, Optional } from 'sequelize';
+import type { product, productId } from './product';
+import type { warehouse_list, warehouse_listId } from './warehouse_list';
+export interface consumption_detailAttributes {
+    EntryNo?: number;
+    edate?: Date;
+    itemcode?: string;
+    produceqty?: number;
+    pidno?: number;
+    cidno?: number;
+    estatus?: string;
+    Warehouse_Code?: string;
+    remarks?: string;
+    productname?: string;
+    cproductname?: string;
+    consumeqty?: number;
+    subitemcode?: string;
+    AL_Entryno?: number;
+    batch_id?: string;
+}
+export declare type consumption_detaillPk = "idno";
+export declare type consumption_detailId = consumption_detail[consumption_detaillPk];
+export declare type consumption_detailOptionalAttributes = "EntryNo" | "edate" | "itemcode" | "produceqty" | "pidno" | "cidno" | "estatus" | "Warehouse_Code" | "remarks" | "productname" | "cproductname" | "consumeqty" | "subitemcode" | "AL_Entryno" | "batch_id";
+export declare type consumption_detailCreationAttributes = Optional<consumption_detailAttributes, consumption_detailOptionalAttributes>;
+export declare class consumption_detail extends Model<consumption_detailAttributes, consumption_detailCreationAttributes> implements consumption_detailAttributes {
+    idno: number;
+    EntryNo?: number;
+    edate?: Date;
+    itemcode?: string;
+    produceqty?: number;
+    pidno?: number;
+    cidno?: number;
+    estatus?: string;
+    Warehouse_Code?: string;
+    remarks?: string;
+    productname?: string;
+    cproductname?: string;
+    consumeqty?: number;
+    subitemcode?: string;
+    AL_Entryno?: number;
+    batch_id?: string;
+    itemcode_product: product;
+    getItemcode_product: Sequelize.BelongsToGetAssociationMixin<product>;
+    setItemcode_product: Sequelize.BelongsToSetAssociationMixin<product, productId>;
+    createItemcode_product: Sequelize.BelongsToCreateAssociationMixin<product>;
+    subitemcode_product: product;
+    getSubitemcode_product: Sequelize.BelongsToGetAssociationMixin<product>;
+    setSubitemcode_product: Sequelize.BelongsToSetAssociationMixin<product, productId>;
+    createSubitemcode_product: Sequelize.BelongsToCreateAssociationMixin<product>;
+    Warehouse_Code_warehouse_list: warehouse_list;
+    getWarehouse_Code_warehouse_list: Sequelize.BelongsToGetAssociationMixin<warehouse_list>;
+    setWarehouse_Code_warehouse_list: Sequelize.BelongsToSetAssociationMixin<warehouse_list, warehouse_listId>;
+    createWarehouse_Code_warehouse_list: Sequelize.BelongsToCreateAssociationMixin<warehouse_list>;
+    static initModel(sequelize: Sequelize.Sequelize): typeof consumption_detail;
+}

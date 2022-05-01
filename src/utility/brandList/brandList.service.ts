@@ -25,7 +25,7 @@ export class BrandListService {
     return this.BrandListModel.findAll();
   }
 
-  findOne(code: string): Promise<BrandList> {
+  async findOne(code: string): Promise<BrandList> {
     return this.BrandListModel.findOne({
       where: {
         code,
@@ -33,7 +33,7 @@ export class BrandListService {
     });
   }
 
-  findById(id: number): Promise<BrandList> {
+  async findById(id: number): Promise<BrandList> {
     return this.BrandListModel.findOne({
       where: {
         id,
@@ -41,8 +41,9 @@ export class BrandListService {
     });
   }
 
-  async remove(id: string): Promise<void> {
-    const user = await this.findOne(id);
-    await user.destroy();
+  async remove(id: string): Promise<BrandList> {
+    const brand = await this.findOne(id);
+    let u = await brand.destroy().then(t => t);
+    return brand;
   }
 }

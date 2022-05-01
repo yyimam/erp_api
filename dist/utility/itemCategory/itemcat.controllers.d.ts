@@ -6,7 +6,7 @@ export declare class ItemCatController {
     private readonly ItemCatsService;
     constructor(ItemCatsService: ItemCatService);
     create(createItemCatDto: CreateItemCatDto, res: Response): Promise<void | ItemCat>;
-    update(code: string, updateItemCatDto: CreateItemCatDto, res: Response): void;
+    update(code: string, updateItemCatDto: CreateItemCatDto, res: Response): Promise<void>;
     findAll(): Promise<ItemCat[]>;
     findOne(code: string): Promise<ItemCat>;
     remove(code: string, res: Response): Promise<void | ItemCat>;

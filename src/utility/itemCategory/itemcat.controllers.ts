@@ -10,7 +10,7 @@ export class ItemCatController {
   constructor(private readonly ItemCatsService: ItemCatService) { }
 
   @Post()
-  create(@Body() createItemCatDto: CreateItemCatDto, @Res() res: Response): Promise<void | ItemCat> {
+  async create(@Body() createItemCatDto: CreateItemCatDto, @Res() res: Response): Promise<void | ItemCat> {
     return this.ItemCatsService.create(createItemCatDto)
       .then(rec => {
         this.ItemCatsService.findById(rec.id).then(t => {
@@ -25,7 +25,7 @@ export class ItemCatController {
   }
 
   @Put(':code')
-  update(@Param('code') code: string, @Body() updateItemCatDto: CreateItemCatDto, @Res() res: Response) {
+  async update(@Param('code') code: string, @Body() updateItemCatDto: CreateItemCatDto, @Res() res: Response) {
     this.ItemCatsService.update(code, updateItemCatDto)
       .then(rec => {
         this.ItemCatsService.findOne(code).then(r => {
@@ -40,17 +40,17 @@ export class ItemCatController {
   }
 
   @Get()
-  findAll(): Promise<ItemCat[]> {
+  async findAll(): Promise<ItemCat[]> {
     return this.ItemCatsService.findAll();
   }
 
   @Get(':code')
-  findOne(@Param('code') code: string): Promise<ItemCat> {
+  async findOne(@Param('code') code: string): Promise<ItemCat> {
     return this.ItemCatsService.findOne(code);
   }
 
   @Delete(':code')
-  remove(@Param('code') code: string, @Res() res: Response): Promise<void | ItemCat> {
+  async remove(@Param('code') code: string, @Res() res: Response): Promise<void | ItemCat> {
     return this.ItemCatsService.remove(code).then(r => {
       res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
     }).catch(err => {

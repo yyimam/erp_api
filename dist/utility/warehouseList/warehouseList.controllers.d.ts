@@ -6,7 +6,7 @@ export declare class WarehouseListController {
     private readonly WarehouseListsService;
     constructor(WarehouseListsService: WarehouseListService);
     create(createWarehouseListDto: CreateWarehouseListDto, res: Response): Promise<void | WarehouseList>;
-    update(code: string, updateWarehouseListDto: CreateWarehouseListDto, res: Response): void;
+    update(code: string, updateWarehouseListDto: CreateWarehouseListDto, res: Response): Promise<void>;
     findAll(): Promise<WarehouseList[]>;
     findOne(code: string): Promise<WarehouseList>;
     remove(code: string, res: Response): Promise<void | WarehouseList>;

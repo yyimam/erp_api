@@ -20,9 +20,11 @@ let ProductsService = class ProductsService {
     constructor(productModel) {
         this.productModel = productModel;
     }
-    create(CreateProductDto) {
+    async create(CreateProductDto) {
         let t = CreateProductDto;
-        return this.productModel.create(t);
+        return this.productModel.create(t)
+            .then(rec => rec)
+            .catch(err => err);
     }
     async update(code, UpdateProductDto) {
         let t = UpdateProductDto;
@@ -31,18 +33,25 @@ let ProductsService = class ProductsService {
     async findAll() {
         return this.productModel.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.productModel.findOne({
             where: {
                 code,
             },
         });
     }
-    findById(id) {
+    async findById(id) {
         return this.productModel.findOne({
             where: {
                 id,
             },
+        });
+    }
+    async findByItemType(itemtype) {
+        return this.productModel.findAll({
+            where: {
+                itemtype
+            }
         });
     }
     async remove(id) {

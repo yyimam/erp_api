@@ -7,5 +7,5 @@ export declare class ItemTypeService {
     update(code: string, UpdateItemTypeDto: CreateItemTypeDto): Promise<any>;
     findAll(): Promise<ItemType[]>;
     findOne(code: string): Promise<ItemType>;
-    remove(id: string): Promise<void>;
+    remove(id: string): Promise<ItemType>;
 }

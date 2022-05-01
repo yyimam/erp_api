@@ -8,5 +8,6 @@ export declare class ProductsService {
     findAll(): Promise<Product[]>;
     findOne(code: string): Promise<Product>;
     findById(id: number): Promise<Product>;
+    findByItemType(itemtype: string): Promise<Product[]>;
     remove(id: number): Promise<Product>;
 }

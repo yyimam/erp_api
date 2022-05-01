@@ -12,21 +12,22 @@ import { UsersModule } from './users/users.module';
 import { ProductsModule } from './utility/products/products.module';
 import { ItemCatModule } from './utility/itemCategory/itemcat.module';
 import { ItemSubCatListModule } from './utility/itemSubCategoryList/ItemSubCatList.module';
+import { AcModule } from './entry/chartOfAccounts/ac.module';
 
 @Module({
   imports: [
     SequelizeModule.forRoot({
       dialect: 'mysql',
-      host: '43.255.154.114',
-      // host: 'localhost',
+      // host: '43.255.154.114',
+      host: 'localhost',
       // host:'209.188.21.134',
       // port: 3306,
-      username: 'halfmaneng_user',
-      password: '%09_xC*ee9Z&',
+      // username: 'halfmaneng_user',
+      // password: '%09_xC*ee9Z&',
+      // database: 'halfmaneng_yousufdb',
+      username: 'halfmaneng_yousufdb',
+      password: 'ApQ.V@iP6q0BxbU3',
       database: 'halfmaneng_yousufdb',
-      // username: 'user',
-      // password: 'ApQ.V@iP6q0BxbU3',
-      // database: 'yousufdb',
       autoLoadModels: true,
       synchronize: true,
       pool: {
@@ -36,7 +37,7 @@ import { ItemSubCatListModule } from './utility/itemSubCategoryList/ItemSubCatLi
         evict: 15000,
         acquire: 30000
       },
-      dialectModule: require('mysql2')
+      // dialectModule: require('mysql2')
     }),
     UsersModule,
     ProductsModule,
@@ -49,7 +50,8 @@ import { ItemSubCatListModule } from './utility/itemSubCategoryList/ItemSubCatLi
     finishGoodsRecipeListModule,
     ItemTypeModule,
     ItemUnitModule,
-    PurchaseInvoiceModule
+    PurchaseInvoiceModule,
+    AcModule
   ]
 })
 

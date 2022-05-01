@@ -9,68 +9,80 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.finishGoodsRecipeList = void 0;
+exports.FinishGoodsRecipeList = void 0;
+const finishGoodsRecipeMaster_model_1 = require("./../../../entities/finishGoodsRecipeMaster.model");
 const sequelize_typescript_1 = require("sequelize-typescript");
-let finishGoodsRecipeList = class finishGoodsRecipeList extends sequelize_typescript_1.Model {
+let FinishGoodsRecipeList = class FinishGoodsRecipeList extends sequelize_typescript_1.Model {
 };
 __decorate([
     sequelize_typescript_1.PrimaryKey,
+    sequelize_typescript_1.Column({
+        autoIncrement: true,
+        field: 'idno'
+    }),
+    __metadata("design:type", Number)
+], FinishGoodsRecipeList.prototype, "id", void 0);
+__decorate([
+    sequelize_typescript_1.ForeignKey(() => finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster),
+    sequelize_typescript_1.Column,
+    __metadata("design:type", String)
+], FinishGoodsRecipeList.prototype, "mainitemcode", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", String)
+], FinishGoodsRecipeList.prototype, "subitemcode", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", String)
+], FinishGoodsRecipeList.prototype, "description", void 0);
+__decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", Number)
-], finishGoodsRecipeList.prototype, "idno", void 0);
-__decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
-], finishGoodsRecipeList.prototype, "mainitemcode", void 0);
-__decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
-], finishGoodsRecipeList.prototype, "subitemcode", void 0);
-__decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", String)
-], finishGoodsRecipeList.prototype, "description", void 0);
-__decorate([
-    sequelize_typescript_1.Column,
-    __metadata("design:type", Number)
-], finishGoodsRecipeList.prototype, "qty", void 0);
+], FinishGoodsRecipeList.prototype, "qty", void 0);
 __decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", Date)
-], finishGoodsRecipeList.prototype, "sysdate", void 0);
+], FinishGoodsRecipeList.prototype, "sysdate", void 0);
 __decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", Number)
-], finishGoodsRecipeList.prototype, "entryno", void 0);
+], FinishGoodsRecipeList.prototype, "entryno", void 0);
 __decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", Date)
-], finishGoodsRecipeList.prototype, "edate", void 0);
+], FinishGoodsRecipeList.prototype, "edate", void 0);
 __decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", Number)
-], finishGoodsRecipeList.prototype, "disabled", void 0);
+], FinishGoodsRecipeList.prototype, "disabled", void 0);
 __decorate([
     sequelize_typescript_1.Column,
     __metadata("design:type", Number)
-], finishGoodsRecipeList.prototype, "wastage_qty", void 0);
+], FinishGoodsRecipeList.prototype, "wastage_qty", void 0);
 __decorate([
     sequelize_typescript_1.CreatedAt,
     sequelize_typescript_1.Column({ field: 'created_at' }),
     __metadata("design:type", Date)
-], finishGoodsRecipeList.prototype, "createdAt", void 0);
+], FinishGoodsRecipeList.prototype, "createdAt", void 0);
 __decorate([
     sequelize_typescript_1.UpdatedAt,
     sequelize_typescript_1.Column({ field: 'updated_at' }),
     __metadata("design:type", Date)
-], finishGoodsRecipeList.prototype, "updatedAt", void 0);
+], FinishGoodsRecipeList.prototype, "updatedAt", void 0);
 __decorate([
     sequelize_typescript_1.DeletedAt,
     sequelize_typescript_1.Column({ field: 'deleted_at' }),
     __metadata("design:type", Date)
-], finishGoodsRecipeList.prototype, "deletedAt", void 0);
-finishGoodsRecipeList = __decorate([
-    sequelize_typescript_1.Table({ tableName: 'assembling_list' })
-], finishGoodsRecipeList);
-exports.finishGoodsRecipeList = finishGoodsRecipeList;
+], FinishGoodsRecipeList.prototype, "deletedAt", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster),
+    __metadata("design:type", finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster)
+], FinishGoodsRecipeList.prototype, "FinishGoodsRecipeMaster", void 0);
+FinishGoodsRecipeList = __decorate([
+    sequelize_typescript_1.Table({
+        tableName: 'assembling_list',
+        timestamps: true
+    })
+], FinishGoodsRecipeList);
+exports.FinishGoodsRecipeList = FinishGoodsRecipeList;
 //# sourceMappingURL=finishGoodsRecipeList.model.js.map

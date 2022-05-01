@@ -1,0 +1,52 @@
+import * as Sequelize from 'sequelize';
+import { Model, Optional } from 'sequelize';
+import type { ac, acId } from './ac';
+import type { fin_ac, fin_acId } from './fin_ac';
+import type { fin_notes_master, fin_notes_masterId } from './fin_notes_master';
+export interface fin_notes_detailAttributes {
+    idno: number;
+    pidno: number;
+    sno?: number;
+    descrip?: string;
+    fin_acode?: string;
+    ac_acode?: string;
+    calc1?: string;
+    calc2?: string;
+    lines?: string;
+    type?: string;
+    ref_noteno?: number;
+}
+export declare type fin_notes_detailPk = "idno";
+export declare type fin_notes_detailId = fin_notes_detail[fin_notes_detailPk];
+export declare type fin_notes_detailOptionalAttributes = "sno" | "descrip" | "fin_acode" | "ac_acode" | "calc1" | "calc2" | "lines" | "type" | "ref_noteno";
+export declare type fin_notes_detailCreationAttributes = Optional<fin_notes_detailAttributes, fin_notes_detailOptionalAttributes>;
+export declare class fin_notes_detail extends Model<fin_notes_detailAttributes, fin_notes_detailCreationAttributes> implements fin_notes_detailAttributes {
+    idno: number;
+    pidno: number;
+    sno?: number;
+    descrip?: string;
+    fin_acode?: string;
+    ac_acode?: string;
+    calc1?: string;
+    calc2?: string;
+    lines?: string;
+    type?: string;
+    ref_noteno?: number;
+    ac_acode_ac: ac;
+    getAc_acode_ac: Sequelize.BelongsToGetAssociationMixin<ac>;
+    setAc_acode_ac: Sequelize.BelongsToSetAssociationMixin<ac, acId>;
+    createAc_acode_ac: Sequelize.BelongsToCreateAssociationMixin<ac>;
+    fin_acode_fin_ac: fin_ac;
+    getFin_acode_fin_ac: Sequelize.BelongsToGetAssociationMixin<fin_ac>;
+    setFin_acode_fin_ac: Sequelize.BelongsToSetAssociationMixin<fin_ac, fin_acId>;
+    createFin_acode_fin_ac: Sequelize.BelongsToCreateAssociationMixin<fin_ac>;
+    pidno_fin_notes_master: fin_notes_master;
+    getPidno_fin_notes_master: Sequelize.BelongsToGetAssociationMixin<fin_notes_master>;
+    setPidno_fin_notes_master: Sequelize.BelongsToSetAssociationMixin<fin_notes_master, fin_notes_masterId>;
+    createPidno_fin_notes_master: Sequelize.BelongsToCreateAssociationMixin<fin_notes_master>;
+    ref_noteno_fin_notes_master: fin_notes_master;
+    getRef_noteno_fin_notes_master: Sequelize.BelongsToGetAssociationMixin<fin_notes_master>;
+    setRef_noteno_fin_notes_master: Sequelize.BelongsToSetAssociationMixin<fin_notes_master, fin_notes_masterId>;
+    createRef_noteno_fin_notes_master: Sequelize.BelongsToCreateAssociationMixin<fin_notes_master>;
+    static initModel(sequelize: Sequelize.Sequelize): typeof fin_notes_detail;
+}

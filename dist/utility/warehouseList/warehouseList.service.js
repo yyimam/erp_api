@@ -21,7 +21,7 @@ let WarehouseListService = class WarehouseListService {
     constructor(WarehouseListModel) {
         this.WarehouseListModel = WarehouseListModel;
     }
-    create(CreateWarehouseListDto) {
+    async create(CreateWarehouseListDto) {
         let t = CreateWarehouseListDto;
         return this.WarehouseListModel.create(t);
     }
@@ -32,14 +32,14 @@ let WarehouseListService = class WarehouseListService {
     async findAll() {
         return this.WarehouseListModel.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.WarehouseListModel.findOne({
             where: {
                 code,
             },
         });
     }
-    findById(id) {
+    async findById(id) {
         return this.WarehouseListModel.findOne({
             where: {
                 id,

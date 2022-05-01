@@ -20,7 +20,7 @@ let WarehouseListController = class WarehouseListController {
     constructor(WarehouseListsService) {
         this.WarehouseListsService = WarehouseListsService;
     }
-    create(createWarehouseListDto, res) {
+    async create(createWarehouseListDto, res) {
         return this.WarehouseListsService.create(createWarehouseListDto)
             .then(rec => {
             let t = this.WarehouseListsService.findById(rec.id).then(r => {
@@ -34,7 +34,7 @@ let WarehouseListController = class WarehouseListController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updateWarehouseListDto, res) {
+    async update(code, updateWarehouseListDto, res) {
         this.WarehouseListsService.update(code, updateWarehouseListDto)
             .then(rec => {
             this.WarehouseListsService.findOne(code).then(r => {
@@ -45,13 +45,13 @@ let WarehouseListController = class WarehouseListController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    findAll() {
+    async findAll() {
         return this.WarehouseListsService.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.WarehouseListsService.findOne(code);
     }
-    remove(code, res) {
+    async remove(code, res) {
         return this.WarehouseListsService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
@@ -74,7 +74,7 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_warehouseList_dto_1.CreateWarehouseListDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], WarehouseListController.prototype, "update", null);
 __decorate([
     common_1.Get(),

@@ -12,7 +12,7 @@ export class WarehouseListService {
     private readonly WarehouseListModel: typeof WarehouseList,
   ) {}
 
-  create(CreateWarehouseListDto: CreateWarehouseListDto): Promise<WarehouseList> {
+  async create(CreateWarehouseListDto: CreateWarehouseListDto): Promise<WarehouseList> {
     let t:any = CreateWarehouseListDto
     return this.WarehouseListModel.create(t);
   }
@@ -26,7 +26,7 @@ export class WarehouseListService {
     return this.WarehouseListModel.findAll();
   }
 
-  findOne(code: string): Promise<WarehouseList> {
+  async findOne(code: string): Promise<WarehouseList> {
     return this.WarehouseListModel.findOne({
       where: {
         code,
@@ -34,7 +34,7 @@ export class WarehouseListService {
     });
   }
 
-  findById(id: number): Promise<WarehouseList> {
+  async findById(id: number): Promise<WarehouseList> {
     return this.WarehouseListModel.findOne({
       where: {
         id,

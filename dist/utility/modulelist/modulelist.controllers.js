@@ -20,7 +20,7 @@ let ModuleListController = class ModuleListController {
     constructor(ModuleListsService) {
         this.ModuleListsService = ModuleListsService;
     }
-    create(createModuleListDto, res) {
+    async create(createModuleListDto, res) {
         return this.ModuleListsService.create(createModuleListDto)
             .then(rec => {
             res.status(common_1.HttpStatus.CREATED).send(rec);
@@ -29,7 +29,7 @@ let ModuleListController = class ModuleListController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updateModuleListDto, res) {
+    async update(code, updateModuleListDto, res) {
         this.ModuleListsService.update(code, updateModuleListDto)
             .then(rec => {
             res.status(common_1.HttpStatus.OK).send({ message: "record updated" });
@@ -38,10 +38,10 @@ let ModuleListController = class ModuleListController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    findAll(id) {
+    async findAll(id) {
         return this.ModuleListsService.findAll(id);
     }
-    remove(id) {
+    async remove(id) {
         return this.ModuleListsService.remove(id);
     }
 };
@@ -60,7 +60,7 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_modulelist_dto_1.CreateModuleListDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ModuleListController.prototype, "update", null);
 __decorate([
     common_1.Get(':id'),

@@ -11,7 +11,7 @@ export class RoleDetailService {
     private readonly RoleDetailModel: typeof RoleDetail,
   ) {}
 
-  create(CreateRoleDetailDto: CreateRoleDetailDto): Promise<RoleDetail> {
+  async create(CreateRoleDetailDto: CreateRoleDetailDto): Promise<RoleDetail> {
     let t:{}= CreateRoleDetailDto
     return this.RoleDetailModel.create(t);
   }
@@ -25,7 +25,7 @@ export class RoleDetailService {
     return this.RoleDetailModel.findAll();
   }
 
-  findOne(code: string): Promise<RoleDetail> {
+  async findOne(code: string): Promise<RoleDetail> {
     return this.RoleDetailModel.findOne({
       where: {
         code,

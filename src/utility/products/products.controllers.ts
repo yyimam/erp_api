@@ -10,15 +10,15 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) { }
 
   @Post()
-  create(@Body() createProductDto: CreateProductDto, @Res() res: Response): Promise<void | Product> {
+  async create(@Body() createProductDto: CreateProductDto, @Res() res: Response): Promise<void | Product> {
     return this.productsService.create(createProductDto)
       .then(rec => {
-        let t = this.productsService.findById(rec.id).then(r => {
+        this.productsService.findById(rec.id).then(r => {
           res.status(HttpStatus.CREATED).send(r);
         })
-          .catch(err => {
-            res.status(HttpStatus.NO_CONTENT).send(err.parent);
-          });
+        .catch(err => {
+          res.status(HttpStatus.NO_CONTENT).send(err.parent);
+        });
       })
       .catch(err => {
         res.status(HttpStatus.BAD_REQUEST).send(err.parent);
@@ -26,7 +26,7 @@ export class ProductsController {
   }
 
   @Put(':code')
-  update(@Param('code') code: string, @Body() updateProductDto: CreateProductDto, @Res() res: Response) {
+  async update(@Param('code') code: string, @Body() updateProductDto: CreateProductDto, @Res() res: Response) {
     this.productsService.update(code, updateProductDto)
       .then(rec => {
         this.productsService.findOne(code).then(r => {
@@ -38,19 +38,23 @@ export class ProductsController {
       });
   }
 
-
   @Get()
-  findAll(): Promise<Product[]> {
+  async findAll(): Promise<Product[]> {
     return this.productsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<Product> {
+  async findOne(@Param('id') id: number): Promise<Product> {
     return this.productsService.findById(id);
   }
 
+  @Get('/:ref/:para')
+  async findByString(@Param('ref') ref: string, @Param('para') para: string): Promise<Product[]> {
+    return this.productsService.findByItemType(para);
+  }
+
   @Delete(':id')
-  remove(@Param('id') id: number, @Res() res: Response): Promise<void | Product> {
+  async remove(@Param('id') id: number, @Res() res: Response): Promise<void | Product> {
     return this.productsService.remove(id).then(r => {
       res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
     }).catch(err => {

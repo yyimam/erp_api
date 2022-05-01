@@ -9,7 +9,7 @@ export class ModuleListController {
   constructor(private readonly ModuleListsService: ModuleListService) {}
 
   @Post()
-  create(@Body() createModuleListDto: CreateModuleListDto, @Res() res: Response): Promise<void | ModuleList> {
+  async create(@Body() createModuleListDto: CreateModuleListDto, @Res() res: Response): Promise<void | ModuleList> {
     return this.ModuleListsService.create(createModuleListDto)
     .then(rec => {
       res.status(HttpStatus.CREATED).send(rec);
@@ -20,7 +20,7 @@ export class ModuleListController {
   }
   
   @Put(':id')
-  update(@Param('id') code: string,@Body() updateModuleListDto: CreateModuleListDto, @Res() res: Response) {
+  async update(@Param('id') code: string,@Body() updateModuleListDto: CreateModuleListDto, @Res() res: Response) {
     this.ModuleListsService.update(code,updateModuleListDto)
     .then(rec => {
         res.status(HttpStatus.OK).send({message: "record updated"});
@@ -31,7 +31,7 @@ export class ModuleListController {
   }
   
   @Get(':id')
-  findAll(@Param('id') id: string): Promise<ModuleList[]> {
+  async findAll(@Param('id') id: string): Promise<ModuleList[]> {
     return this.ModuleListsService.findAll(id);
   }
 
@@ -41,7 +41,7 @@ export class ModuleListController {
   // }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
+  async remove(@Param('id') id: string): Promise<void> {
     return this.ModuleListsService.remove(id);
   }
   

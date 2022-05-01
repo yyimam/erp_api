@@ -9,7 +9,7 @@ export class WarehouseListController {
   constructor(private readonly WarehouseListsService: WarehouseListService) {}
 
   @Post()
-  create(@Body() createWarehouseListDto: CreateWarehouseListDto, @Res() res: Response): Promise<void | WarehouseList> {
+  async create(@Body() createWarehouseListDto: CreateWarehouseListDto, @Res() res: Response): Promise<void | WarehouseList> {
     return this.WarehouseListsService.create(createWarehouseListDto)
     .then(rec => {
       let t = this.WarehouseListsService.findById(rec.id).then(r => {
@@ -25,7 +25,7 @@ export class WarehouseListController {
   }
   
   @Put(':code')
-  update(@Param('code') code: string,@Body() updateWarehouseListDto: CreateWarehouseListDto, @Res() res: Response) {
+  async update(@Param('code') code: string,@Body() updateWarehouseListDto: CreateWarehouseListDto, @Res() res: Response) {
     this.WarehouseListsService.update(code,updateWarehouseListDto)
     .then(rec => {
         this.WarehouseListsService.findOne(code).then(r=>{
@@ -38,17 +38,17 @@ export class WarehouseListController {
   }
   
   @Get()
-  findAll(): Promise<WarehouseList[]> {
+  async findAll(): Promise<WarehouseList[]> {
     return this.WarehouseListsService.findAll();
   }
 
   @Get(':code')
-  findOne(@Param('code') code: string): Promise<WarehouseList> {
+  async findOne(@Param('code') code: string): Promise<WarehouseList> {
     return this.WarehouseListsService.findOne(code);
   }
 
   @Delete(':code')
-  remove(@Param('code') code: string, @Res() res: Response): Promise<void | WarehouseList> {
+  async remove(@Param('code') code: string, @Res() res: Response): Promise<void | WarehouseList> {
     return this.WarehouseListsService.remove(code).then(r => {
       res.status(HttpStatus.ACCEPTED).send({message: "Deleted", data: r});
     }).catch( err => {

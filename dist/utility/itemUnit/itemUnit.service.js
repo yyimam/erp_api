@@ -31,23 +31,24 @@ let ItemUnitService = class ItemUnitService {
     async findAll() {
         return this.ItemUnitModel.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.ItemUnitModel.findOne({
             where: {
                 code,
             },
         });
     }
-    findById(id) {
+    async findById(id) {
         return this.ItemUnitModel.findOne({
             where: {
                 id,
             },
         });
     }
-    async remove(id) {
-        const user = await this.findOne(id);
-        await user.destroy();
+    async remove(code) {
+        const res = await this.findOne(code);
+        let u = await res.destroy().then(t => t);
+        return res;
     }
 };
 ItemUnitService = __decorate([

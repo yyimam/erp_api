@@ -1,4 +1,5 @@
-import { Column, Model, Table, PrimaryKey,  CreatedAt,UpdatedAt,DeletedAt, } from 'sequelize-typescript';
+import { FinishGoodsRecipeMaster } from './../../../entities/finishGoodsRecipeMaster.model';
+import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, ForeignKey, BelongsTo } from 'sequelize-typescript';
 
 @Table({tableName: 'product'})
 export class Product extends Model {
@@ -11,6 +12,7 @@ export class Product extends Model {
   
   @PrimaryKey
   @Column
+  @ForeignKey(() => FinishGoodsRecipeMaster)
   code: string;
 
   @Column
@@ -108,4 +110,8 @@ export class Product extends Model {
   @DeletedAt
   @Column({ field: 'deleted_at' })
   deletedAt: Date;
+
+  @BelongsTo(()=> FinishGoodsRecipeMaster)
+  FinishGoodsRecipeMaster: FinishGoodsRecipeMaster;
+
 }

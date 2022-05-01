@@ -20,7 +20,7 @@ let ItemTypeController = class ItemTypeController {
     constructor(ItemTypesService) {
         this.ItemTypesService = ItemTypesService;
     }
-    create(createItemTypeDto, res) {
+    async create(createItemTypeDto, res) {
         return this.ItemTypesService.create(createItemTypeDto)
             .then(rec => {
             res.status(common_1.HttpStatus.CREATED).send(rec);
@@ -29,7 +29,7 @@ let ItemTypeController = class ItemTypeController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updateItemTypeDto, res) {
+    async update(code, updateItemTypeDto, res) {
         this.ItemTypesService.update(code, updateItemTypeDto)
             .then(rec => {
             this.ItemTypesService.findOne(code).then(r => {
@@ -42,14 +42,14 @@ let ItemTypeController = class ItemTypeController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    findAll() {
+    async findAll() {
         console.log("check rec");
         return this.ItemTypesService.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.ItemTypesService.findOne(code);
     }
-    remove(code, res) {
+    async remove(code, res) {
         return this.ItemTypesService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
@@ -72,7 +72,7 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_ItemType_dto_1.CreateItemTypeDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ItemTypeController.prototype, "update", null);
 __decorate([
     common_1.Get(),

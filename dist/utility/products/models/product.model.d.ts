@@ -1,3 +1,4 @@
+import { FinishGoodsRecipeMaster } from './../../../entities/finishGoodsRecipeMaster.model';
 import { Model } from 'sequelize-typescript';
 export declare class Product extends Model {
     id: number;
@@ -33,4 +34,5 @@ export declare class Product extends Model {
     createdAt: Date;
     updatedAt: Date;
     deletedAt: Date;
+    FinishGoodsRecipeMaster: FinishGoodsRecipeMaster;
 }

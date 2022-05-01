@@ -20,7 +20,7 @@ let RoleDetailService = class RoleDetailService {
     constructor(RoleDetailModel) {
         this.RoleDetailModel = RoleDetailModel;
     }
-    create(CreateRoleDetailDto) {
+    async create(CreateRoleDetailDto) {
         let t = CreateRoleDetailDto;
         return this.RoleDetailModel.create(t);
     }
@@ -31,7 +31,7 @@ let RoleDetailService = class RoleDetailService {
     async findAll() {
         return this.RoleDetailModel.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.RoleDetailModel.findOne({
             where: {
                 code,

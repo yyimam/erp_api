@@ -8,5 +8,5 @@ export declare class ItemUnitService {
     findAll(): Promise<ItemUnit[]>;
     findOne(code: string): Promise<ItemUnit>;
     findById(id: number): Promise<ItemUnit>;
-    remove(id: string): Promise<void>;
+    remove(code: string): Promise<ItemUnit>;
 }

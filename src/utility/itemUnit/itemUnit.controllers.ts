@@ -9,7 +9,7 @@ export class ItemUnitController {
   constructor(private readonly itemUnitService: ItemUnitService) {}
 
   @Post()
-  create(@Body() createItemUnitDto: CreateItemUnitDto, @Res() res: Response): Promise<void | ItemUnit> {
+  async create(@Body() createItemUnitDto: CreateItemUnitDto, @Res() res: Response): Promise<void | ItemUnit> {
     return this.itemUnitService.create(createItemUnitDto)
     .then(rec => {
       this.itemUnitService.findById(rec.id).then(t=>{
@@ -25,10 +25,10 @@ export class ItemUnitController {
   }
   
   @Put(':code')
-  update(@Param('code') code: string,@Body() updateItemUnitDto: CreateItemUnitDto, @Res() res: Response) {
+  async update(@Param('code') code: string,@Body() updateItemUnitDto: CreateItemUnitDto, @Res() res: Response) {
     this.itemUnitService.update(code,updateItemUnitDto)
     .then(rec => {
-      this.itemUnitService.findById(rec.id).then(r=>{
+      this.itemUnitService.findOne(code).then(r=>{
         res.status(HttpStatus.OK).send({message: "Record Updated", data: r});
       }).catch(err=>{
         res.status(HttpStatus.NO_CONTENT).send(err.parent);
@@ -40,18 +40,18 @@ export class ItemUnitController {
   }
   
   @Get()
-  findAll(): Promise<ItemUnit[]> {
+  async findAll(): Promise<ItemUnit[]> {
     console.log("check rec")
     return this.itemUnitService.findAll();
   }
 
   @Get(':code')
-  findOne(@Param('code') code: string): Promise<ItemUnit> {
+  async findOne(@Param('code') code: string): Promise<ItemUnit> {
     return this.itemUnitService.findOne(code);
   }
 
   @Delete(':code')
-  remove(@Param('code') code: string, @Res() res: Response): Promise<void | ItemUnit> {
+  async remove(@Param('code') code: string, @Res() res: Response): Promise<void | ItemUnit> {
     return this.itemUnitService.remove(code).then(r=>{
       res.status(HttpStatus.ACCEPTED).send({message: "Deleted", data: r});
     }).catch( err => {
