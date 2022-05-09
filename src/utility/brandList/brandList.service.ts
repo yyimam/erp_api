@@ -2,7 +2,6 @@ import { BrandList } from './models/brandList.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateBrandListDto } from './dto/create-BrandList.dto';
-import { where } from 'sequelize/dist';
 
 @Injectable()
 export class BrandListService {
@@ -11,9 +10,9 @@ export class BrandListService {
     private readonly BrandListModel: typeof BrandList,
   ) {}
 
-  create(CreateBrandListDto: CreateBrandListDto): Promise<BrandList> {
+  async create(CreateBrandListDto: CreateBrandListDto): Promise<BrandList> {
     let t:{}= CreateBrandListDto
-    return this.BrandListModel.create(t);
+    return await this.BrandListModel.create(t);
   }
 
   async update(code: string, UpdateBrandListDto: CreateBrandListDto): Promise<any>{
@@ -22,11 +21,11 @@ export class BrandListService {
   }
 
   async findAll(): Promise<BrandList[]> {
-    return this.BrandListModel.findAll();
+    return await this.BrandListModel.findAll();
   }
 
   async findOne(code: string): Promise<BrandList> {
-    return this.BrandListModel.findOne({
+    return await this.BrandListModel.findOne({
       where: {
         code,
       },
@@ -34,7 +33,7 @@ export class BrandListService {
   }
 
   async findById(id: number): Promise<BrandList> {
-    return this.BrandListModel.findOne({
+    return await this.BrandListModel.findOne({
       where: {
         id,
       },

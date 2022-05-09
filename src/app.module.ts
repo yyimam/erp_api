@@ -1,3 +1,5 @@
+import { UserManagementModule } from './management/userManagement/userManagement.module';
+import { UserManagement } from './management/userManagement/models/userManagement.model';
 import { PurchaseInvoiceModule } from './entry/billing/purchaseInvoice/purchaseInvoice.module';
 import { ItemUnitModule } from './utility/itemUnit/itemUnit.module';
 import { ItemTypeModule } from './utility/itemType/itemType.module';
@@ -8,38 +10,36 @@ import { WarehouseListModule } from './utility/warehouseList/warehouseList.modul
 import { BrandListModule } from './utility/brandList/brandList.module';
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { UsersModule } from './users/users.module';
 import { ProductsModule } from './utility/products/products.module';
 import { ItemCatModule } from './utility/itemCategory/itemcat.module';
 import { ItemSubCatListModule } from './utility/itemSubCategoryList/ItemSubCatList.module';
 import { AcModule } from './entry/chartOfAccounts/ac.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     SequelizeModule.forRoot({
       dialect: 'mysql',
-      // host: '43.255.154.114',
-      host: 'localhost',
-      // host:'209.188.21.134',
       // port: 3306,
-      // username: 'halfmaneng_user',
-      // password: '%09_xC*ee9Z&',
+      // host: 'localhost',
+      // username: 'halfmaneng_yousufdb',
+      // password: 'ApQ.V@iP6q0BxbU3',
       // database: 'halfmaneng_yousufdb',
-      username: 'halfmaneng_yousufdb',
-      password: 'ApQ.V@iP6q0BxbU3',
+      host: '43.255.154.114',
+      username: 'halfmaneng_user',
+      password: '%09_xC*ee9Z&',
       database: 'halfmaneng_yousufdb',
       autoLoadModels: true,
-      synchronize: true,
-      pool: {
-        max: 15,
-        min: 5,
-        idle: 20000,
-        evict: 15000,
-        acquire: 30000
-      },
+      synchronize: false,
+      // // pool: {
+      // //   max: 5,
+      // //   min: 0,
+      // //   idle: 10000,
+      // //   evict: 15000,
+      // //   acquire: 30000
+      // // },
       // dialectModule: require('mysql2')
     }),
-    UsersModule,
     ProductsModule,
     ItemCatModule,
     ItemSubCatListModule,
@@ -51,7 +51,9 @@ import { AcModule } from './entry/chartOfAccounts/ac.module';
     ItemTypeModule,
     ItemUnitModule,
     PurchaseInvoiceModule,
-    AcModule
+    AcModule,
+    // UserManagementModule,
+    AuthModule,
   ]
 })
 

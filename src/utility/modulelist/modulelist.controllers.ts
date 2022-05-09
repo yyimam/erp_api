@@ -10,7 +10,7 @@ export class ModuleListController {
 
   @Post()
   async create(@Body() createModuleListDto: CreateModuleListDto, @Res() res: Response): Promise<void | ModuleList> {
-    return this.ModuleListsService.create(createModuleListDto)
+    await this.ModuleListsService.create(createModuleListDto)
     .then(rec => {
       res.status(HttpStatus.CREATED).send(rec);
     })
@@ -21,7 +21,7 @@ export class ModuleListController {
   
   @Put(':id')
   async update(@Param('id') code: string,@Body() updateModuleListDto: CreateModuleListDto, @Res() res: Response) {
-    this.ModuleListsService.update(code,updateModuleListDto)
+    await this.ModuleListsService.update(code,updateModuleListDto)
     .then(rec => {
         res.status(HttpStatus.OK).send({message: "record updated"});
     })
@@ -32,7 +32,7 @@ export class ModuleListController {
   
   @Get(':id')
   async findAll(@Param('id') id: string): Promise<ModuleList[]> {
-    return this.ModuleListsService.findAll(id);
+    return await this.ModuleListsService.findAll(id);
   }
 
   // @Get(':id')

@@ -9,5 +9,5 @@ export declare class AcController {
     update(code: string, acDto: AcDto, res: Response): Promise<void>;
     findAll(): Promise<AC[]>;
     findOne(code: string): Promise<AC>;
-    remove(code: string, res: Response): Promise<void | AC>;
+    remove(id: number, res: Response): Promise<void | AC>;
 }

@@ -1,4 +1,4 @@
-import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, ForeignKey, BelongsTo, Index } from 'sequelize-typescript';
+import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt } from 'sequelize-typescript';
 
 @Table({
   tableName: 'ac',

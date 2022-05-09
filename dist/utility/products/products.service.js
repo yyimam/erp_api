@@ -22,19 +22,19 @@ let ProductsService = class ProductsService {
     }
     async create(CreateProductDto) {
         let t = CreateProductDto;
-        return this.productModel.create(t)
-            .then(rec => rec)
-            .catch(err => err);
+        return await this.productModel.create(t)
+            .then(rec => { console.log("reco", rec); return rec; })
+            .catch(err => { console.log("records", err); return err; });
     }
     async update(code, UpdateProductDto) {
         let t = UpdateProductDto;
         return await this.productModel.update(t, { where: { code: code } });
     }
     async findAll() {
-        return this.productModel.findAll();
+        return await this.productModel.findAll();
     }
     async findOne(code) {
-        return this.productModel.findOne({
+        return await this.productModel.findOne({
             where: {
                 code,
             },
@@ -48,7 +48,7 @@ let ProductsService = class ProductsService {
         });
     }
     async findByItemType(itemtype) {
-        return this.productModel.findAll({
+        return await this.productModel.findAll({
             where: {
                 itemtype
             }

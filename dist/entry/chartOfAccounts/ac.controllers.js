@@ -23,14 +23,10 @@ let AcController = class AcController {
     async create(acDto, res) {
         return this.AcService.create(acDto)
             .then(rec => {
-            this.AcService.findById(rec.idno).then(t => {
-                res.status(common_1.HttpStatus.CREATED).send(t);
-            }).catch(err => {
-                res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);
-            });
+            res.status(common_1.HttpStatus.CREATED).send(rec);
         })
             .catch(err => {
-            res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
+            res.status(common_1.HttpStatus.BAD_REQUEST).send(err);
         });
     }
     async update(code, acDto, res) {
@@ -39,7 +35,7 @@ let AcController = class AcController {
             this.AcService.findOne(code).then(r => {
                 res.status(common_1.HttpStatus.OK).send({ message: "Record Updated", data: r });
             }).catch(err => {
-                res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);
+                res.status(common_1.HttpStatus.NO_CONTENT).send({ message: "Conent Not Found", data: err.parent });
             });
         })
             .catch(err => {
@@ -52,11 +48,16 @@ let AcController = class AcController {
     async findOne(code) {
         return this.AcService.findOne(code);
     }
-    async remove(code, res) {
-        return this.AcService.remove(code).then(r => {
-            res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
+    async remove(id, res) {
+        return this.AcService.remove(id).then(r => {
+            if (r) {
+                res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
+            }
+            else {
+                res.status(common_1.HttpStatus.NO_CONTENT).send({ message: "Error", data: "No Record found" });
+            }
         }).catch(err => {
-            res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);
+            res.status(common_1.HttpStatus.NO_CONTENT).send({ message: "Error", data: err });
         });
     }
 };
@@ -95,7 +96,7 @@ __decorate([
     __param(0, common_1.Param('code')),
     __param(1, common_1.Res()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], AcController.prototype, "remove", null);
 AcController = __decorate([

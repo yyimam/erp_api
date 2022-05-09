@@ -47,13 +47,13 @@ let BrandListController = class BrandListController {
         });
     }
     async findAll() {
-        return this.BrandListsService.findAll();
+        return await this.BrandListsService.findAll();
     }
     async findOne(code) {
-        return this.BrandListsService.findOne(code);
+        return await this.BrandListsService.findOne(code);
     }
     async remove(code, res) {
-        return this.BrandListsService.remove(code).then(r => {
+        return await this.BrandListsService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
             res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);

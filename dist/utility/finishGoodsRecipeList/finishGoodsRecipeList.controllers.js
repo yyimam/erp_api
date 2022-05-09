@@ -21,7 +21,7 @@ let finishGoodsRecipeListController = class finishGoodsRecipeListController {
         this.finishGoodsRecipeListsService = finishGoodsRecipeListsService;
     }
     async create(createfinishGoodsRecipeListDto, res) {
-        return this.finishGoodsRecipeListsService.create(createfinishGoodsRecipeListDto)
+        await this.finishGoodsRecipeListsService.create(createfinishGoodsRecipeListDto)
             .then(rec => {
             res.status(common_1.HttpStatus.CREATED).send(rec);
         })

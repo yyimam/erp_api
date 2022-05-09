@@ -21,7 +21,7 @@ let WarehouseListController = class WarehouseListController {
         this.WarehouseListsService = WarehouseListsService;
     }
     async create(createWarehouseListDto, res) {
-        return this.WarehouseListsService.create(createWarehouseListDto)
+        await this.WarehouseListsService.create(createWarehouseListDto)
             .then(rec => {
             let t = this.WarehouseListsService.findById(rec.id).then(r => {
                 res.status(common_1.HttpStatus.CREATED).send(r);
@@ -35,7 +35,7 @@ let WarehouseListController = class WarehouseListController {
         });
     }
     async update(code, updateWarehouseListDto, res) {
-        this.WarehouseListsService.update(code, updateWarehouseListDto)
+        await this.WarehouseListsService.update(code, updateWarehouseListDto)
             .then(rec => {
             this.WarehouseListsService.findOne(code).then(r => {
                 res.status(common_1.HttpStatus.OK).send({ message: "Record Updated", data: r });
@@ -46,13 +46,13 @@ let WarehouseListController = class WarehouseListController {
         });
     }
     async findAll() {
-        return this.WarehouseListsService.findAll();
+        return await this.WarehouseListsService.findAll();
     }
     async findOne(code) {
-        return this.WarehouseListsService.findOne(code);
+        return await this.WarehouseListsService.findOne(code);
     }
     async remove(code, res) {
-        return this.WarehouseListsService.remove(code).then(r => {
+        await this.WarehouseListsService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
             res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);

@@ -1,42 +1,43 @@
 import { Product } from './../utility/products/models/product.model';
 import { FinishGoodsRecipeList } from './../utility/finishGoodsRecipeList/models/finishGoodsRecipeList.model';
-import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, HasMany, HasOne, BelongsTo } from 'sequelize-typescript';
+import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, HasMany, HasOne } from 'sequelize-typescript';
 
-      @Table({
-        tableName: 'assembling_master',
-        timestamps: true})
-      export class FinishGoodsRecipeMaster extends Model {
+@Table({
+  tableName: 'assembling_master',
+  timestamps: true
+})
+export class FinishGoodsRecipeMaster extends Model {
 
-        // @PrimaryKey
-        @Column({autoIncrement: true})
-        idno: number;
-        
-        @PrimaryKey
-        @Column
-        mainitemcode: string;
+  // @PrimaryKey
+  @Column({ autoIncrement: true })
+  idno: number;
 
-        @Column
-        disabled: number;
+  @PrimaryKey
+  @Column
+  mainitemcode: string;
 
-        @Column
-        description: string;
+  @Column
+  disabled: number;
 
-        @CreatedAt
-        @Column({ field: 'created_at' })
-        createdAt: Date;
+  @Column
+  description: string;
 
-        @UpdatedAt
-        @Column({ field: 'updated_at' })
-        updatedAt: Date;
+  @CreatedAt
+  @Column({ field: 'created_at' })
+  createdAt: Date;
 
-        @DeletedAt
-        @Column({ field: 'deleted_at' })
-        deletedAt: Date;
+  @UpdatedAt
+  @Column({ field: 'updated_at' })
+  updatedAt: Date;
 
-        @HasOne(() => Product, 'code')
-        mainitemcodeDetails: Product;
+  @DeletedAt
+  @Column({ field: 'deleted_at' })
+  deletedAt: Date;
 
-        @HasMany(() => FinishGoodsRecipeList)
-        finishGoodsRecipeList: FinishGoodsRecipeList[];
+  @HasOne(() => Product, 'code')
+  mainitemcodeDetails: Product;
 
-      }
+  @HasMany(() => FinishGoodsRecipeList)
+  finishGoodsRecipeList: FinishGoodsRecipeList[];
+
+}

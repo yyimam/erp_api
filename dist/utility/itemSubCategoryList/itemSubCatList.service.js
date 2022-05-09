@@ -20,26 +20,26 @@ let ItemSubCatListService = class ItemSubCatListService {
     constructor(ItemSubCatListModel) {
         this.ItemSubCatListModel = ItemSubCatListModel;
     }
-    create(CreateItemSubCatListDto) {
+    async create(CreateItemSubCatListDto) {
         let t = CreateItemSubCatListDto;
-        return this.ItemSubCatListModel.create(t);
+        return await this.ItemSubCatListModel.create(t);
     }
     async update(code, UpdateItemSubCatListDto) {
         let t = UpdateItemSubCatListDto;
         return await this.ItemSubCatListModel.update(t, { where: { code: code } });
     }
     async findAll() {
-        return this.ItemSubCatListModel.findAll();
+        return await this.ItemSubCatListModel.findAll();
     }
     async findOne(code) {
-        return this.ItemSubCatListModel.findOne({
+        return await this.ItemSubCatListModel.findOne({
             where: {
                 code,
             },
         });
     }
     async findById(id) {
-        return this.ItemSubCatListModel.findOne({
+        return await this.ItemSubCatListModel.findOne({
             where: {
                 id,
             },

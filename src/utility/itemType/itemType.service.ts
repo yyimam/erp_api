@@ -2,7 +2,6 @@ import { ItemType } from './models/ItemType.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateItemTypeDto } from './dto/create-ItemType.dto';
-import { where } from 'sequelize/dist';
 
 @Injectable()
 export class ItemTypeService {
@@ -13,7 +12,7 @@ export class ItemTypeService {
 
   async create(CreateItemTypeDto: CreateItemTypeDto): Promise<ItemType> {
     let t:{}= CreateItemTypeDto
-    return this.ItemTypeModel.create(t);
+    return await this.ItemTypeModel.create(t);
   }
 
   async update(code: string, UpdateItemTypeDto: CreateItemTypeDto): Promise<any>{
@@ -22,11 +21,11 @@ export class ItemTypeService {
   }
 
   async findAll(): Promise<ItemType[]> {
-    return this.ItemTypeModel.findAll();
+    return await this.ItemTypeModel.findAll();
   }
 
   async findOne(code: string): Promise<ItemType> {
-    return this.ItemTypeModel.findOne({
+    return await this.ItemTypeModel.findOne({
       where: {
         code,
       },

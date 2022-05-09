@@ -140,6 +140,10 @@ __decorate([
     __metadata("design:type", Number)
 ], Product.prototype, "item_disabled", void 0);
 __decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Number)
+], Product.prototype, "pcs_weight", void 0);
+__decorate([
     sequelize_typescript_1.CreatedAt,
     sequelize_typescript_1.Column({ field: 'created_at' }),
     __metadata("design:type", Date)

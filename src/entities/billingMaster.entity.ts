@@ -1,5 +1,6 @@
 import { BillingDetails } from './billingDetails.entity';
 import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, DataType, ForeignKey, BelongsTo,  HasMany } from 'sequelize-typescript';
+
 @Table({tableName: 'billing_master'})
 export class BillingMaster extends Model {
   

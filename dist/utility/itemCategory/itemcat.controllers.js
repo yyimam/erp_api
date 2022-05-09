@@ -21,7 +21,7 @@ let ItemCatController = class ItemCatController {
         this.ItemCatsService = ItemCatsService;
     }
     async create(createItemCatDto, res) {
-        return this.ItemCatsService.create(createItemCatDto)
+        await this.ItemCatsService.create(createItemCatDto)
             .then(rec => {
             this.ItemCatsService.findById(rec.id).then(t => {
                 res.status(common_1.HttpStatus.CREATED).send(t);
@@ -34,7 +34,7 @@ let ItemCatController = class ItemCatController {
         });
     }
     async update(code, updateItemCatDto, res) {
-        this.ItemCatsService.update(code, updateItemCatDto)
+        await this.ItemCatsService.update(code, updateItemCatDto)
             .then(rec => {
             this.ItemCatsService.findOne(code).then(r => {
                 res.status(common_1.HttpStatus.OK).send({ message: "Record Updated", data: r });
@@ -47,13 +47,13 @@ let ItemCatController = class ItemCatController {
         });
     }
     async findAll() {
-        return this.ItemCatsService.findAll();
+        return await this.ItemCatsService.findAll();
     }
     async findOne(code) {
-        return this.ItemCatsService.findOne(code);
+        return await this.ItemCatsService.findOne(code);
     }
     async remove(code, res) {
-        return this.ItemCatsService.remove(code).then(r => {
+        return await this.ItemCatsService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
             res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);

@@ -1,4 +1,5 @@
 /// <reference types="express-serve-static-core" />
+/// <reference types="passport" />
 import * as express from 'express';
 import * as functions from 'firebase-functions';
 import { NestExpressApplication } from '@nestjs/platform-express';

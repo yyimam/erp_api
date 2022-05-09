@@ -12,7 +12,7 @@ export class finishGoodsRecipeListController {
 
   @Post()
   async create(@Body() createfinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto, @Res() res: Response): Promise<void | FinishGoodsRecipeList> {
-    return this.finishGoodsRecipeListsService.create(createfinishGoodsRecipeListDto)
+    await this.finishGoodsRecipeListsService.create(createfinishGoodsRecipeListDto)
     .then(rec => {
       res.status(HttpStatus.CREATED).send(rec);
     })

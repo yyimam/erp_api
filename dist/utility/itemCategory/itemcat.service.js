@@ -20,26 +20,26 @@ let ItemCatService = class ItemCatService {
     constructor(ItemCatModel) {
         this.ItemCatModel = ItemCatModel;
     }
-    create(CreateItemCatDto) {
+    async create(CreateItemCatDto) {
         let t = CreateItemCatDto;
-        return this.ItemCatModel.create(t);
+        return await this.ItemCatModel.create(t);
     }
     async update(code, UpdateItemCatDto) {
         let t = UpdateItemCatDto;
         return await this.ItemCatModel.update(t, { where: { code: code } });
     }
     async findAll() {
-        return this.ItemCatModel.findAll();
+        return await this.ItemCatModel.findAll();
     }
-    findOne(code) {
-        return this.ItemCatModel.findOne({
+    async findOne(code) {
+        return await this.ItemCatModel.findOne({
             where: {
                 code,
             },
         });
     }
-    findById(id) {
-        return this.ItemCatModel.findOne({
+    async findById(id) {
+        return await this.ItemCatModel.findOne({
             where: {
                 id,
             },

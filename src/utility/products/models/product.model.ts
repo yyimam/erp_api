@@ -99,6 +99,9 @@ export class Product extends Model {
   @Column
   item_disabled: number;
 
+  @Column
+  pcs_weight: number;
+
   @CreatedAt
   @Column({ field: 'created_at' })
   createdAt: Date;

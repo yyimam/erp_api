@@ -4,9 +4,9 @@ export declare class AcService {
     private readonly AcModel;
     constructor(AcModel: typeof AC);
     create(acDto: AcDto): Promise<AC>;
-    update(code: string, acDto: AcDto): Promise<any>;
+    update(acode: string, acDto: AcDto): Promise<any>;
     findAll(): Promise<AC[]>;
-    findOne(code: string): Promise<AC>;
-    findById(id: number): Promise<AC>;
-    remove(id: string): Promise<AC>;
+    findOne(acode: string): Promise<AC>;
+    findById(idno: number): Promise<AC>;
+    remove(idno: number): Promise<AC>;
 }

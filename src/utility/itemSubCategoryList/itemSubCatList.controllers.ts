@@ -12,7 +12,7 @@ export class ItemSubCatListController {
 
   @Post()
   async create(@Body() createItemSubCatListDto: CreateItemSubCatListDto, @Res() res: Response): Promise<void | ItemSubCatList> {
-    return this.ItemSubCatListsService.create(createItemSubCatListDto)
+    await this.ItemSubCatListsService.create(createItemSubCatListDto)
     .then(rec => {
       this.ItemSubCatListsService.findById(rec.id).then(r=>{
         res.status(HttpStatus.CREATED).send(r);
@@ -27,7 +27,7 @@ export class ItemSubCatListController {
   
   @Put(':code')
   async update(@Param('code') code: string,@Body() updateItemSubCatListDto: CreateItemSubCatListDto, @Res() res: Response) {
-    this.ItemSubCatListsService.update(code,updateItemSubCatListDto)
+    await this.ItemSubCatListsService.update(code,updateItemSubCatListDto)
     .then(rec => {
       this.ItemSubCatListsService.findOne(code).then(r => {
         res.status(HttpStatus.OK).send({ message: "Record Updated", data: r });
@@ -42,17 +42,17 @@ export class ItemSubCatListController {
   
   @Get()
   async findAll(): Promise<ItemSubCatList[]> {
-    return this.ItemSubCatListsService.findAll();
+    return await this.ItemSubCatListsService.findAll();
   }
 
   @Get(':code')
   async findOne(@Param('code') code: string): Promise<ItemSubCatList> {
-    return this.ItemSubCatListsService.findOne(code);
+    return await this.ItemSubCatListsService.findOne(code);
   }
 
   @Delete(':code')
   async remove(@Param('code') code: string, @Res() res: Response): Promise<void | ItemSubCatList> {
-    return this.ItemSubCatListsService.remove(code).then(r => {
+    return await this.ItemSubCatListsService.remove(code).then(r => {
       res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
     }).catch(err => {
       res.status(HttpStatus.NO_CONTENT).send(err.parent);

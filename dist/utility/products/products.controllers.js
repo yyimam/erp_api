@@ -21,7 +21,7 @@ let ProductsController = class ProductsController {
         this.productsService = productsService;
     }
     async create(createProductDto, res) {
-        return this.productsService.create(createProductDto)
+        this.productsService.create(createProductDto)
             .then(rec => {
             this.productsService.findById(rec.id).then(r => {
                 res.status(common_1.HttpStatus.CREATED).send(r);
@@ -35,7 +35,7 @@ let ProductsController = class ProductsController {
         });
     }
     async update(code, updateProductDto, res) {
-        this.productsService.update(code, updateProductDto)
+        await this.productsService.update(code, updateProductDto)
             .then(rec => {
             this.productsService.findOne(code).then(r => {
                 res.status(common_1.HttpStatus.OK).send({ message: "Record Updated", data: r });
@@ -46,16 +46,16 @@ let ProductsController = class ProductsController {
         });
     }
     async findAll() {
-        return this.productsService.findAll();
+        return await this.productsService.findAll();
     }
     async findOne(id) {
-        return this.productsService.findById(id);
+        return await this.productsService.findById(id);
     }
     async findByString(ref, para) {
-        return this.productsService.findByItemType(para);
+        return await this.productsService.findByItemType(para);
     }
     async remove(id, res) {
-        return this.productsService.remove(id).then(r => {
+        await this.productsService.remove(id).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
             res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);

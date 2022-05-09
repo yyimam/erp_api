@@ -29,4 +29,5 @@ export class CreateProductDto {
     round_in_matreq: number;
     old_code: string;
     item_disabled: number;
+    pcs_weight: number;
 }

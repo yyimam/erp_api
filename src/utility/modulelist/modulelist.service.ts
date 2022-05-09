@@ -16,7 +16,7 @@ export class ModuleListService {
 
   async create(CreateModuleListDto: CreateModuleListDto): Promise<ModuleList> {
     let t:{}= CreateModuleListDto
-    return this.ModuleListModel.create(t);
+    return await this.ModuleListModel.create(t);
   }
 
   async update(code: string, UpdateModuleListDto: CreateModuleListDto): Promise<any>{
@@ -25,7 +25,7 @@ export class ModuleListService {
   }
 
   async findAll(id: string): Promise<ModuleList[]> {
-    return this.ModuleListModel.findAll({
+    return await this.ModuleListModel.findAll({
       include:{model: RoleDetail},
       order: [['serialNo','ASC']],
       where: {
@@ -39,7 +39,7 @@ export class ModuleListService {
   }
 
   async findOne(code: string): Promise<ModuleList> {
-    return this.ModuleListModel.findOne({
+    return await this.ModuleListModel.findOne({
       where: {
         code,
       },

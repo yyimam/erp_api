@@ -2,8 +2,6 @@ import { WarehouseList } from './models/warehouseList.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateWarehouseListDto } from './dto/create-warehouseList.dto';
-import { where } from 'sequelize/dist';
-import { randomNumber } from 'src/helper/helper.service';
 
 @Injectable()
 export class WarehouseListService {
@@ -14,7 +12,7 @@ export class WarehouseListService {
 
   async create(CreateWarehouseListDto: CreateWarehouseListDto): Promise<WarehouseList> {
     let t:any = CreateWarehouseListDto
-    return this.WarehouseListModel.create(t);
+    return await this.WarehouseListModel.create(t);
   }
 
   async update(code: string, UpdateWarehouseListDto: CreateWarehouseListDto): Promise<any>{
@@ -27,7 +25,7 @@ export class WarehouseListService {
   }
 
   async findOne(code: string): Promise<WarehouseList> {
-    return this.WarehouseListModel.findOne({
+    return await this.WarehouseListModel.findOne({
       where: {
         code,
       },
@@ -35,7 +33,7 @@ export class WarehouseListService {
   }
 
   async findById(id: number): Promise<WarehouseList> {
-    return this.WarehouseListModel.findOne({
+    return await this.WarehouseListModel.findOne({
       where: {
         id,
       },

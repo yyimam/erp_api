@@ -20,35 +20,38 @@ let AcService = class AcService {
     constructor(AcModel) {
         this.AcModel = AcModel;
     }
-    create(acDto) {
+    async create(acDto) {
         let t = acDto;
         return this.AcModel.create(t);
     }
-    async update(code, acDto) {
+    async update(acode, acDto) {
         let t = acDto;
-        return await this.AcModel.update(t, { where: { code: code } });
+        return await this.AcModel.update(t, { where: { acode: acode } });
     }
     async findAll() {
         return this.AcModel.findAll();
     }
-    async findOne(code) {
+    async findOne(acode) {
         return this.AcModel.findOne({
             where: {
-                code,
+                acode,
             },
         });
     }
-    async findById(id) {
+    async findById(idno) {
         return this.AcModel.findOne({
             where: {
-                id,
+                idno,
             },
         });
     }
-    async remove(id) {
-        const brand = await this.findOne(id);
-        let u = await brand.destroy().then(t => t);
-        return brand;
+    async remove(idno) {
+        const rec = await this.findById(idno);
+        let u;
+        if (rec) {
+            u = await rec.destroy().then(t => t);
+        }
+        return u;
     }
 };
 AcService = __decorate([

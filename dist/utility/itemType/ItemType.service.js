@@ -22,17 +22,17 @@ let ItemTypeService = class ItemTypeService {
     }
     async create(CreateItemTypeDto) {
         let t = CreateItemTypeDto;
-        return this.ItemTypeModel.create(t);
+        return await this.ItemTypeModel.create(t);
     }
     async update(code, UpdateItemTypeDto) {
         let t = UpdateItemTypeDto;
         return await this.ItemTypeModel.update(t, { where: { code: code } });
     }
     async findAll() {
-        return this.ItemTypeModel.findAll();
+        return await this.ItemTypeModel.findAll();
     }
     async findOne(code) {
-        return this.ItemTypeModel.findOne({
+        return await this.ItemTypeModel.findOne({
             where: {
                 code,
             },

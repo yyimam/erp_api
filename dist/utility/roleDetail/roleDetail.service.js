@@ -22,17 +22,17 @@ let RoleDetailService = class RoleDetailService {
     }
     async create(CreateRoleDetailDto) {
         let t = CreateRoleDetailDto;
-        return this.RoleDetailModel.create(t);
+        return await this.RoleDetailModel.create(t);
     }
     async update(code, UpdateRoleDetailDto) {
         let t = UpdateRoleDetailDto;
         return await this.RoleDetailModel.update(t, { where: { code: code } });
     }
     async findAll() {
-        return this.RoleDetailModel.findAll();
+        return await this.RoleDetailModel.findAll();
     }
     async findOne(code) {
-        return this.RoleDetailModel.findOne({
+        return await this.RoleDetailModel.findOne({
             where: {
                 code,
             },

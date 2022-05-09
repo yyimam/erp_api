@@ -25,14 +25,14 @@ let ModuleListService = class ModuleListService {
     }
     async create(CreateModuleListDto) {
         let t = CreateModuleListDto;
-        return this.ModuleListModel.create(t);
+        return await this.ModuleListModel.create(t);
     }
     async update(code, UpdateModuleListDto) {
         let t = UpdateModuleListDto;
         return await this.ModuleListModel.update(t, { where: { code: code } });
     }
     async findAll(id) {
-        return this.ModuleListModel.findAll({
+        return await this.ModuleListModel.findAll({
             include: { model: roleDetail_model_1.RoleDetail },
             order: [['serialNo', 'ASC']],
             where: {
@@ -45,7 +45,7 @@ let ModuleListService = class ModuleListService {
         });
     }
     async findOne(code) {
-        return this.ModuleListModel.findOne({
+        return await this.ModuleListModel.findOne({
             where: {
                 code,
             },

@@ -10,39 +10,42 @@ export class AcService {
     private readonly AcModel: typeof AC,
   ) {}
 
-  create(acDto: AcDto): Promise<AC> {
+  async create(acDto: AcDto): Promise<AC> {
     let t:{}= acDto
     return this.AcModel.create(t);
   }
 
-  async update(code: string, acDto: AcDto): Promise<any>{
+  async update(acode: string, acDto: AcDto): Promise<any>{
     let t:{}= acDto;
-    return await this.AcModel.update(t,{where:{code:code}});
+    return await this.AcModel.update(t,{where:{acode:acode}});
   }
 
   async findAll(): Promise<AC[]> {
     return this.AcModel.findAll();
   }
 
-  async findOne(code: string): Promise<AC> {
+  async findOne(acode: string): Promise<AC> {
     return this.AcModel.findOne({
       where: {
-        code,
+        acode,
       },
     });
   }
 
-  async findById(id: number): Promise<AC> {
+  async findById(idno: number): Promise<AC> {
     return this.AcModel.findOne({
       where: {
-        id,
+        idno,
       },
     });
   }
 
-  async remove(id: string): Promise<AC> {
-    const brand = await this.findOne(id);
-    let u = await brand.destroy().then(t => t);
-    return brand;
+  async remove(idno: number): Promise<AC> {
+    const rec = await this.findById(idno);
+    let u:any;
+    if(rec){
+       u = await rec.destroy().then(t => t);
+    }
+    return u;
   }
 }

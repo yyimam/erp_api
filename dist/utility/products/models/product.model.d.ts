@@ -31,6 +31,7 @@ export declare class Product extends Model {
     round_in_matreq: number;
     old_code: string;
     item_disabled: number;
+    pcs_weight: number;
     createdAt: Date;
     updatedAt: Date;
     deletedAt: Date;

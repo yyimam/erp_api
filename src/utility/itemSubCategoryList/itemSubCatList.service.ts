@@ -2,7 +2,6 @@ import { ItemSubCatList } from './models/itemSubCatList.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateItemSubCatListDto } from './dto/create-itemSubCatList.dto';
-import { where } from 'sequelize/dist';
 
 @Injectable()
 export class ItemSubCatListService {
@@ -11,9 +10,9 @@ export class ItemSubCatListService {
     private readonly ItemSubCatListModel: typeof ItemSubCatList,
   ) {}
 
-  create(CreateItemSubCatListDto: CreateItemSubCatListDto): Promise<ItemSubCatList> {
+  async create(CreateItemSubCatListDto: CreateItemSubCatListDto): Promise<ItemSubCatList> {
     let t:{}= CreateItemSubCatListDto
-    return this.ItemSubCatListModel.create(t);
+    return await this.ItemSubCatListModel.create(t);
   }
 
   async update(code: string, UpdateItemSubCatListDto: CreateItemSubCatListDto): Promise<any>{
@@ -22,11 +21,11 @@ export class ItemSubCatListService {
   }
 
   async findAll(): Promise<ItemSubCatList[]> {
-    return this.ItemSubCatListModel.findAll();
+    return await this.ItemSubCatListModel.findAll();
   }
 
   async findOne(code: string): Promise<ItemSubCatList> {
-    return this.ItemSubCatListModel.findOne({
+    return await this.ItemSubCatListModel.findOne({
       where: {
         code,
       },
@@ -34,7 +33,7 @@ export class ItemSubCatListService {
   }
 
   async findById(id: number): Promise<ItemSubCatList> {
-    return this.ItemSubCatListModel.findOne({
+    return await this.ItemSubCatListModel.findOne({
       where: {
         id,
       },

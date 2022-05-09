@@ -16,14 +16,13 @@ exports.WarehouseListService = void 0;
 const warehouseList_model_1 = require("./models/warehouseList.model");
 const common_1 = require("@nestjs/common");
 const sequelize_1 = require("@nestjs/sequelize");
-const helper_service_1 = require("../../helper/helper.service");
 let WarehouseListService = class WarehouseListService {
     constructor(WarehouseListModel) {
         this.WarehouseListModel = WarehouseListModel;
     }
     async create(CreateWarehouseListDto) {
         let t = CreateWarehouseListDto;
-        return this.WarehouseListModel.create(t);
+        return await this.WarehouseListModel.create(t);
     }
     async update(code, UpdateWarehouseListDto) {
         let t = UpdateWarehouseListDto;
@@ -33,14 +32,14 @@ let WarehouseListService = class WarehouseListService {
         return this.WarehouseListModel.findAll();
     }
     async findOne(code) {
-        return this.WarehouseListModel.findOne({
+        return await this.WarehouseListModel.findOne({
             where: {
                 code,
             },
         });
     }
     async findById(id) {
-        return this.WarehouseListModel.findOne({
+        return await this.WarehouseListModel.findOne({
             where: {
                 id,
             },

@@ -21,7 +21,7 @@ let ItemUnitController = class ItemUnitController {
         this.itemUnitService = itemUnitService;
     }
     async create(createItemUnitDto, res) {
-        return this.itemUnitService.create(createItemUnitDto)
+        await this.itemUnitService.create(createItemUnitDto)
             .then(rec => {
             this.itemUnitService.findById(rec.id).then(t => {
                 res.status(common_1.HttpStatus.CREATED).send(t);
@@ -34,7 +34,7 @@ let ItemUnitController = class ItemUnitController {
         });
     }
     async update(code, updateItemUnitDto, res) {
-        this.itemUnitService.update(code, updateItemUnitDto)
+        await this.itemUnitService.update(code, updateItemUnitDto)
             .then(rec => {
             this.itemUnitService.findOne(code).then(r => {
                 res.status(common_1.HttpStatus.OK).send({ message: "Record Updated", data: r });
@@ -48,13 +48,13 @@ let ItemUnitController = class ItemUnitController {
     }
     async findAll() {
         console.log("check rec");
-        return this.itemUnitService.findAll();
+        return await this.itemUnitService.findAll();
     }
     async findOne(code) {
-        return this.itemUnitService.findOne(code);
+        return await this.itemUnitService.findOne(code);
     }
     async remove(code, res) {
-        return this.itemUnitService.remove(code).then(r => {
+        return await this.itemUnitService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
             res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);

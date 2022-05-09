@@ -11,7 +11,7 @@ export class ItemCatController {
 
   @Post()
   async create(@Body() createItemCatDto: CreateItemCatDto, @Res() res: Response): Promise<void | ItemCat> {
-    return this.ItemCatsService.create(createItemCatDto)
+    await this.ItemCatsService.create(createItemCatDto)
       .then(rec => {
         this.ItemCatsService.findById(rec.id).then(t => {
           res.status(HttpStatus.CREATED).send(t);
@@ -26,7 +26,7 @@ export class ItemCatController {
 
   @Put(':code')
   async update(@Param('code') code: string, @Body() updateItemCatDto: CreateItemCatDto, @Res() res: Response) {
-    this.ItemCatsService.update(code, updateItemCatDto)
+    await this.ItemCatsService.update(code, updateItemCatDto)
       .then(rec => {
         this.ItemCatsService.findOne(code).then(r => {
           res.status(HttpStatus.OK).send({ message: "Record Updated", data: r });
@@ -41,17 +41,17 @@ export class ItemCatController {
 
   @Get()
   async findAll(): Promise<ItemCat[]> {
-    return this.ItemCatsService.findAll();
+    return await this.ItemCatsService.findAll();
   }
 
   @Get(':code')
   async findOne(@Param('code') code: string): Promise<ItemCat> {
-    return this.ItemCatsService.findOne(code);
+    return await this.ItemCatsService.findOne(code);
   }
 
   @Delete(':code')
   async remove(@Param('code') code: string, @Res() res: Response): Promise<void | ItemCat> {
-    return this.ItemCatsService.remove(code).then(r => {
+    return await this.ItemCatsService.remove(code).then(r => {
       res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
     }).catch(err => {
       res.status(HttpStatus.NO_CONTENT).send(err.parent);

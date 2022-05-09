@@ -20,7 +20,7 @@ let PurchaseInvoiceController = class PurchaseInvoiceController {
     constructor(PurchaseInvoicesService) {
         this.PurchaseInvoicesService = PurchaseInvoicesService;
     }
-    create(createPurchaseInvoiceDto, res) {
+    async create(createPurchaseInvoiceDto, res) {
         return this.PurchaseInvoicesService.create(createPurchaseInvoiceDto)
             .then(rec => {
             res.status(common_1.HttpStatus.CREATED).send(rec);
@@ -29,7 +29,7 @@ let PurchaseInvoiceController = class PurchaseInvoiceController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    update(code, updatePurchaseInvoiceDto, res) {
+    async update(code, updatePurchaseInvoiceDto, res) {
         this.PurchaseInvoicesService.update(code, updatePurchaseInvoiceDto)
             .then(rec => {
             res.status(common_1.HttpStatus.OK).send({ message: "record updated" });
@@ -38,11 +38,11 @@ let PurchaseInvoiceController = class PurchaseInvoiceController {
             res.status(common_1.HttpStatus.BAD_REQUEST).send(err.parent);
         });
     }
-    findAll() {
+    async findAll() {
         console.log("details");
         return this.PurchaseInvoicesService.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         console.log("details", code);
         return this.PurchaseInvoicesService.findOne(code);
     }
@@ -62,7 +62,7 @@ __decorate([
     __param(2, common_1.Res()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, create_purchaseInvoice_dto_1.CreatePurchaseInvoiceDto, Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], PurchaseInvoiceController.prototype, "update", null);
 __decorate([
     common_1.Get(),

@@ -40,17 +40,17 @@ export class BrandListController {
 
   @Get()
   async findAll(): Promise<BrandList[]> {
-    return this.BrandListsService.findAll();
+    return await this.BrandListsService.findAll();
   }
 
   @Get(':code')
   async findOne(@Param('code') code: string): Promise<BrandList> {
-    return this.BrandListsService.findOne(code);
+    return await this.BrandListsService.findOne(code);
   }
 
   @Delete(':code')
   async remove(@Param('code') code: string, @Res() res: Response): Promise<void | BrandList> {
-    return this.BrandListsService.remove(code).then(r => {
+    return await this.BrandListsService.remove(code).then(r => {
       res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
     }).catch(err => {
       res.status(HttpStatus.NO_CONTENT).send(err.parent);

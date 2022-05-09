@@ -21,7 +21,7 @@ let ModuleListController = class ModuleListController {
         this.ModuleListsService = ModuleListsService;
     }
     async create(createModuleListDto, res) {
-        return this.ModuleListsService.create(createModuleListDto)
+        await this.ModuleListsService.create(createModuleListDto)
             .then(rec => {
             res.status(common_1.HttpStatus.CREATED).send(rec);
         })
@@ -30,7 +30,7 @@ let ModuleListController = class ModuleListController {
         });
     }
     async update(code, updateModuleListDto, res) {
-        this.ModuleListsService.update(code, updateModuleListDto)
+        await this.ModuleListsService.update(code, updateModuleListDto)
             .then(rec => {
             res.status(common_1.HttpStatus.OK).send({ message: "record updated" });
         })
@@ -39,7 +39,7 @@ let ModuleListController = class ModuleListController {
         });
     }
     async findAll(id) {
-        return this.ModuleListsService.findAll(id);
+        return await this.ModuleListsService.findAll(id);
     }
     async remove(id) {
         return this.ModuleListsService.remove(id);

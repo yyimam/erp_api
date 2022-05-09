@@ -21,7 +21,7 @@ let RoleDetailController = class RoleDetailController {
         this.RoleDetailsService = RoleDetailsService;
     }
     async create(createRoleDetailDto, res) {
-        return this.RoleDetailsService.create(createRoleDetailDto)
+        await this.RoleDetailsService.create(createRoleDetailDto)
             .then(rec => {
             res.status(common_1.HttpStatus.CREATED).send(rec);
         })
@@ -30,7 +30,7 @@ let RoleDetailController = class RoleDetailController {
         });
     }
     async update(code, updateRoleDetailDto, res) {
-        this.RoleDetailsService.update(code, updateRoleDetailDto)
+        await this.RoleDetailsService.update(code, updateRoleDetailDto)
             .then(rec => {
             res.status(common_1.HttpStatus.OK).send({ message: "record updated" });
         })
@@ -39,13 +39,13 @@ let RoleDetailController = class RoleDetailController {
         });
     }
     async findAll() {
-        return this.RoleDetailsService.findAll();
+        return await this.RoleDetailsService.findAll();
     }
     async findOne(code) {
-        return this.RoleDetailsService.findOne(code);
+        return await this.RoleDetailsService.findOne(code);
     }
     async remove(code) {
-        return this.RoleDetailsService.remove(code);
+        return await this.RoleDetailsService.remove(code);
     }
 };
 __decorate([

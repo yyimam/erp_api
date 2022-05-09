@@ -11,7 +11,7 @@ export class RoleDetailController {
 
   @Post()
   async create(@Body() createRoleDetailDto: CreateRoleDetailDto, @Res() res: Response): Promise<void | RoleDetail> {
-    return this.RoleDetailsService.create(createRoleDetailDto)
+    await this.RoleDetailsService.create(createRoleDetailDto)
     .then(rec => {
       res.status(HttpStatus.CREATED).send(rec);
     })
@@ -22,7 +22,7 @@ export class RoleDetailController {
   
   @Put(':code')
   async update(@Param('code') code: string,@Body() updateRoleDetailDto: CreateRoleDetailDto, @Res() res: Response) {
-    this.RoleDetailsService.update(code,updateRoleDetailDto)
+    await this.RoleDetailsService.update(code,updateRoleDetailDto)
     .then(rec => {
         res.status(HttpStatus.OK).send({message: "record updated"});
     })
@@ -33,17 +33,17 @@ export class RoleDetailController {
   
   @Get()
   async findAll(): Promise<RoleDetail[]> {
-    return this.RoleDetailsService.findAll();
+    return await this.RoleDetailsService.findAll();
   }
 
   @Get(':code')
   async findOne(@Param('code') code: string): Promise<RoleDetail> {
-    return this.RoleDetailsService.findOne(code);
+    return await this.RoleDetailsService.findOne(code);
   }
 
   @Delete(':code')
   async remove(@Param('code') code: string): Promise<void> {
-    return this.RoleDetailsService.remove(code);
+    return await this.RoleDetailsService.remove(code);
   }
   
 }

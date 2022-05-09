@@ -20,26 +20,26 @@ let BrandListService = class BrandListService {
     constructor(BrandListModel) {
         this.BrandListModel = BrandListModel;
     }
-    create(CreateBrandListDto) {
+    async create(CreateBrandListDto) {
         let t = CreateBrandListDto;
-        return this.BrandListModel.create(t);
+        return await this.BrandListModel.create(t);
     }
     async update(code, UpdateBrandListDto) {
         let t = UpdateBrandListDto;
         return await this.BrandListModel.update(t, { where: { code: code } });
     }
     async findAll() {
-        return this.BrandListModel.findAll();
+        return await this.BrandListModel.findAll();
     }
     async findOne(code) {
-        return this.BrandListModel.findOne({
+        return await this.BrandListModel.findOne({
             where: {
                 code,
             },
         });
     }
     async findById(id) {
-        return this.BrandListModel.findOne({
+        return await this.BrandListModel.findOne({
             where: {
                 id,
             },

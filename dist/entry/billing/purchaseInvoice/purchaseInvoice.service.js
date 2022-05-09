@@ -21,7 +21,7 @@ let PurchaseInvoiceService = class PurchaseInvoiceService {
     constructor(BillingMasterModel) {
         this.BillingMasterModel = BillingMasterModel;
     }
-    create(CreatePurchaseInvoiceDto) {
+    async create(CreatePurchaseInvoiceDto) {
         let t = CreatePurchaseInvoiceDto;
         return this.BillingMasterModel.create(t);
     }
@@ -32,7 +32,7 @@ let PurchaseInvoiceService = class PurchaseInvoiceService {
     async findAll() {
         return this.BillingMasterModel.findAll();
     }
-    findOne(code) {
+    async findOne(code) {
         return this.BillingMasterModel.findOne({
             include: [billingDetails_entity_1.BillingDetails],
             where: { idno: code }

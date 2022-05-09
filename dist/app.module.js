@@ -17,11 +17,11 @@ const warehouseList_module_1 = require("./utility/warehouseList/warehouseList.mo
 const brandList_module_1 = require("./utility/brandList/brandList.module");
 const common_1 = require("@nestjs/common");
 const sequelize_1 = require("@nestjs/sequelize");
-const users_module_1 = require("./users/users.module");
 const products_module_1 = require("./utility/products/products.module");
 const itemcat_module_1 = require("./utility/itemCategory/itemcat.module");
 const ItemSubCatList_module_1 = require("./utility/itemSubCategoryList/ItemSubCatList.module");
 const ac_module_1 = require("./entry/chartOfAccounts/ac.module");
+const auth_module_1 = require("./auth/auth.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -29,21 +29,13 @@ AppModule = __decorate([
         imports: [
             sequelize_1.SequelizeModule.forRoot({
                 dialect: 'mysql',
-                host: 'localhost',
-                username: 'halfmaneng_yousufdb',
-                password: 'ApQ.V@iP6q0BxbU3',
+                host: '43.255.154.114',
+                username: 'halfmaneng_user',
+                password: '%09_xC*ee9Z&',
                 database: 'halfmaneng_yousufdb',
                 autoLoadModels: true,
-                synchronize: true,
-                pool: {
-                    max: 15,
-                    min: 5,
-                    idle: 20000,
-                    evict: 15000,
-                    acquire: 30000
-                },
+                synchronize: false,
             }),
-            users_module_1.UsersModule,
             products_module_1.ProductsModule,
             itemcat_module_1.ItemCatModule,
             ItemSubCatList_module_1.ItemSubCatListModule,
@@ -55,7 +47,8 @@ AppModule = __decorate([
             itemType_module_1.ItemTypeModule,
             itemUnit_module_1.ItemUnitModule,
             purchaseInvoice_module_1.PurchaseInvoiceModule,
-            ac_module_1.AcModule
+            ac_module_1.AcModule,
+            auth_module_1.AuthModule,
         ]
     })
 ], AppModule);

@@ -11,10 +11,11 @@ export class ProductsService {
   ) {}
 
   async create(CreateProductDto: CreateProductDto): Promise<Product> {
+    
     let t:{}= CreateProductDto
-    return this.productModel.create(t)
-    .then(rec => rec)
-    .catch(err => err);
+    return await this.productModel.create(t)
+    .then(rec => {console.log("reco", rec);return rec;})
+    .catch(err => {console.log("records", err);return err});
   }
 
   async update(code: string, UpdateProductDto: CreateProductDto): Promise<any>{
@@ -23,11 +24,11 @@ export class ProductsService {
   }
 
   async findAll(): Promise<Product[]> {
-    return this.productModel.findAll();
+    return await this.productModel.findAll();
   }
 
   async findOne(code: string): Promise<Product> {
-    return this.productModel.findOne({
+    return await this.productModel.findOne({
       where: {
         code,
       },
@@ -43,7 +44,7 @@ export class ProductsService {
   }
 
   async findByItemType(itemtype: string): Promise<Product[]>{
-    return this.productModel.findAll({
+    return await this.productModel.findAll({
       where:{
         itemtype
       }

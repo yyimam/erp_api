@@ -2,7 +2,6 @@ import { ItemUnit } from './models/itemUnit.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateItemUnitDto } from './dto/create-itemUnit.dto';
-import { where } from 'sequelize/dist';
 
 @Injectable()
 export class ItemUnitService {
@@ -11,9 +10,9 @@ export class ItemUnitService {
     private readonly ItemUnitModel: typeof ItemUnit,
   ) {}
 
-  create(CreateItemUnitDto: CreateItemUnitDto): Promise<ItemUnit> {
+  async create(CreateItemUnitDto: CreateItemUnitDto): Promise<ItemUnit> {
     let t:{}= CreateItemUnitDto
-    return this.ItemUnitModel.create(t);
+    return await this.ItemUnitModel.create(t);
   }
 
   async update(code: string, UpdateItemUnitDto: CreateItemUnitDto): Promise<any>{
@@ -22,11 +21,11 @@ export class ItemUnitService {
   }
 
   async findAll(): Promise<ItemUnit[]> {
-    return this.ItemUnitModel.findAll();
+    return await this.ItemUnitModel.findAll();
   }
 
   async findOne(code: string): Promise<ItemUnit> {
-    return this.ItemUnitModel.findOne({
+    return await this.ItemUnitModel.findOne({
       where: {
         code,
       },
@@ -34,7 +33,7 @@ export class ItemUnitService {
   }
 
   async findById(id: number): Promise<ItemUnit> {
-    return this.ItemUnitModel.findOne({
+    return await this.ItemUnitModel.findOne({
       where: {
         id,
       },

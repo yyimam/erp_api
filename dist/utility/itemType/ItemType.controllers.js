@@ -21,7 +21,7 @@ let ItemTypeController = class ItemTypeController {
         this.ItemTypesService = ItemTypesService;
     }
     async create(createItemTypeDto, res) {
-        return this.ItemTypesService.create(createItemTypeDto)
+        await this.ItemTypesService.create(createItemTypeDto)
             .then(rec => {
             res.status(common_1.HttpStatus.CREATED).send(rec);
         })
@@ -30,7 +30,7 @@ let ItemTypeController = class ItemTypeController {
         });
     }
     async update(code, updateItemTypeDto, res) {
-        this.ItemTypesService.update(code, updateItemTypeDto)
+        await this.ItemTypesService.update(code, updateItemTypeDto)
             .then(rec => {
             this.ItemTypesService.findOne(code).then(r => {
                 res.status(common_1.HttpStatus.OK).send({ message: "Record Updated", data: r });
@@ -43,14 +43,13 @@ let ItemTypeController = class ItemTypeController {
         });
     }
     async findAll() {
-        console.log("check rec");
-        return this.ItemTypesService.findAll();
+        return await this.ItemTypesService.findAll();
     }
     async findOne(code) {
-        return this.ItemTypesService.findOne(code);
+        return await this.ItemTypesService.findOne(code);
     }
     async remove(code, res) {
-        return this.ItemTypesService.remove(code).then(r => {
+        await this.ItemTypesService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
         }).catch(err => {
             res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);

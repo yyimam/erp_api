@@ -12,14 +12,10 @@ export class AcController {
   async create(@Body() acDto: AcDto, @Res() res: Response): Promise<void | AC> {
     return this.AcService.create(acDto)
       .then(rec => {
-        this.AcService.findById(rec.idno).then(t => {
-          res.status(HttpStatus.CREATED).send(t);
-        }).catch(err => {
-          res.status(HttpStatus.NO_CONTENT).send(err.parent);
-        });
+        res.status(HttpStatus.CREATED).send(rec);
       })
       .catch(err => {
-        res.status(HttpStatus.BAD_REQUEST).send(err.parent);
+        res.status(HttpStatus.BAD_REQUEST).send(err);
       });
   }
 
@@ -30,7 +26,7 @@ export class AcController {
         this.AcService.findOne(code).then(r => {
           res.status(HttpStatus.OK).send({ message: "Record Updated", data: r });
         }).catch(err => {
-          res.status(HttpStatus.NO_CONTENT).send(err.parent);
+          res.status(HttpStatus.NO_CONTENT).send({ message: "Conent Not Found", data: err.parent });
         })
       })
       .catch(err => {
@@ -49,11 +45,15 @@ export class AcController {
   }
 
   @Delete(':code')
-  async remove(@Param('code') code: string, @Res() res: Response): Promise<void | AC> {
-    return this.AcService.remove(code).then(r => {
-      res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
+  async remove(@Param('code') id: number, @Res() res: Response): Promise<void | AC> {
+    return this.AcService.remove(id).then(r => {
+      if(r){
+        res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });  
+      }else{
+        res.status(HttpStatus.NO_CONTENT).send({ message: "Error", data: "No Record found" });
+      }
     }).catch(err => {
-      res.status(HttpStatus.NO_CONTENT).send(err.parent);
+      res.status(HttpStatus.NO_CONTENT).send({ message: "Error", data: err });
     });
   }
 

@@ -10,7 +10,7 @@ export class ItemUnitController {
 
   @Post()
   async create(@Body() createItemUnitDto: CreateItemUnitDto, @Res() res: Response): Promise<void | ItemUnit> {
-    return this.itemUnitService.create(createItemUnitDto)
+    await this.itemUnitService.create(createItemUnitDto)
     .then(rec => {
       this.itemUnitService.findById(rec.id).then(t=>{
         res.status(HttpStatus.CREATED).send(t);
@@ -26,7 +26,7 @@ export class ItemUnitController {
   
   @Put(':code')
   async update(@Param('code') code: string,@Body() updateItemUnitDto: CreateItemUnitDto, @Res() res: Response) {
-    this.itemUnitService.update(code,updateItemUnitDto)
+    await this.itemUnitService.update(code,updateItemUnitDto)
     .then(rec => {
       this.itemUnitService.findOne(code).then(r=>{
         res.status(HttpStatus.OK).send({message: "Record Updated", data: r});
@@ -42,17 +42,17 @@ export class ItemUnitController {
   @Get()
   async findAll(): Promise<ItemUnit[]> {
     console.log("check rec")
-    return this.itemUnitService.findAll();
+    return await this.itemUnitService.findAll();
   }
 
   @Get(':code')
   async findOne(@Param('code') code: string): Promise<ItemUnit> {
-    return this.itemUnitService.findOne(code);
+    return await this.itemUnitService.findOne(code);
   }
 
   @Delete(':code')
   async remove(@Param('code') code: string, @Res() res: Response): Promise<void | ItemUnit> {
-    return this.itemUnitService.remove(code).then(r=>{
+    return await this.itemUnitService.remove(code).then(r=>{
       res.status(HttpStatus.ACCEPTED).send({message: "Deleted", data: r});
     }).catch( err => {
       res.status(HttpStatus.NO_CONTENT).send(err.parent);

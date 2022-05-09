@@ -11,8 +11,6 @@ const createNestServer = async (expressInstance) => {
     const adapter = new platform_express_1.ExpressAdapter(expressInstance);
     const app = await core_1.NestFactory.create(app_module_1.AppModule, adapter, {});
     app.enableCors();
-    app.listen(3000);
-    app.setGlobalPrefix('api');
     return app.init();
 };
 exports.createNestServer = createNestServer;

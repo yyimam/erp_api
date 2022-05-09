@@ -2,7 +2,6 @@ import { RoleDetail } from './models/roleDetail.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateRoleDetailDto } from './dto/create-roleDetail.dto';
-import { where } from 'sequelize/dist';
 
 @Injectable()
 export class RoleDetailService {
@@ -13,7 +12,7 @@ export class RoleDetailService {
 
   async create(CreateRoleDetailDto: CreateRoleDetailDto): Promise<RoleDetail> {
     let t:{}= CreateRoleDetailDto
-    return this.RoleDetailModel.create(t);
+    return await this.RoleDetailModel.create(t);
   }
 
   async update(code: string, UpdateRoleDetailDto: CreateRoleDetailDto): Promise<any>{
@@ -22,11 +21,11 @@ export class RoleDetailService {
   }
 
   async findAll(): Promise<RoleDetail[]> {
-    return this.RoleDetailModel.findAll();
+    return await this.RoleDetailModel.findAll();
   }
 
   async findOne(code: string): Promise<RoleDetail> {
-    return this.RoleDetailModel.findOne({
+    return await this.RoleDetailModel.findOne({
       where: {
         code,
       },
