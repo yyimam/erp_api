@@ -1,0 +1,2806 @@
+{
+	"info": {
+		"_postman_id": "e2c25dd5-87e8-43bb-bdf0-f4e5cbfdca1a",
+		"name": "Accounts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Utility",
+			"item": [
+				{
+					"name": "List",
+					"item": [
+						{
+							"name": "Product List",
+							"item": [
+								{
+									"name": "GetAllProduct",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/products",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"products"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getProductById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/products/05101",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"products",
+												"05101"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getProductByItemType",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/products/05101",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"products",
+												"05101"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddProduct",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n        \"name\": \"record\",\r\n        \"itemtype\": \"FG\",\r\n        \"itemcat\": \"00001\",\r\n        \"rate\": \"0.0000\",\r\n        \"itemunit\": \"PCS\",\r\n        \"subitemcat\": \"00001\",\r\n        \"brand\": \"00001\",\r\n        \"prate\": \"1\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/products",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"products"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditProduct",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\"brand\": \"10016\",\r\n\"code\": \"00004\",\r\n\"custItemCode\": \"12345\",\r\n\"itemcat\": \"00001\",\r\n\"itemunit\": \"00002\",\r\n\"minqty\": \"2000.00\",\r\n\"name\": \"RAW MATERIAL 1\",\r\n\"parentComponent\": 0,\r\n\"pcs_weight\": 22,\r\n\"prate\": \"3300.0000\",\r\n\"prodType\": \"I\",\r\n\"rate\": \"3400.0000\",\r\n\"subitemcat\": \"00001\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/products/00004",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"products",
+												"00004"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "SearchProduct",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": null
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "ItemCat",
+							"item": [
+								{
+									"name": "ItemCat",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/itemcat",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemcat"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetItemCatById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/itemcat/00005",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemcat",
+												"00005"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddItemCat",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00008\",\r\n    \"name\": \"MARBEL\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/itemcat",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemcat"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditItemCat",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00005\",\r\n    \"name\": \"ROLLING\",\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/itemcat/00005",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemcat",
+												"00005"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteItemCat",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/itemcat/00008",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemcat",
+												"00008"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "ItemType",
+							"item": [
+								{
+									"name": "ItemCat",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{live}}/item-type",
+											"host": [
+												"{{live}}"
+											],
+											"path": [
+												"item-type"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetItemCatById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/itemcat/00005",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemcat",
+												"00005"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddItemCat",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"IDM\",\r\n    \"name\": \"Indirect Material\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/item-type",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"item-type"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditItemCat",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00005\",\r\n    \"name\": \"ROLLING\",\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/itemcat/00005",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemcat",
+												"00005"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteItemCat",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/itemcat/00008",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemcat",
+												"00008"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "itemUnit",
+							"item": [
+								{
+									"name": "ItemCat",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/item-unit",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"item-unit"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetItemCatById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/item-unit/00005",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"item-unit",
+												"00005"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddItemCat",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00002\",\r\n    \"name\": \"KG\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/item-unit",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"item-unit"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditItemCat",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00005\",\r\n    \"name\": \"ROLLING\",\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/item-unit/00005",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"item-unit",
+												"00005"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteItemCat",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/item-unit/00008",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"item-unit",
+												"00008"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Warehouse List",
+							"item": [
+								{
+									"name": "WarehouseList",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/warehouse-list",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"warehouse-list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetWarehouseListById",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n        \"code\": \"00002\",\r\n        \"name\": \"MEMONGOTH WAREHOUSE\",\r\n        \"createdAt\": null,\r\n        \"updatedAt\": null,\r\n        \"deletedAt\": null\r\n    }"
+										},
+										"url": {
+											"raw": "{{localhost}}/warehouse-list/00002",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"warehouse-list",
+												"00002"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddWarehouseList",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n        \"name\": \"MEMONGOTH WAREHOUSE 2\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/warehouse-list",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"warehouse-list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditWarehouseList",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n        \"code\": \"00003\",\r\n        \"name\": \"MEMONGOTH WAREHOUSE 4\"\r\n    }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/warehouse-list/00003",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"warehouse-list",
+												"00003"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteWarehouseList",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/warehouse-list/00003",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"warehouse-list",
+												"00003"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "ItemBrandList",
+							"item": [
+								{
+									"name": "ItemBrandList",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/brand-list",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"brand-list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetItemBrandListById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/brand-list/00002",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"brand-list",
+												"00002"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddItemBrandList",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00005\",\r\n    \"name\": \"XYZ\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/brand-list",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"brand-list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditItemBrandList",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00004\",\r\n    \"name\": \"NIKE\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/brand-list/00004",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"brand-list",
+												"00004"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteItemBrandList",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/brand-list/00004",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"brand-list",
+												"00004"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "ItemSubCatList",
+							"item": [
+								{
+									"name": "ItemSubCatList",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/itemSubCatList",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemSubCatList"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetItemSubCatListById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/itemSubCatList/00005",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemSubCatList",
+												"00005"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddItemSubCatList",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00009\",\r\n    \"name\": \"Bxo work\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/itemSubCatList",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemSubCatList"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditItemSubCatList",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00007\",\r\n    \"name\": \"COTTON BUDS- 100PCS / 120 PCS\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/itemSubCatList/00007",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemSubCatList",
+												"00007"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteItemSubCatList",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/itemSubCatList/00007",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"itemSubCatList",
+												"00007"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "FinishGoodsRecipeList",
+							"item": [
+								{
+									"name": "FinishGoodsRecipeListById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/finish-goods-recipe-list/00011",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"finish-goods-recipe-list",
+												"00011"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "FinishGoodsRecipeList",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/finish-goods-recipe-list",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"finish-goods-recipe-list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddFinishGoodsRecipeList",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "    {\r\n        \"mainitemcode\": \"00013\",\r\n        \"finishGoodsRecipeList\": [\r\n            {\r\n                \"subitemcode\": \"00015\",\r\n                \"description\": \"null\",\r\n                \"qty\": 1,\r\n                \"wastage_qty\": 0\r\n            }\r\n        ]\r\n    }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/finish-goods-recipe-list",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"finish-goods-recipe-list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditFinishGoodsRecipeList",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n   \"mainitemcode\":\"00003\",\r\n   \"finishGoodsRecipeList\":[\r\n      {\r\n         \"id\":33,\r\n         \"mainitemcode\":\"00003\",\r\n         \"subitemcode\":\"00004\",\r\n         \"description\":\"yousuf imam muhamam\",\r\n         \"qty\":\"5.000000\",\r\n         \"sysdate\":\"2022-04-18T23:17:51.000Z\",\r\n         \"entryno\":null,\r\n         \"edate\":null,\r\n         \"disabled\":null,\r\n         \"wastage_qty\":\"6.000000\",\r\n         \"createdAt\":\"2022-04-18T23:17:51.000Z\",\r\n         \"updatedAt\":\"2022-04-18T23:17:51.000Z\",\r\n         \"deletedAt\":null\r\n      },\r\n      {\r\n         \"id\":106,\r\n         \"mainitemcode\":\"00003\",\r\n         \"subitemcode\":\"00010\",\r\n         \"description\":\"some thing 5\",\r\n         \"qty\":\"5.000000\",\r\n         \"sysdate\":null,\r\n         \"entryno\":null,\r\n         \"edate\":null,\r\n         \"disabled\":null,\r\n         \"wastage_qty\":\"5.000000\",\r\n         \"createdAt\":\"2022-04-28T11:27:22.000Z\",\r\n         \"updatedAt\":\"2022-04-28T11:27:22.000Z\",\r\n         \"deletedAt\":null\r\n      },\r\n      {\r\n         \"id\":108,\r\n         \"mainitemcode\":\"00003\",\r\n         \"subitemcode\":\"00014\",\r\n         \"description\":\"well known \",\r\n         \"qty\":\"65.000000\",\r\n         \"sysdate\":null,\r\n         \"entryno\":null,\r\n         \"edate\":null,\r\n         \"disabled\":null,\r\n         \"wastage_qty\":\"6.000000\",\r\n         \"createdAt\":\"2022-04-28T11:31:22.000Z\",\r\n         \"updatedAt\":\"2022-04-28T11:31:22.000Z\",\r\n         \"deletedAt\":null\r\n      },\r\n      {\r\n         \"id\":111,\r\n         \"mainitemcode\":\"00003\",\r\n         \"subitemcode\":\"00015\",\r\n         \"description\":\"some thing went wrong\",\r\n         \"qty\":\"4.000000\",\r\n         \"sysdate\":null,\r\n         \"entryno\":null,\r\n         \"edate\":null,\r\n         \"disabled\":null,\r\n         \"wastage_qty\":\"6.000000\",\r\n         \"createdAt\":\"2022-04-28T11:45:49.000Z\",\r\n         \"updatedAt\":\"2022-04-28T11:45:49.000Z\",\r\n         \"deletedAt\":null\r\n      },\r\n      {\r\n         \"id\":115,\r\n         \"mainitemcode\":\"00003\",\r\n         \"subitemcode\":\"00014\",\r\n         \"description\":\"ssssss\",\r\n         \"qty\":\"4.000000\",\r\n         \"sysdate\":null,\r\n         \"entryno\":null,\r\n         \"edate\":null,\r\n         \"disabled\":null,\r\n         \"wastage_qty\":\"6.000000\",\r\n         \"createdAt\":\"2022-04-28T12:13:42.000Z\",\r\n         \"updatedAt\":\"2022-04-28T12:13:42.000Z\",\r\n         \"deletedAt\":null\r\n      },\r\n      {\r\n         \"description\":\"wwww\",\r\n         \"qty\":6,\r\n         \"subitemcode\":\"00010\",\r\n         \"wastage_qty\":6,\r\n         \"mainitemcode\":\"00003\"\r\n      }\r\n   ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/finish-goods-recipe-list/00003",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"finish-goods-recipe-list",
+												"00003"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteFinishGoodsRecipeList",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/finish-goods-recipe-list/00003",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"finish-goods-recipe-list",
+												"00003"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetBomTreeView",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{localhostfb}}/finish-goods-recipe-list/bom-tree-view/10106",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"finish-goods-recipe-list",
+												"bom-tree-view",
+												"10106"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Managment",
+					"item": [
+						{
+							"name": "UserMangment",
+							"item": [
+								{
+									"name": "ModuleList",
+									"item": [
+										{
+											"name": "ModulleList",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{localhost}}/Navigation/1",
+													"host": [
+														"{{localhost}}"
+													],
+													"path": [
+														"Navigation",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "GetModuleListById",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{localhost}}/module-list/1",
+													"host": [
+														"{{localhost}}"
+													],
+													"path": [
+														"module-list",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "AddItemCat",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"code\": \"00008\",\r\n    \"name\": \"MARBEL\"\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{localhost}}/itemcat",
+													"host": [
+														"{{localhost}}"
+													],
+													"path": [
+														"itemcat"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "EditItemCat",
+											"request": {
+												"method": "PUT",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"code\": \"00005\",\r\n    \"name\": \"ROLLING\",\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{localhost}}/itemcat/00005",
+													"host": [
+														"{{localhost}}"
+													],
+													"path": [
+														"itemcat",
+														"00005"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "DeleteItemCat",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{localhost}}/itemcat/00008",
+													"host": [
+														"{{localhost}}"
+													],
+													"path": [
+														"itemcat",
+														"00008"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "OpeningBalance",
+					"item": [
+						{
+							"name": "GetOpeningBalance",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{localhostfb}}/OS/180",
+									"host": [
+										"{{localhostfb}}"
+									],
+									"path": [
+										"OS",
+										"180"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetOpeningBalanceById",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{localhostfb}}/OSST/10/0",
+									"host": [
+										"{{localhostfb}}"
+									],
+									"path": [
+										"OSST",
+										"10",
+										"0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"id\": 155001,\r\n        \"pidno\": 180,\r\n        \"cidno\": 1003358,\r\n        \"edate\": \"2015-10-01T00:00:00.000Z\",\r\n        \"estatus\": \"OS\",\r\n        \"itemcode\": \"00011\",\r\n        \"Rec\": \"1000.000000\",\r\n        \"Iss\": \"0.000000\",\r\n        \"loose_Rec\": \"0.00\",\r\n        \"loose_Iss\": \"0.00\",\r\n        \"balance\": \"0.000000\",\r\n        \"loose_balance\": \"0.00\",\r\n        \"Amount\": \"50000.00\",\r\n        \"description\": \"   @50.00\",\r\n        \"Rate\": \"50.0000\",\r\n        \"pcspctn\": 0,\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{localhost}}/opening-stock",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"opening-stock"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Entry",
+			"item": [
+				{
+					"name": "Billing",
+					"item": [
+						{
+							"name": "PurchaseInvoice",
+							"item": [
+								{
+									"name": "PurchaseInvoice",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/PU/125",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PU",
+												"125"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetPurchaseInvoiceById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/item-unit/00005",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"item-unit",
+												"00005"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddPurchaseInvoice",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00001\",\r\n    \"name\": \"PCS\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/item-unit",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"item-unit"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditPurchaseInvoice",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"code\": \"00005\",\r\n    \"name\": \"ROLLING\",\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/item-unit/00005",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"item-unit",
+												"00005"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeletePurchaseInvoice",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhost}}/item-unit/00008",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"item-unit",
+												"00008"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "ChartOfAccounts",
+					"item": [
+						{
+							"name": "ac",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhostfb}}/ac",
+									"host": [
+										"{{localhostfb}}"
+									],
+									"path": [
+										"ac"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAcChildList",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhostfb}}/ac/ac-list",
+									"host": [
+										"{{localhostfb}}"
+									],
+									"path": [
+										"ac",
+										"ac-list"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Inventory",
+					"item": [
+						{
+							"name": "CustomerOrder",
+							"item": [
+								{
+									"name": "CustomerOrderById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/SO/26",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"SO",
+												"26"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddCustomerOrder",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/SO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"SO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditCustomerOrder",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/SO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"SO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteCustomerOrder",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/SO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"SO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetCustomerOrders",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{localhostfb}}/SO/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"SO",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "PurchaseOrder",
+							"item": [
+								{
+									"name": "PurchaseOrderById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/62",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"62"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddPurchaseOrder",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/PO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditPurchaseOrder",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeletePurchaseOrder",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetPurchaseOrders",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "GoodsReceivingNote",
+							"item": [
+								{
+									"name": "GoodsReceivingNoteById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/GR/185",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"GR",
+												"185"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddGoodsReceivingNote",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/PO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditGoodsReceivingNote",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteGoodsReceivingNote",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetGoodsReceivingNote",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/GR/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"GR",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "GoodsReturnToSupplier",
+							"item": [
+								{
+									"name": "GoodsReturnToSupplierById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/RG/477",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"RG",
+												"477"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddGoodsReturnToSupplier",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/PO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditGoodsReturnToSupplier",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteGoodsReturnToSupplier",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetGoodsReturnToSupplier",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/RG/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"RG",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "GoodsDeliveryChallan",
+							"item": [
+								{
+									"name": "GoodsDeliveryChallanById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/DC/185",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"DC",
+												"185"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddGoodsDeliveryChallan",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/PO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditGoodsDeliveryChallan",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteGoodsDeliveryChallan",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetGoodsDeliveryChallan",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/DC/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"DC",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "GoodsReturnFromCustomer",
+							"item": [
+								{
+									"name": "GoodsReturnFromCustomerById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/DR/478",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"DR",
+												"478"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddGoodsReturnFromCustomer",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/PO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditGoodsReturnFromCustomer",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteGoodsReturnFromCustomer",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetGoodsReturnFromCustomer",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/DR/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"DR",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "MaterialIssuing",
+							"item": [
+								{
+									"name": "MaterialIssuingById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/IS/179",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"IS",
+												"179"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddMaterialIssuing",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/PO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditMaterialIssuing",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteMaterialIssuing",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetMaterialIssuing",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/IS/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"IS",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "MaterialReturnBack",
+							"item": [
+								{
+									"name": "MaterialReturnBackById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/RB/480",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"RB",
+												"480"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddMaterialReturnBack",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/PO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditMaterialReturnBack",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteMaterialReturnBack",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetMaterialReturnBack",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/RB/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"RB",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "MaterialIssuingRequestForm",
+							"item": [
+								{
+									"name": "MaterialIssuingRequestFormById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/MR/481",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"MR",
+												"481"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddMaterialIssuingRequestForm",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/PO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditMaterialIssuingRequestForm",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteMaterialIssuingRequestForm",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetMaterialIssuingRequestForm",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/MR/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"MR",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "StockTransfer",
+							"item": [
+								{
+									"name": "MaterialIssuingRequestFormById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/ST/482",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"ST",
+												"482"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddMaterialIssuingRequestForm",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/PO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditMaterialIssuingRequestForm",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteMaterialIssuingRequestForm",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetMaterialIssuingRequestForm",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/ST/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"ST",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "FinishedGoodsProduction",
+							"item": [
+								{
+									"name": "FinishedGoodsProductionById",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PD/715",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PD",
+												"715"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "AddFinishedGoodsProduction",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"idno\": 188881,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": null,\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhost}}/PO",
+											"host": [
+												"{{localhost}}"
+											],
+											"path": [
+												"PO"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "EditFinishedGoodsProduction",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"idno\": 68,\r\n    \"EntryNo\": 3223,\r\n    \"RefNo\": \"3\",\r\n    \"edate\": \"2015-03-16T00:00:00.000Z\",\r\n    \"sysdate\": null,\r\n    \"party_ac\": \"10-10-071-004-001-001-01\",\r\n    \"estatus\": \"SO\",\r\n    \"remarks\": \"some remarks some one\",\r\n    \"gst\": \"0.00\",\r\n    \"gstAmount\": \"0.00\",\r\n    \"sed\": \"0.00\",\r\n    \"sedAmount\": \"0.00\",\r\n    \"disc_p\": \"0.00\",\r\n    \"discount\": \"0.00\",\r\n    \"grossamount\": null,\r\n    \"netamount\": null,\r\n    \"Warehouse_Code\": \"00002\",\r\n    \"Transporter\": null,\r\n    \"DN_Address\": null,\r\n    \"Circular_No\": null,\r\n    \"Invoice_No\": null,\r\n    \"Order_No\": null,\r\n    \"Vendor_No\": null,\r\n    \"Shop\": null,\r\n    \"ent_date\": null,\r\n    \"itemdescription\": null,\r\n    \"orderclosed\": 0,\r\n    \"posted\": null,\r\n    \"ledgerbal\": null,\r\n    \"overdue\": null,\r\n    \"delivery_date\": null,\r\n    \"terms\": \"\",\r\n    \"DVC_Per\": null,\r\n    \"DVC_Amount\": null,\r\n    \"DVC_Remarks\": null,\r\n    \"dc_no\": null,\r\n    \"alert_posted\": null,\r\n    \"size_by\": null,\r\n    \"fitted_by\": null,\r\n    \"salesman\": null,\r\n    \"doc_attached\": null,\r\n    \"customer_name\": null,\r\n    \"customer_address\": null,\r\n    \"contact_no1\": null,\r\n    \"contact_no2\": null,\r\n    \"createdAt\": null,\r\n    \"updatedAt\": null,\r\n    \"deletedAt\": null,\r\n    \"orderDetails\": [\r\n        {\r\n            \"id\": 237436,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some thing 7 understand\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        },\r\n        {\r\n            \"id\": 237437,\r\n            \"pidno\": 68,\r\n            \"estatus\": null,\r\n            \"itemcode\": \"00003\",\r\n            \"description\": \"some 2 working thing\",\r\n            \"itemunit\": null,\r\n            \"amount\": \"25.00\",\r\n            \"sed\": \"0.00\",\r\n            \"sedamount\": \"0.00\",\r\n            \"gst\": \"0.00\",\r\n            \"gstamount\": \"0.00\",\r\n            \"netamount\": \"25.00\",\r\n            \"pcspctn\": null,\r\n            \"loose_qty\": null,\r\n            \"qty_in_pcs\": null,\r\n            \"bonuspcs\": null,\r\n            \"itemdiscount\": null,\r\n            \"itemdiscount_P\": null,\r\n            \"schmper\": null,\r\n            \"schmamt\": null,\r\n            \"xschmper\": null,\r\n            \"xschmamt\": null,\r\n            \"qty\": \"5.00\",\r\n            \"rate\": \"5.00\",\r\n            \"delivery_date\": \"2015-03-16T00:00:00.000Z\",\r\n            \"MRP\": null,\r\n            \"promotion_sales\": null,\r\n            \"particular\": null,\r\n            \"createdAt\": null,\r\n            \"updatedAt\": null,\r\n            \"deletedAt\": null\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DeleteFinishedGoodsProduction",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PO/68",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PO",
+												"68"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GetFinishedGoodsProduction",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{localhostfb}}/PD/10/0",
+											"host": [
+												"{{localhostfb}}"
+											],
+											"path": [
+												"PD",
+												"10",
+												"0"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Management",
+			"item": [
+				{
+					"name": "UserManagement",
+					"item": [
+						{
+							"name": "UserManagment",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{localhost}}/user-management",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"user-management"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"username\": \"john\", \"password\": \"changeme\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{localhost}}/auth/login",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddUserManagment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "  {\r\n        \"email\": \"admin@halfmanengineering.com\",\r\n        \"userpwd\": \"pass@work1\",\r\n        \"roleid\": 1,\r\n        \"designation\": \"ADMIN\",\r\n        \"department\": \"ADMINISTRATOR\"\r\n      \r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{localhost}}/user-management",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"user-management"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"email\": \"admin@halfmanengineering.com\", \"password\": \"pass@work1\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{live}}/auth/login",
+									"host": [
+										"{{live}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login Copy",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " { \"email\": \"admin@halfmanengineering.com\", \"password\": \"pass@work1\" }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{live}}/user-management/login",
+									"host": [
+										"{{live}}"
+									],
+									"path": [
+										"user-management",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Departments",
+					"item": [
+						{
+							"name": "AddDepartment",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"00001\",\r\n    \"name\": \"IT DEPARTMENT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{localhost}}/departments",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"departments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Department",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{localhost}}/departments",
+									"host": [
+										"{{localhost}}"
+									],
+									"path": [
+										"departments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhostfb",
+			"value": "http://localhost:5000/halfman-afc09/us-central1/api"
+		},
+		{
+			"key": "live",
+			"value": "https://us-central1-halfman-afc09.cloudfunctions.net/api"
+		},
+		{
+			"key": "localhost",
+			"value": "http://localhost:5000/api"
+		},
+		{
+			"value": ""
+		}
+	]
+}
