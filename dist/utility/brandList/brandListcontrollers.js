@@ -47,7 +47,13 @@ let BrandListController = class BrandListController {
         });
     }
     async findAll() {
-        return await this.BrandListsService.findAll();
+        try {
+            return await this.BrandListsService.findAll();
+        }
+        catch (error) {
+            console.log("check error", error);
+            throw error;
+        }
     }
     async findOne(code) {
         return await this.BrandListsService.findOne(code);

@@ -15,4 +15,6 @@ export declare class FinishGoodsRecipeList extends Model {
     updatedAt: Date;
     deletedAt: Date;
     FinishGoodsRecipeMaster: FinishGoodsRecipeMaster;
+    finishGoodsRecipeList2: FinishGoodsRecipeList[];
+    finishGoodsRecipeList: FinishGoodsRecipeList;
 }

@@ -1,4 +1,6 @@
 import { Model } from 'sequelize-typescript';
+import { BillingMaster } from 'src/entities/billingMaster.entity';
+import { OrderMaster } from 'src/entities/orderMaster.entity';
 export declare class AC extends Model {
     idno: number;
     acode: string;
@@ -44,4 +46,6 @@ export declare class AC extends Model {
     createdAt: Date;
     updatedAt: Date;
     deletedAt: Date;
+    orderMaster: OrderMaster;
+    billingMaster: BillingMaster;
 }

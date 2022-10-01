@@ -30,4 +30,6 @@ export declare class CreateProductDto {
     old_code: string;
     item_disabled: number;
     pcs_weight: number;
+    prodType: string;
+    custItemCode: string;
 }

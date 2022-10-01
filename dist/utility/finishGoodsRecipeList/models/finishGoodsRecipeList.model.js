@@ -8,14 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var FinishGoodsRecipeList_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FinishGoodsRecipeList = void 0;
 const finishGoodsRecipeMaster_model_1 = require("./../../../entities/finishGoodsRecipeMaster.model");
 const sequelize_typescript_1 = require("sequelize-typescript");
-let FinishGoodsRecipeList = class FinishGoodsRecipeList extends sequelize_typescript_1.Model {
+let FinishGoodsRecipeList = FinishGoodsRecipeList_1 = class FinishGoodsRecipeList extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.PrimaryKey,
     sequelize_typescript_1.Column({
         autoIncrement: true,
         field: 'idno'
@@ -23,11 +23,13 @@ __decorate([
     __metadata("design:type", Number)
 ], FinishGoodsRecipeList.prototype, "id", void 0);
 __decorate([
+    sequelize_typescript_1.PrimaryKey,
     sequelize_typescript_1.ForeignKey(() => finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster),
     sequelize_typescript_1.Column,
     __metadata("design:type", String)
 ], FinishGoodsRecipeList.prototype, "mainitemcode", void 0);
 __decorate([
+    sequelize_typescript_1.ForeignKey(() => FinishGoodsRecipeList_1),
     sequelize_typescript_1.Column,
     __metadata("design:type", String)
 ], FinishGoodsRecipeList.prototype, "subitemcode", void 0);
@@ -78,7 +80,15 @@ __decorate([
     sequelize_typescript_1.BelongsTo(() => finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster),
     __metadata("design:type", finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster)
 ], FinishGoodsRecipeList.prototype, "FinishGoodsRecipeMaster", void 0);
-FinishGoodsRecipeList = __decorate([
+__decorate([
+    sequelize_typescript_1.HasMany(() => FinishGoodsRecipeList_1, 'subitemcode'),
+    __metadata("design:type", Array)
+], FinishGoodsRecipeList.prototype, "finishGoodsRecipeList2", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => FinishGoodsRecipeList_1, { as: '_subitemcode', foreignKey: 'mainitemcode' }),
+    __metadata("design:type", FinishGoodsRecipeList)
+], FinishGoodsRecipeList.prototype, "finishGoodsRecipeList", void 0);
+FinishGoodsRecipeList = FinishGoodsRecipeList_1 = __decorate([
     sequelize_typescript_1.Table({
         tableName: 'assembling_list',
         timestamps: true

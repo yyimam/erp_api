@@ -47,8 +47,12 @@ let ItemUnitController = class ItemUnitController {
         });
     }
     async findAll() {
-        console.log("check rec");
-        return await this.itemUnitService.findAll();
+        try {
+            return await this.itemUnitService.findAll();
+        }
+        catch (error) {
+            return error;
+        }
     }
     async findOne(code) {
         return await this.itemUnitService.findOne(code);

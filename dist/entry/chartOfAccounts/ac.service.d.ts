@@ -8,5 +8,6 @@ export declare class AcService {
     findAll(): Promise<AC[]>;
     findOne(acode: string): Promise<AC>;
     findById(idno: number): Promise<AC>;
+    getAllChildRecord(): Promise<AC[]>;
     remove(idno: number): Promise<AC>;
 }

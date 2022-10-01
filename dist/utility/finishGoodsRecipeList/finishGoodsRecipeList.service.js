@@ -25,7 +25,7 @@ let finishGoodsRecipeListService = class finishGoodsRecipeListService {
     }
     async create(CreatefinishGoodsRecipeListDto) {
         let t = CreatefinishGoodsRecipeListDto;
-        return this.FinishGoodsRecipeMasterModel.create(t, {
+        return await this.FinishGoodsRecipeMasterModel.create(t, {
             include: [finishGoodsRecipeList_model_1.FinishGoodsRecipeList, product_model_1.Product]
         })
             .then(t => t.reload().then(t => t))
@@ -33,19 +33,28 @@ let finishGoodsRecipeListService = class finishGoodsRecipeListService {
     }
     async update(code, UpdatefinishGoodsRecipeListDto) {
         let t = UpdatefinishGoodsRecipeListDto;
-        return this.FinishGoodsRecipeListModel.bulkCreate(t.finishGoodsRecipeList, { individualHooks: true, updateOnDuplicate: ["description", "disabled", "entryno", "mainitemcode", "qty", "subitemcode"] })
+        return await this.FinishGoodsRecipeListModel.bulkCreate(t.finishGoodsRecipeList, { individualHooks: true, updateOnDuplicate: ["description", "disabled", "entryno", "mainitemcode", "qty", "subitemcode"] })
             .then(t => t)
             .catch(err => err);
     }
     async findAll() {
-        return this.FinishGoodsRecipeMasterModel.findAll({
+        return await this.FinishGoodsRecipeMasterModel.findAll({
             include: [product_model_1.Product, finishGoodsRecipeList_model_1.FinishGoodsRecipeList]
         });
     }
     async findOne(code) {
-        return this.FinishGoodsRecipeMasterModel.findOne({
+        return await this.FinishGoodsRecipeMasterModel.findOne({
             include: [finishGoodsRecipeList_model_1.FinishGoodsRecipeList, product_model_1.Product],
             where: { mainitemcode: code }
+        });
+    }
+    async getBomTreeView(mainitemcode) {
+        return await this.FinishGoodsRecipeListModel.findAll({
+            include: [
+                { model: finishGoodsRecipeList_model_1.FinishGoodsRecipeList, as: '_subitemcode', attributes: ['id', 'mainitemcode', 'subitemcode', 'qty', 'wastage_qty'] }
+            ],
+            attributes: ['id', 'mainitemcode', 'subitemcode', 'qty', 'wastage_qty'],
+            where: { subitemcode: mainitemcode }
         });
     }
     async remove(code) {

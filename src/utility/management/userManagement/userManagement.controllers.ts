@@ -1,5 +1,5 @@
-import { JwtAuthGuard } from './../../auth/jwt-auth.guard';
-import { LocalAuthGuard } from './../../auth/local-auth.guard';
+import { JwtAuthGuard } from '../../../auth/jwt-auth.guard';
+import { LocalAuthGuard } from '../../../auth/local-auth.guard';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserManagementDto } from './dto/userManagement.dto';
 import { UserManagement } from './models/UserManagement.model';
@@ -10,7 +10,7 @@ import * as bcrypt from 'bcrypt'
 
 @Controller('user-management')
 export class UserManagementController {
-  constructor(private readonly UserManagementsService: UserManagementService, private jwtService: JwtService) { }
+  constructor(private readonly UserManagementsService: UserManagementService) { }
 
   @Post()
   async create(@Body() createUserManagementDto: CreateUserManagementDto, @Res() res: Response): Promise<void | UserManagement> {
@@ -39,13 +39,11 @@ export class UserManagementController {
       });
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(): Promise<UserManagement[]> {
     return this.UserManagementsService.findAll();
   }
 
-  // @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Request() req: any, @Res() res: Response): Promise<void | UserManagement> {
     const { email, password } = req.body;
@@ -55,7 +53,7 @@ export class UserManagementController {
           bcrypt.compare(password, user.userpwd.toString(), (err, result) => {
             if (result) {  
               const { userpwd, ...result } = user.dataValues;
-              res.status(HttpStatus.CREATED).send({ message: "login successfull", data: { access_token: this.jwtService.sign(result) } });
+              // res.status(HttpStatus.CREATED).send({ message: "login successfull", data: { access_token: this.jwtService.sign(result) } });
             } else {
               res.status(HttpStatus.UNAUTHORIZED).send({ message: "Incorrect username or password", data: {} });
             }

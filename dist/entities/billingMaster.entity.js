@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BillingMaster = void 0;
+const warehouseList_model_1 = require("../utility/warehouseList/models/warehouseList.model");
+const ac_model_1 = require("./../entry/chartOfAccounts/models/ac.model");
 const billingDetails_entity_1 = require("./billingDetails.entity");
 const sequelize_typescript_1 = require("sequelize-typescript");
 let BillingMaster = class BillingMaster extends sequelize_typescript_1.Model {
@@ -37,10 +39,12 @@ __decorate([
 ], BillingMaster.prototype, "sysdate", void 0);
 __decorate([
     sequelize_typescript_1.Column,
+    sequelize_typescript_1.ForeignKey(() => ac_model_1.AC),
     __metadata("design:type", String)
 ], BillingMaster.prototype, "party_ac", void 0);
 __decorate([
     sequelize_typescript_1.Column,
+    sequelize_typescript_1.ForeignKey(() => ac_model_1.AC),
     __metadata("design:type", String)
 ], BillingMaster.prototype, "dr_cr_ac", void 0);
 __decorate([
@@ -113,6 +117,7 @@ __decorate([
 ], BillingMaster.prototype, "terms", void 0);
 __decorate([
     sequelize_typescript_1.Column,
+    sequelize_typescript_1.ForeignKey(() => warehouseList_model_1.WarehouseList),
     __metadata("design:type", String)
 ], BillingMaster.prototype, "Warehouse_Code", void 0);
 __decorate([
@@ -330,6 +335,14 @@ __decorate([
     sequelize_typescript_1.HasMany(() => billingDetails_entity_1.BillingDetails),
     __metadata("design:type", Array)
 ], BillingMaster.prototype, "billingDetails", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => ac_model_1.AC),
+    __metadata("design:type", ac_model_1.AC)
+], BillingMaster.prototype, "ac", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => warehouseList_model_1.WarehouseList),
+    __metadata("design:type", warehouseList_model_1.WarehouseList)
+], BillingMaster.prototype, "warehouseList", void 0);
 BillingMaster = __decorate([
     sequelize_typescript_1.Table({ tableName: 'billing_master' })
 ], BillingMaster);

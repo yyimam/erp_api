@@ -36,17 +36,22 @@ export class AcController {
 
   @Get()
   async findAll(): Promise<AC[]> {
-    return this.AcService.findAll();
+    return await this.AcService.findAll();
+  }
+
+  @Get("ac-list")
+  async getAllChildRecord(): Promise<AC[]> {
+    return await this.AcService.getAllChildRecord();
   }
 
   @Get(':code')
   async findOne(@Param('code') code: string): Promise<AC> {
-    return this.AcService.findOne(code);
+    return await this.AcService.findOne(code);
   }
 
   @Delete(':code')
   async remove(@Param('code') id: number, @Res() res: Response): Promise<void | AC> {
-    return this.AcService.remove(id).then(r => {
+    return await this.AcService.remove(id).then(r => {
       if(r){
         res.status(HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });  
       }else{

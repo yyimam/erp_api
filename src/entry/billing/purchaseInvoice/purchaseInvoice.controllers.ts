@@ -39,7 +39,6 @@ export class PurchaseInvoiceController {
 
   @Get(':code')
   async findOne(@Param('code') code: string): Promise<BillingMaster> {
-    console.log("details",code);
     return this.PurchaseInvoicesService.findOne(code);
   }
   

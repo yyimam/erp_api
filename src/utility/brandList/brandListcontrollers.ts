@@ -40,7 +40,12 @@ export class BrandListController {
 
   @Get()
   async findAll(): Promise<BrandList[]> {
-    return await this.BrandListsService.findAll();
+    try {
+      return await this.BrandListsService.findAll(); 
+    } catch (error) {
+      console.log("check error", error)
+      throw error;
+    }
   }
 
   @Get(':code')

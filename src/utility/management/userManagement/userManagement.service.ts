@@ -44,6 +44,8 @@ export class UserManagementService {
     });
   }
 
+
+
   async remove(id: string): Promise<UserManagement> {
     const type = await this.findOne(id);
     let u = await type.destroy().then(t => t);

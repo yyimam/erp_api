@@ -21,7 +21,13 @@ export class BrandListService {
   }
 
   async findAll(): Promise<BrandList[]> {
-    return await this.BrandListModel.findAll();
+    try {
+      return await this.BrandListModel.findAll();  
+    } catch (error) {
+      console.log("error check", error);
+      throw error;
+    }
+    
   }
 
   async findOne(code: string): Promise<BrandList> {

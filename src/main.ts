@@ -5,16 +5,6 @@ import * as functions from 'firebase-functions';
 import {ExpressAdapter, NestExpressApplication} from '@nestjs/platform-express';
 
 const server: express.Express = express();
-// export const createNestServer = async (expressInstance: express.Express) => {
-//   const adapter = new ExpressAdapter(expressInstance);
-//   const app = await NestFactory.create<NestExpressApplication>(
-//     AppModule, adapter, {},
-//   );
-//   app.enableCors();
-//   app.listen(3000);
-//   app.setGlobalPrefix('api');
-//   return app.init();
-// };
 
 export const createNestServer = async (expressInstance: express.Express) => {
   const adapter = new ExpressAdapter(expressInstance);

@@ -9,6 +9,7 @@ export declare class ProductsController {
     update(code: string, updateProductDto: CreateProductDto, res: Response): Promise<void>;
     findAll(): Promise<Product[]>;
     findOne(id: number): Promise<Product>;
+    SearchProduct(string: string, res: Response): Promise<void | Product>;
     findByString(ref: string, para: string): Promise<Product[]>;
     remove(id: number, res: Response): Promise<void | Product>;
 }

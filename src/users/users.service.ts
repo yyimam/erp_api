@@ -1,3 +1,5 @@
+import { UserManagement } from '../utility/management/userManagement/models/userManagement.model';
+import { InjectModel } from '@nestjs/sequelize';
 import { Injectable } from '@nestjs/common';
 
 // This should be a real class/interface representing a user entity
@@ -23,7 +25,19 @@ export class UsersService {
     },
   ];
 
+
+  constructor(
+    @InjectModel(UserManagement)
+    private readonly UserManagementModel: typeof UserManagement,
+  ) {}
+
   async findOne(email: string): Promise<User | undefined> {
-    return this.users.find(user => user.email === email);
+    // return this.UserManagementModel..find(user => user.email === email);
+    console.log("wirubg3",email);
+    return this.UserManagementModel.findOne({
+      where: {
+        email
+      },
+    });
   }
 }

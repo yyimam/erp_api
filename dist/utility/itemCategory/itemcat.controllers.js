@@ -47,7 +47,12 @@ let ItemCatController = class ItemCatController {
         });
     }
     async findAll() {
-        return await this.ItemCatsService.findAll();
+        try {
+            return await this.ItemCatsService.findAll();
+        }
+        catch (error) {
+            return error;
+        }
     }
     async findOne(code) {
         return await this.ItemCatsService.findOne(code);

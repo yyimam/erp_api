@@ -37,7 +37,11 @@ export class ItemTypeController {
 
   @Get()
   async findAll(): Promise<ItemType[]> {
-    return await this.ItemTypesService.findAll();
+    try {
+      return await this.ItemTypesService.findAll();
+    } catch (error) {
+      return error;
+    }
   }
 
   @Get(':code')

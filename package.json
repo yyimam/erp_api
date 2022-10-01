@@ -21,6 +21,7 @@
     "fb:build": "tsc",
     "fb:serve": "firebase serve --only functions",
     "fb:shell": "firebase functions:shell",
+    "fb:emulator": "firebase emulators:start",
     "fb:start": "npm run fb:shell",
     "fb:deploy": "firebase deploy --only functions",
     "fb:logs": "firebase functions:log",

@@ -44,6 +44,9 @@ let finishGoodsRecipeListController = class finishGoodsRecipeListController {
     async findOne(code) {
         return this.finishGoodsRecipeListsService.findOne(code);
     }
+    async getBomTreeView(code) {
+        return await this.finishGoodsRecipeListsService.getBomTreeView(code);
+    }
     async remove(code, res) {
         return this.finishGoodsRecipeListsService.remove(code).then(r => {
             res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
@@ -82,6 +85,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], finishGoodsRecipeListController.prototype, "findOne", null);
+__decorate([
+    common_1.Get('bom-tree-view/:code'),
+    __param(0, common_1.Param('code')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], finishGoodsRecipeListController.prototype, "getBomTreeView", null);
 __decorate([
     common_1.Delete(':code'),
     __param(0, common_1.Param('code')),

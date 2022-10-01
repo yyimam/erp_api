@@ -1,3 +1,5 @@
+import { WarehouseList } from 'src/utility/warehouseList/models/warehouseList.model';
+import { AC } from './../entry/chartOfAccounts/models/ac.model';
 import { BillingDetails } from './billingDetails.entity';
 import { Model } from 'sequelize-typescript';
 export declare class BillingMaster extends Model {
@@ -79,4 +81,6 @@ export declare class BillingMaster extends Model {
     updatedAt: Date;
     deletedAt: Date;
     billingDetails: BillingDetails[];
+    ac: AC;
+    warehouseList: WarehouseList;
 }

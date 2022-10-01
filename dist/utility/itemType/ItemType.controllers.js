@@ -43,7 +43,12 @@ let ItemTypeController = class ItemTypeController {
         });
     }
     async findAll() {
-        return await this.ItemTypesService.findAll();
+        try {
+            return await this.ItemTypesService.findAll();
+        }
+        catch (error) {
+            return error;
+        }
     }
     async findOne(code) {
         return await this.ItemTypesService.findOne(code);

@@ -2,6 +2,7 @@ import { Product } from './models/product.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateProductDto } from './dto/create-product.dto';
+import {Op,literal} from "sequelize";
 
 @Injectable()
 export class ProductsService {
@@ -43,6 +44,8 @@ export class ProductsService {
     });
   }
 
+ 
+
   async findByItemType(itemtype: string): Promise<Product[]>{
     return await this.productModel.findAll({
       where:{
@@ -54,6 +57,18 @@ export class ProductsService {
   async remove(id: number): Promise<Product> {
     const product = await this.findById(id);
     let u = await product.destroy().then(t => t);
+    return product;
+  }
+
+  async search(string: string): Promise<Product[]> {
+    console.log("rec", string);
+    const product = await this.productModel.findAll({
+      where:{
+        name: {
+          [Op.like]: `%${string}%`
+        }
+      }
+    });
     return product;
   }
 }

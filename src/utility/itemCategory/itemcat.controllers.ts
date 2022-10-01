@@ -41,7 +41,12 @@ export class ItemCatController {
 
   @Get()
   async findAll(): Promise<ItemCat[]> {
-    return await this.ItemCatsService.findAll();
+    try {
+      return await this.ItemCatsService.findAll();
+    } catch (error) {
+      return error;
+    }
+    
   }
 
   @Get(':code')

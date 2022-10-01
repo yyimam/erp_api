@@ -42,6 +42,12 @@ export class finishGoodsRecipeListController {
     return this.finishGoodsRecipeListsService.findOne(code);
   }
 
+  
+  @Get('bom-tree-view/:code')
+  async getBomTreeView(@Param('code') code: number): Promise<any> {
+    return await this.finishGoodsRecipeListsService.getBomTreeView(code);
+  }
+
   @Delete(':code')
   async remove(@Param('code') code: string , @Res() res: Response): Promise<void | FinishGoodsRecipeMaster> {
     return this.finishGoodsRecipeListsService.remove(code).then(r => {

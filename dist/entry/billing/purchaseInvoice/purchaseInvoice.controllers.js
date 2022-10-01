@@ -43,7 +43,6 @@ let PurchaseInvoiceController = class PurchaseInvoiceController {
         return this.PurchaseInvoicesService.findAll();
     }
     async findOne(code) {
-        console.log("details", code);
         return this.PurchaseInvoicesService.findOne(code);
     }
 };

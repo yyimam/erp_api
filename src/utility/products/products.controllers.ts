@@ -47,6 +47,16 @@ export class ProductsController {
     return await this.productsService.findById(id);
   }
 
+
+  @Get('/search/:string')
+  async SearchProduct(@Param('string') string: string, @Res() res: Response): Promise<void | Product>{
+    this.productsService.search(string).then(r => {
+      res.status(HttpStatus.ACCEPTED).send({ message: "success", data: r });
+    }).catch(err => {
+      res.status(HttpStatus.NO_CONTENT).send(err.parent);
+    });
+  }
+  
   @Get('/:ref/:para')
   async findByString(@Param('ref') ref: string, @Param('para') para: string): Promise<Product[]> {
     return await this.productsService.findByItemType(para);
@@ -60,5 +70,7 @@ export class ProductsController {
       res.status(HttpStatus.NO_CONTENT).send(err.parent);
     });
   }
+
+  
 
 }

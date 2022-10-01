@@ -1,3 +1,5 @@
+import { WarehouseList } from 'src/utility/warehouseList/models/warehouseList.model';
+import { AC } from './../entry/chartOfAccounts/models/ac.model';
 import { BillingDetails } from './billingDetails.entity';
 import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, DataType, ForeignKey, BelongsTo,  HasMany } from 'sequelize-typescript';
 
@@ -21,9 +23,11 @@ export class BillingMaster extends Model {
   sysdate: Date;
   
   @Column
+  @ForeignKey(() => AC)
   party_ac: string;
   
   @Column
+  @ForeignKey(() => AC)
   dr_cr_ac: string;
   
   @Column
@@ -78,6 +82,7 @@ export class BillingMaster extends Model {
   terms: string;
   
   @Column
+  @ForeignKey(() => WarehouseList)
   Warehouse_Code: string;
   
   @Column
@@ -242,7 +247,11 @@ export class BillingMaster extends Model {
 
   @HasMany(() => BillingDetails)
   billingDetails: BillingDetails[]
-  // @BelongsTo(() => BillingDetails)
-  // billingDetails: BillingDetails; 
+
+  @BelongsTo(() => AC)
+  ac: AC;
+
+  @BelongsTo(() => WarehouseList)
+  warehouseList: WarehouseList;
  
 }

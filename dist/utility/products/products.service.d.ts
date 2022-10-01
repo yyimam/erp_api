@@ -10,4 +10,5 @@ export declare class ProductsService {
     findById(id: number): Promise<Product>;
     findByItemType(itemtype: string): Promise<Product[]>;
     remove(id: number): Promise<Product>;
+    search(string: string): Promise<Product[]>;
 }

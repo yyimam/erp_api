@@ -1,5 +1,7 @@
-import { UserManagementModule } from './management/userManagement/userManagement.module';
-import { UserManagement } from './management/userManagement/models/userManagement.model';
+import { OpeningStockModule } from './utility/openingBalances/openingStock/openingStock.module';
+import { MaterialReturnBackModule } from './entry/inventory/materialReturnBack/materialReturnBack.module';
+import { GoodsReturnToSupplierModule } from './entry/inventory/goodsReturnToSupplier/goodsReturnToSupplier.module';
+// import { UserManagement } from './utility/management/userManagement/models/userManagement.model';
 import { PurchaseInvoiceModule } from './entry/billing/purchaseInvoice/purchaseInvoice.module';
 import { ItemUnitModule } from './utility/itemUnit/itemUnit.module';
 import { ItemTypeModule } from './utility/itemType/itemType.module';
@@ -14,31 +16,30 @@ import { ProductsModule } from './utility/products/products.module';
 import { ItemCatModule } from './utility/itemCategory/itemcat.module';
 import { ItemSubCatListModule } from './utility/itemSubCategoryList/ItemSubCatList.module';
 import { AcModule } from './entry/chartOfAccounts/ac.module';
+import { DepartmentsModule } from './utility/departments/departments.module';
+
 import { AuthModule } from './auth/auth.module';
+import { CustomerOrdereModule } from './entry/inventory/customerOrder/customerOrder.module';
+import { PurchaseOrdereModule } from './entry/inventory/purchaseOrder/purchaseOrder.module';
+import { GoodsReceivingNoteModule } from './entry/inventory/goodsReceivingNote/goodsReceivingNote.module';
+import { GoodsDeliveryChallanModule } from './entry/inventory/goodsDeliveryChallan/goodsDeliveryChallanNote.module';
+import { GoodsReturnFromCustomerModule } from './entry/inventory/goodsReturnFromCustomer/goodsReturnFromCustomer.module';
+import { MaterialIssuingModule } from './entry/inventory/materialIssuing/materialIssuing.module';
+import { MaterialIssuingRequestFormModule } from './entry/inventory/materialIssuingRequestForm/materialIssuingRequestForm.module';
+import { StockTransferModule } from './entry/inventory/stockTransfer/stockTransfer.module';
+import { FinishedGoodsProductionModule } from './entry/inventory/finishedGoodsProduction/finishedGoodsProduction.module';
 
 @Module({
   imports: [
     SequelizeModule.forRoot({
       dialect: 'mysql',
-      // port: 3306,
-      // host: 'localhost',
-      // username: 'halfmaneng_yousufdb',
-      // password: 'ApQ.V@iP6q0BxbU3',
-      // database: 'halfmaneng_yousufdb',
       host: '43.255.154.114',
       username: 'halfmaneng_user',
       password: '%09_xC*ee9Z&',
       database: 'halfmaneng_yousufdb',
       autoLoadModels: true,
       synchronize: false,
-      // // pool: {
-      // //   max: 5,
-      // //   min: 0,
-      // //   idle: 10000,
-      // //   evict: 15000,
-      // //   acquire: 30000
-      // // },
-      // dialectModule: require('mysql2')
+      dialectModule: require('mysql2')
     }),
     ProductsModule,
     ItemCatModule,
@@ -52,9 +53,21 @@ import { AuthModule } from './auth/auth.module';
     ItemUnitModule,
     PurchaseInvoiceModule,
     AcModule,
-    // UserManagementModule,
+    DepartmentsModule,
     AuthModule,
+    OpeningStockModule,
+    CustomerOrdereModule,
+    PurchaseOrdereModule,
+    GoodsReceivingNoteModule,
+    GoodsDeliveryChallanModule,
+    GoodsReturnToSupplierModule,
+    GoodsReturnFromCustomerModule,
+    MaterialIssuingModule,
+    MaterialReturnBackModule,
+    MaterialIssuingRequestFormModule,
+    StockTransferModule,
+    FinishedGoodsProductionModule
   ]
 })
 
-export class AppModule {}
+export class AppModule { }

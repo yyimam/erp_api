@@ -43,13 +43,16 @@ let AcController = class AcController {
         });
     }
     async findAll() {
-        return this.AcService.findAll();
+        return await this.AcService.findAll();
+    }
+    async getAllChildRecord() {
+        return await this.AcService.getAllChildRecord();
     }
     async findOne(code) {
-        return this.AcService.findOne(code);
+        return await this.AcService.findOne(code);
     }
     async remove(id, res) {
-        return this.AcService.remove(id).then(r => {
+        return await this.AcService.remove(id).then(r => {
             if (r) {
                 res.status(common_1.HttpStatus.ACCEPTED).send({ message: "Deleted", data: r });
             }
@@ -84,6 +87,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], AcController.prototype, "findAll", null);
+__decorate([
+    common_1.Get("ac-list"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AcController.prototype, "getAllChildRecord", null);
 __decorate([
     common_1.Get(':code'),
     __param(0, common_1.Param('code')),

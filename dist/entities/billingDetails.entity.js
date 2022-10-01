@@ -10,8 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BillingDetails = void 0;
+const warehouseList_model_1 = require("../utility/warehouseList/models/warehouseList.model");
 const billingMaster_entity_1 = require("./billingMaster.entity");
 const sequelize_typescript_1 = require("sequelize-typescript");
+const product_model_1 = require("../utility/products/models/product.model");
 let BillingDetails = class BillingDetails extends sequelize_typescript_1.Model {
 };
 __decorate([
@@ -30,6 +32,7 @@ __decorate([
 ], BillingDetails.prototype, "estatus", void 0);
 __decorate([
     sequelize_typescript_1.Column,
+    sequelize_typescript_1.ForeignKey(() => product_model_1.Product),
     __metadata("design:type", String)
 ], BillingDetails.prototype, "itemcode", void 0);
 __decorate([
@@ -126,14 +129,17 @@ __decorate([
 ], BillingDetails.prototype, "rate", void 0);
 __decorate([
     sequelize_typescript_1.Column,
+    sequelize_typescript_1.ForeignKey(() => warehouseList_model_1.WarehouseList),
     __metadata("design:type", String)
 ], BillingDetails.prototype, "Warehouse_Code", void 0);
 __decorate([
     sequelize_typescript_1.Column,
+    sequelize_typescript_1.ForeignKey(() => product_model_1.Product),
     __metadata("design:type", String)
 ], BillingDetails.prototype, "fitemcode", void 0);
 __decorate([
     sequelize_typescript_1.Column,
+    sequelize_typescript_1.ForeignKey(() => warehouseList_model_1.WarehouseList),
     __metadata("design:type", String)
 ], BillingDetails.prototype, "Warehouse_CodeInto", void 0);
 __decorate([
@@ -239,6 +245,22 @@ __decorate([
     sequelize_typescript_1.BelongsTo(() => billingMaster_entity_1.BillingMaster),
     __metadata("design:type", billingMaster_entity_1.BillingMaster)
 ], BillingDetails.prototype, "billingDetails", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => product_model_1.Product, { as: '_itemcode', foreignKey: 'itemcode' }),
+    __metadata("design:type", product_model_1.Product)
+], BillingDetails.prototype, "product", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => product_model_1.Product, { as: '_fitemcode', foreignKey: 'fitemcode' }),
+    __metadata("design:type", product_model_1.Product)
+], BillingDetails.prototype, "product2", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => warehouseList_model_1.WarehouseList, { as: '_Warehouse_Code', foreignKey: 'Warehouse_Code' }),
+    __metadata("design:type", warehouseList_model_1.WarehouseList)
+], BillingDetails.prototype, "WarehouseList", void 0);
+__decorate([
+    sequelize_typescript_1.BelongsTo(() => warehouseList_model_1.WarehouseList, { as: '_Warehouse_CodeInto', foreignKey: 'Warehouse_CodeInto' }),
+    __metadata("design:type", warehouseList_model_1.WarehouseList)
+], BillingDetails.prototype, "WarehouseList2", void 0);
 BillingDetails = __decorate([
     sequelize_typescript_1.Table({ tableName: 'billing_detail' })
 ], BillingDetails);

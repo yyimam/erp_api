@@ -45,6 +45,15 @@ let AcService = class AcService {
             },
         });
     }
+    async getAllChildRecord() {
+        return this.AcModel.findAll({
+            where: {
+                type: "child",
+            },
+            order: ["title"],
+            attributes: ['title', 'acode', 'parentsname']
+        });
+    }
     async remove(idno) {
         const rec = await this.findById(idno);
         let u;

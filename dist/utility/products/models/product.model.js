@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
+const orderDetails_entity_1 = require("../../../entities/orderDetails.entity");
 const finishGoodsRecipeMaster_model_1 = require("./../../../entities/finishGoodsRecipeMaster.model");
 const sequelize_typescript_1 = require("sequelize-typescript");
 let Product = class Product extends sequelize_typescript_1.Model {
@@ -144,6 +145,18 @@ __decorate([
     __metadata("design:type", Number)
 ], Product.prototype, "pcs_weight", void 0);
 __decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", String)
+], Product.prototype, "prodType", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", String)
+], Product.prototype, "custItemCode", void 0);
+__decorate([
+    sequelize_typescript_1.Column,
+    __metadata("design:type", Number)
+], Product.prototype, "parentComponent", void 0);
+__decorate([
     sequelize_typescript_1.CreatedAt,
     sequelize_typescript_1.Column({ field: 'created_at' }),
     __metadata("design:type", Date)
@@ -162,6 +175,14 @@ __decorate([
     sequelize_typescript_1.BelongsTo(() => finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster),
     __metadata("design:type", finishGoodsRecipeMaster_model_1.FinishGoodsRecipeMaster)
 ], Product.prototype, "FinishGoodsRecipeMaster", void 0);
+__decorate([
+    sequelize_typescript_1.HasOne(() => orderDetails_entity_1.OrderDetails),
+    __metadata("design:type", orderDetails_entity_1.OrderDetails)
+], Product.prototype, "orderDetails", void 0);
+__decorate([
+    sequelize_typescript_1.HasOne(() => orderDetails_entity_1.OrderDetails),
+    __metadata("design:type", orderDetails_entity_1.OrderDetails)
+], Product.prototype, "orderDetails2", void 0);
 Product = __decorate([
     sequelize_typescript_1.Table({ tableName: 'product' })
 ], Product);

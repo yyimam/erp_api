@@ -1,3 +1,4 @@
+import { OrderDetails } from 'src/entities/orderDetails.entity';
 import { FinishGoodsRecipeMaster } from './../../../entities/finishGoodsRecipeMaster.model';
 import { Model } from 'sequelize-typescript';
 export declare class Product extends Model {
@@ -32,8 +33,13 @@ export declare class Product extends Model {
     old_code: string;
     item_disabled: number;
     pcs_weight: number;
+    prodType: string;
+    custItemCode: string;
+    parentComponent: number;
     createdAt: Date;
     updatedAt: Date;
     deletedAt: Date;
     FinishGoodsRecipeMaster: FinishGoodsRecipeMaster;
+    orderDetails: OrderDetails;
+    orderDetails2: OrderDetails;
 }

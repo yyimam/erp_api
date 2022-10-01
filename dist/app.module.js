@@ -7,6 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
+const openingStock_module_1 = require("./utility/openingBalances/openingStock/openingStock.module");
+const materialReturnBack_module_1 = require("./entry/inventory/materialReturnBack/materialReturnBack.module");
+const goodsReturnToSupplier_module_1 = require("./entry/inventory/goodsReturnToSupplier/goodsReturnToSupplier.module");
 const purchaseInvoice_module_1 = require("./entry/billing/purchaseInvoice/purchaseInvoice.module");
 const itemUnit_module_1 = require("./utility/itemUnit/itemUnit.module");
 const itemType_module_1 = require("./utility/itemType/itemType.module");
@@ -21,7 +24,17 @@ const products_module_1 = require("./utility/products/products.module");
 const itemcat_module_1 = require("./utility/itemCategory/itemcat.module");
 const ItemSubCatList_module_1 = require("./utility/itemSubCategoryList/ItemSubCatList.module");
 const ac_module_1 = require("./entry/chartOfAccounts/ac.module");
+const departments_module_1 = require("./utility/departments/departments.module");
 const auth_module_1 = require("./auth/auth.module");
+const customerOrder_module_1 = require("./entry/inventory/customerOrder/customerOrder.module");
+const purchaseOrder_module_1 = require("./entry/inventory/purchaseOrder/purchaseOrder.module");
+const goodsReceivingNote_module_1 = require("./entry/inventory/goodsReceivingNote/goodsReceivingNote.module");
+const goodsDeliveryChallanNote_module_1 = require("./entry/inventory/goodsDeliveryChallan/goodsDeliveryChallanNote.module");
+const goodsReturnFromCustomer_module_1 = require("./entry/inventory/goodsReturnFromCustomer/goodsReturnFromCustomer.module");
+const materialIssuing_module_1 = require("./entry/inventory/materialIssuing/materialIssuing.module");
+const materialIssuingRequestForm_module_1 = require("./entry/inventory/materialIssuingRequestForm/materialIssuingRequestForm.module");
+const stockTransfer_module_1 = require("./entry/inventory/stockTransfer/stockTransfer.module");
+const finishedGoodsProduction_module_1 = require("./entry/inventory/finishedGoodsProduction/finishedGoodsProduction.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -35,6 +48,7 @@ AppModule = __decorate([
                 database: 'halfmaneng_yousufdb',
                 autoLoadModels: true,
                 synchronize: false,
+                dialectModule: require('mysql2')
             }),
             products_module_1.ProductsModule,
             itemcat_module_1.ItemCatModule,
@@ -48,7 +62,20 @@ AppModule = __decorate([
             itemUnit_module_1.ItemUnitModule,
             purchaseInvoice_module_1.PurchaseInvoiceModule,
             ac_module_1.AcModule,
+            departments_module_1.DepartmentsModule,
             auth_module_1.AuthModule,
+            openingStock_module_1.OpeningStockModule,
+            customerOrder_module_1.CustomerOrdereModule,
+            purchaseOrder_module_1.PurchaseOrdereModule,
+            goodsReceivingNote_module_1.GoodsReceivingNoteModule,
+            goodsDeliveryChallanNote_module_1.GoodsDeliveryChallanModule,
+            goodsReturnToSupplier_module_1.GoodsReturnToSupplierModule,
+            goodsReturnFromCustomer_module_1.GoodsReturnFromCustomerModule,
+            materialIssuing_module_1.MaterialIssuingModule,
+            materialReturnBack_module_1.MaterialReturnBackModule,
+            materialIssuingRequestForm_module_1.MaterialIssuingRequestFormModule,
+            stockTransfer_module_1.StockTransferModule,
+            finishedGoodsProduction_module_1.FinishedGoodsProductionModule
         ]
     })
 ], AppModule);

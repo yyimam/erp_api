@@ -29,7 +29,13 @@ let BrandListService = class BrandListService {
         return await this.BrandListModel.update(t, { where: { code: code } });
     }
     async findAll() {
-        return await this.BrandListModel.findAll();
+        try {
+            return await this.BrandListModel.findAll();
+        }
+        catch (error) {
+            console.log("error check", error);
+            throw error;
+        }
     }
     async findOne(code) {
         return await this.BrandListModel.findOne({

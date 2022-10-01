@@ -51,6 +51,13 @@ let ProductsController = class ProductsController {
     async findOne(id) {
         return await this.productsService.findById(id);
     }
+    async SearchProduct(string, res) {
+        this.productsService.search(string).then(r => {
+            res.status(common_1.HttpStatus.ACCEPTED).send({ message: "success", data: r });
+        }).catch(err => {
+            res.status(common_1.HttpStatus.NO_CONTENT).send(err.parent);
+        });
+    }
     async findByString(ref, para) {
         return await this.productsService.findByItemType(para);
     }
@@ -92,6 +99,14 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "findOne", null);
+__decorate([
+    common_1.Get('/search/:string'),
+    __param(0, common_1.Param('string')),
+    __param(1, common_1.Res()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], ProductsController.prototype, "SearchProduct", null);
 __decorate([
     common_1.Get('/:ref/:para'),
     __param(0, common_1.Param('ref')),

@@ -1,5 +1,7 @@
+import { WarehouseList } from 'src/utility/warehouseList/models/warehouseList.model';
 import { BillingMaster } from './billingMaster.entity';
 import { Model } from 'sequelize-typescript';
+import { Product } from 'src/utility/products/models/product.model';
 export declare class BillingDetails extends Model {
     idno: number;
     pidno: number;
@@ -56,4 +58,8 @@ export declare class BillingDetails extends Model {
     updatedAt: Date;
     deletedAt: Date;
     billingDetails: BillingMaster;
+    product: Product;
+    product2: Product;
+    WarehouseList: WarehouseList;
+    WarehouseList2: WarehouseList;
 }

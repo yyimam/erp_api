@@ -9,5 +9,6 @@ export declare class finishGoodsRecipeListService {
     update(code: string, UpdatefinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto): Promise<any>;
     findAll(): Promise<FinishGoodsRecipeMaster[]>;
     findOne(code: string): Promise<FinishGoodsRecipeMaster>;
+    getBomTreeView(mainitemcode: number): Promise<any>;
     remove(code: string): Promise<FinishGoodsRecipeMaster>;
 }

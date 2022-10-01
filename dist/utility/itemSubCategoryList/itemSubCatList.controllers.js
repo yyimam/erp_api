@@ -47,7 +47,12 @@ let ItemSubCatListController = class ItemSubCatListController {
         });
     }
     async findAll() {
-        return await this.ItemSubCatListsService.findAll();
+        try {
+            return await this.ItemSubCatListsService.findAll();
+        }
+        catch (error) {
+            return error;
+        }
     }
     async findOne(code) {
         return await this.ItemSubCatListsService.findOne(code);

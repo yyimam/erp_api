@@ -16,6 +16,7 @@ exports.ProductsService = void 0;
 const product_model_1 = require("./models/product.model");
 const common_1 = require("@nestjs/common");
 const sequelize_1 = require("@nestjs/sequelize");
+const sequelize_2 = require("sequelize");
 let ProductsService = class ProductsService {
     constructor(productModel) {
         this.productModel = productModel;
@@ -57,6 +58,17 @@ let ProductsService = class ProductsService {
     async remove(id) {
         const product = await this.findById(id);
         let u = await product.destroy().then(t => t);
+        return product;
+    }
+    async search(string) {
+        console.log("rec", string);
+        const product = await this.productModel.findAll({
+            where: {
+                name: {
+                    [sequelize_2.Op.like]: `%${string}%`
+                }
+            }
+        });
         return product;
     }
 };

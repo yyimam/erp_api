@@ -10,5 +10,6 @@ export declare class finishGoodsRecipeListController {
     update(code: string, updatefinishGoodsRecipeListDto: CreatefinishGoodsRecipeListDto, res: Response): Promise<void>;
     findAll(): Promise<FinishGoodsRecipeMaster[]>;
     findOne(code: string): Promise<FinishGoodsRecipeMaster>;
+    getBomTreeView(code: number): Promise<any>;
     remove(code: string, res: Response): Promise<void | FinishGoodsRecipeMaster>;
 }

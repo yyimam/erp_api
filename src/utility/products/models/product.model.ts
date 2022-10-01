@@ -1,5 +1,6 @@
+import { OrderDetails } from 'src/entities/orderDetails.entity';
 import { FinishGoodsRecipeMaster } from './../../../entities/finishGoodsRecipeMaster.model';
-import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, ForeignKey, BelongsTo, HasOne } from 'sequelize-typescript';
 
 @Table({tableName: 'product'})
 export class Product extends Model {
@@ -102,6 +103,15 @@ export class Product extends Model {
   @Column
   pcs_weight: number;
 
+  @Column
+  prodType: string;
+
+  @Column
+  custItemCode: string;
+
+  @Column
+  parentComponent: number;
+
   @CreatedAt
   @Column({ field: 'created_at' })
   createdAt: Date;
@@ -116,5 +126,12 @@ export class Product extends Model {
 
   @BelongsTo(()=> FinishGoodsRecipeMaster)
   FinishGoodsRecipeMaster: FinishGoodsRecipeMaster;
+
+  
+  @HasOne(() => OrderDetails )
+  orderDetails: OrderDetails;
+
+  @HasOne(() => OrderDetails)
+  orderDetails2: OrderDetails;
 
 }

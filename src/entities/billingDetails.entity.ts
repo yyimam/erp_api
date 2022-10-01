@@ -1,5 +1,7 @@
+import { WarehouseList } from 'src/utility/warehouseList/models/warehouseList.model';
 import { BillingMaster } from './billingMaster.entity';
 import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, HasMany, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Product } from 'src/utility/products/models/product.model';
 
 @Table({tableName: 'billing_detail'})
 export class BillingDetails extends Model {
@@ -16,6 +18,7 @@ export class BillingDetails extends Model {
   estatus: string;
   
   @Column
+  @ForeignKey(() => Product)
   itemcode: string;
   
   @Column
@@ -88,12 +91,15 @@ export class BillingDetails extends Model {
   rate: number;
   
   @Column
+  @ForeignKey(() => WarehouseList)
   Warehouse_Code: string;
   
   @Column
+  @ForeignKey(() => Product)
   fitemcode: string;
   
   @Column
+  @ForeignKey(() => WarehouseList)
   Warehouse_CodeInto: string;
   
   @Column
@@ -171,8 +177,20 @@ export class BillingDetails extends Model {
   @Column({ field: 'deleted_at' })
   deletedAt: Date;
 
-  // @HasMany(() => BillingMaster)
-  // players: BillingMaster[]
-    @BelongsTo(() => BillingMaster)
+  @BelongsTo(() => BillingMaster)
   billingDetails: BillingMaster; 
+
+  @BelongsTo(() => Product, { as: '_itemcode', foreignKey: 'itemcode' } )
+  product: Product; 
+
+  @BelongsTo(() => Product, { as: '_fitemcode', foreignKey: 'fitemcode' } )
+  product2: Product; 
+
+  @BelongsTo(() => WarehouseList, { as: '_Warehouse_Code', foreignKey: 'Warehouse_Code' } )
+  WarehouseList: WarehouseList; 
+
+  @BelongsTo(() => WarehouseList, { as: '_Warehouse_CodeInto', foreignKey: 'Warehouse_CodeInto' } )
+  WarehouseList2: WarehouseList; 
+
+
 }

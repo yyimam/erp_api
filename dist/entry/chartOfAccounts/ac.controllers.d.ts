@@ -8,6 +8,7 @@ export declare class AcController {
     create(acDto: AcDto, res: Response): Promise<void | AC>;
     update(code: string, acDto: AcDto, res: Response): Promise<void>;
     findAll(): Promise<AC[]>;
+    getAllChildRecord(): Promise<AC[]>;
     findOne(code: string): Promise<AC>;
     remove(id: number, res: Response): Promise<void | AC>;
 }

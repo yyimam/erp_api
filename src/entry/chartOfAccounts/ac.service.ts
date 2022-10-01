@@ -40,6 +40,16 @@ export class AcService {
     });
   }
 
+  async getAllChildRecord(): Promise<AC[]>{
+    return this.AcModel.findAll({
+      where: {
+        type:"child",
+      },
+      order:["title"],
+      attributes:['title','acode','parentsname']
+    });
+  }
+
   async remove(idno: number): Promise<AC> {
     const rec = await this.findById(idno);
     let u:any;
@@ -48,4 +58,5 @@ export class AcService {
     }
     return u;
   }
+
 }

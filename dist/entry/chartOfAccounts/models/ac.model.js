@@ -11,10 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AC = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
+const billingMaster_entity_1 = require("../../../entities/billingMaster.entity");
+const orderMaster_entity_1 = require("../../../entities/orderMaster.entity");
 let AC = class AC extends sequelize_typescript_1.Model {
 };
 __decorate([
-    sequelize_typescript_1.PrimaryKey,
     sequelize_typescript_1.Column({
         autoIncrement: true,
         field: "id"
@@ -26,6 +27,7 @@ __decorate([
     __metadata("design:type", String)
 ], AC.prototype, "acode", void 0);
 __decorate([
+    sequelize_typescript_1.PrimaryKey,
     sequelize_typescript_1.Column({
         field: "acode"
     }),
@@ -200,6 +202,14 @@ __decorate([
     sequelize_typescript_1.Column({ field: 'deleted_at' }),
     __metadata("design:type", Date)
 ], AC.prototype, "deletedAt", void 0);
+__decorate([
+    sequelize_typescript_1.HasOne(() => orderMaster_entity_1.OrderMaster),
+    __metadata("design:type", orderMaster_entity_1.OrderMaster)
+], AC.prototype, "orderMaster", void 0);
+__decorate([
+    sequelize_typescript_1.HasOne(() => billingMaster_entity_1.BillingMaster),
+    __metadata("design:type", billingMaster_entity_1.BillingMaster)
+], AC.prototype, "billingMaster", void 0);
 AC = __decorate([
     sequelize_typescript_1.Table({
         tableName: 'ac',

@@ -1,11 +1,13 @@
-import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt } from 'sequelize-typescript';
+import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, HasOne } from 'sequelize-typescript';
+import { BillingMaster } from 'src/entities/billingMaster.entity';
+import { OrderMaster } from 'src/entities/orderMaster.entity';
 
 @Table({
   tableName: 'ac',
   timestamps: true})
 export class AC extends Model {
 
-  @PrimaryKey
+  
   @Column({
     autoIncrement: true,
     field : "id"
@@ -15,6 +17,7 @@ export class AC extends Model {
   @Column
   acode: string
 
+  @PrimaryKey
   @Column({
     field:"acode"
   })
@@ -147,5 +150,11 @@ export class AC extends Model {
   @DeletedAt
   @Column({ field: 'deleted_at' })
   deletedAt: Date;
+
+  @HasOne(() => OrderMaster)
+  orderMaster: OrderMaster;
+
+  @HasOne(() => BillingMaster)
+  billingMaster: BillingMaster;
 
 }
