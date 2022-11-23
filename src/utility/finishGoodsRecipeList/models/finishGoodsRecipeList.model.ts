@@ -1,26 +1,26 @@
 import { FinishGoodsRecipeMaster } from './../../../entities/finishGoodsRecipeMaster.model';
-import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, ForeignKey, BelongsTo,HasMany, Index } from 'sequelize-typescript';
+import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, ForeignKey, BelongsTo,HasMany, Index, HasOne } from 'sequelize-typescript';
+import { Product } from 'src/utility/products/models/product.model';
 
 @Table({
   tableName: 'assembling_list',
   timestamps: true})
 export class FinishGoodsRecipeList extends Model {
 
-
+  @PrimaryKey
   @Column({
     autoIncrement: true,
     field: 'idno'
   })
   id: number;
-  
-  @PrimaryKey
-  @ForeignKey(() => FinishGoodsRecipeMaster)
-  // @ForeignKey(() => FinishGoodsRecipeList)
+
   @Column
+  @ForeignKey(() => FinishGoodsRecipeList)
+  @ForeignKey(() => FinishGoodsRecipeMaster)
   mainitemcode: string;
   
-  @ForeignKey(() => FinishGoodsRecipeList)
   @Column
+
   subitemcode: string;
   
   @Column
@@ -57,14 +57,18 @@ export class FinishGoodsRecipeList extends Model {
   deletedAt: Date;
 
   @BelongsTo(() => FinishGoodsRecipeMaster ) 
-  FinishGoodsRecipeMaster: FinishGoodsRecipeMaster;
+  finishGoodsRecipeList: FinishGoodsRecipeMaster;
+  
+  @HasOne(() => Product, {as:'subitemcode1',sourceKey: "subitemcode"})
+  subitemcodeInfo: Product;
 
-  @HasMany(() => FinishGoodsRecipeList, 'subitemcode' )//
+  @HasOne(() => Product, {as:'mainitemcode1', sourceKey: "mainitemcode"})
+  mainitemcodeInfo: Product;
+
+  @HasMany(() => FinishGoodsRecipeList,{as:'subitemCodeList2', sourceKey: "subitemcode"})//
   finishGoodsRecipeList2: FinishGoodsRecipeList[];
 
-  @BelongsTo(() =>   FinishGoodsRecipeList,  { as: '_subitemcode', foreignKey: 'mainitemcode' }) 
-  finishGoodsRecipeList: FinishGoodsRecipeList;
-
-  // SELECT * FROM `assembling_list` as t inner join `assembling_list` as s on t.subitemcode = s.mainitemcode WHERE t.subitemcode=10106
+  @BelongsTo(() =>   FinishGoodsRecipeList,  { foreignKey: 'mainitemcode'}) 
+  subitemCodeList1: FinishGoodsRecipeList;
 
 }

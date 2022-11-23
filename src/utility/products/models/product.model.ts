@@ -1,6 +1,7 @@
 import { OrderDetails } from 'src/entities/orderDetails.entity';
 import { FinishGoodsRecipeMaster } from './../../../entities/finishGoodsRecipeMaster.model';
 import { Column, Model, Table, PrimaryKey, CreatedAt, UpdatedAt, DeletedAt, ForeignKey, BelongsTo, HasOne } from 'sequelize-typescript';
+import { FinishGoodsRecipeList } from 'src/utility/finishGoodsRecipeList/models/finishGoodsRecipeList.model';
 
 @Table({tableName: 'product'})
 export class Product extends Model {
@@ -14,6 +15,7 @@ export class Product extends Model {
   @PrimaryKey
   @Column
   @ForeignKey(() => FinishGoodsRecipeMaster)
+  @ForeignKey(() => FinishGoodsRecipeList)
   code: string;
 
   @Column
@@ -127,7 +129,14 @@ export class Product extends Model {
   @BelongsTo(()=> FinishGoodsRecipeMaster)
   FinishGoodsRecipeMaster: FinishGoodsRecipeMaster;
 
-  
+  @BelongsTo(()=> FinishGoodsRecipeList, {as:'subitemcode1',foreignKey:{ name: 'subitemcode'}})
+  FinishGoodsRecipeList: FinishGoodsRecipeList;
+
+
+  @BelongsTo(()=> FinishGoodsRecipeList, {as:'mainitemcode1',foreignKey:{ name: 'mainitemcode'}})
+  mainitemcodeList: FinishGoodsRecipeList;
+
+
   @HasOne(() => OrderDetails )
   orderDetails: OrderDetails;
 

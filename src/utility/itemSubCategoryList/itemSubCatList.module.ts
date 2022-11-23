@@ -10,4 +10,5 @@ import { SequelizeModule } from '@nestjs/sequelize';
   providers: [ItemSubCatListService],
 })
 
+
 export class ItemSubCatListModule {}

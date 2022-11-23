@@ -51,6 +51,19 @@ export class CustomerOrderService {
     });
   }
 
+
+  async findAndUpdate(id,data: any): Promise<any> {
+    this.OrderMasterModel.findAll({
+      include: [
+        { model: OrderDetails, attributes: ["id","itemcode", 'delivery_date', 'description', 'qty', 'rate', 'amount'] },],
+      attributes: ['id','EntryNo', 'edate', 'RefNo', 'terms', 'party_ac', 'Warehouse_Code', 'itemdescription', 'orderclosed', 'discount', 'netamount','grossamount'],
+      where: { idno:id }  
+    }).then(rec => {
+      rec[0].set(data);
+      rec[0].save();
+    });
+  }
+
   async findOne(id: string): Promise<OrderMaster> {
     return await this.OrderMasterModel.findOne({
       include: [

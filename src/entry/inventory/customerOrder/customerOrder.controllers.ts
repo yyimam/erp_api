@@ -22,8 +22,7 @@ export class CustomerOrderController {
   
   @Put(':idno')
   async update(@Param('idno') idno: string,@Body() updateCustomerOrderDto: CreateCustomerOrderDto, @Res() res: Response) {
-    console.log("yousuf",idno)
-    this.CustomerOrdersService.update(idno,updateCustomerOrderDto)
+    this.CustomerOrdersService.findAndUpdate(idno, updateCustomerOrderDto)
     .then(rec => {
         res.status(HttpStatus.OK).send({message: "record updated", data: rec});
     })

@@ -46,12 +46,29 @@ export class finishGoodsRecipeListService {
   }
 
   async getBomTreeView(mainitemcode: number): Promise<any> {
-    return await this.FinishGoodsRecipeListModel.findAll({
+    return await this.FinishGoodsRecipeMasterModel.findOne({
       include: [
-        { model: FinishGoodsRecipeList, as: '_subitemcode', attributes: ['id','mainitemcode', 'subitemcode', 'qty', 'wastage_qty'] }
+        { model: Product, attributes: [['name', 'label'], ['code', 'value']] },
+        { model: FinishGoodsRecipeList, 
+          include: [
+            { model: Product,  as: 'subitemcode1', attributes: [['name', 'label'], ['code', 'value']] },
+            { model: Product,  as: 'mainitemcode1', attributes: [['name', 'label'], ['code', 'value']] },
+            { model: FinishGoodsRecipeList,  as: 'subitemCodeList2', attributes: ['idno','mainitemcode', 'subitemcode', 'qty', 'wastage_qty'] }
+        ],
+           attributes: ['idno','mainitemcode', 'subitemcode', 'qty', 'wastage_qty'] }
       ],
-      attributes: ['id','mainitemcode', 'subitemcode', 'qty', 'wastage_qty'],
-      where: { subitemcode: mainitemcode }
+      attributes: ['idno','mainitemcode','description', ],
+      where: { mainitemcode }
+      // include: [
+      //     { model: FinishGoodsRecipeList, as: '_subitemcode', attributes: ['id','mainitemcode', 'subitemcode', 'qty', 'wastage_qty'] }
+      //   ],
+      //   attributes: ['id','mainitemcode', 'subitemcode', 'qty', 'wastage_qty'],
+      //   where: { subitemcode: mainitemcode }
+      // include: [
+      //   { model: FinishGoodsRecipeList, as: '_subitemcode', attributes: ['id','mainitemcode', 'subitemcode', 'qty', 'wastage_qty'] }
+      // ],
+      // attributes: ['id','mainitemcode', 'subitemcode', 'qty', 'wastage_qty'],
+      // where: { subitemcode: mainitemcode }
     })
 
 
