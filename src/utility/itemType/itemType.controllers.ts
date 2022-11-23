@@ -1,6 +1,6 @@
-import { CreateItemTypeDto } from './dto/create-ItemType.dto';
-import { ItemType } from './models/ItemType.model';
-import { ItemTypeService } from './ItemType.service';
+import { CreateItemTypeDto } from './dto/create-itemType.dto';
+import { ItemType } from './models/itemType.model';
+import { ItemTypeService } from './itemType.service';
 import { Body, Controller, Delete, Get, Param, Post, HttpStatus, Res, Put } from '@nestjs/common';
 import { Response } from 'express';
 

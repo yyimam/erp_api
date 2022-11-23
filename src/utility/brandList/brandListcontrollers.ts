@@ -1,6 +1,6 @@
 import { CreateBrandListDto } from './dto/create-brandList.dto';
 import { BrandList } from './models/brandList.model';
-import { BrandListService } from './BrandList.service';
+import { BrandListService } from './brandList.service';
 import { Body, Controller, Delete, Get, Param, Post, HttpStatus, Res, Put } from '@nestjs/common';
 import { Response } from 'express';
 

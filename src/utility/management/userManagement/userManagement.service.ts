@@ -1,4 +1,4 @@
-import { UserManagement } from './models/UserManagement.model';
+import { UserManagement } from './models/userManagement.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateUserManagementDto } from './dto/userManagement.dto';

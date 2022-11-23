@@ -14,7 +14,7 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ProductsModule } from './utility/products/products.module';
 import { ItemCatModule } from './utility/itemCategory/itemcat.module';
-import { ItemSubCatListModule } from './utility/itemSubCategoryList/ItemSubCatList.module';
+import { ItemSubCatListModule } from './utility/itemSubCategoryList/itemSubCatList.module';
 import { AcModule } from './entry/chartOfAccounts/ac.module';
 import { DepartmentsModule } from './utility/departments/departments.module';
 

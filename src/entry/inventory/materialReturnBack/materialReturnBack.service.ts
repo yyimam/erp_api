@@ -2,7 +2,7 @@ import { BillingDetails } from '../../../entities/billingDetails.entity';
 import { BillingMaster } from '../../../entities/billingMaster.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateMaterialReturnBackDto } from './dto/create-MaterialReturnBack.dto';
+import { CreateMaterialReturnBackDto } from './dto/create-materialReturnBack.dto';
 import { WarehouseList } from 'src/utility/warehouseList/models/warehouseList.model';
 import { AC } from 'src/entry/chartOfAccounts/models/ac.model';
 import { Product } from 'src/utility/products/models/product.model';

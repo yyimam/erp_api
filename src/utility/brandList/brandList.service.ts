@@ -1,7 +1,7 @@
 import { BrandList } from './models/brandList.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateBrandListDto } from './dto/create-BrandList.dto';
+import { CreateBrandListDto } from './dto/create-brandList.dto';
 
 @Injectable()
 export class BrandListService {

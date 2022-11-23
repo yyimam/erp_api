@@ -1,7 +1,7 @@
-import { ItemType } from './models/ItemType.model';
+import { ItemType } from './models/itemType.model';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { CreateItemTypeDto } from './dto/create-ItemType.dto';
+import { CreateItemTypeDto } from './dto/create-itemType.dto';
 
 @Injectable()
 export class ItemTypeService {

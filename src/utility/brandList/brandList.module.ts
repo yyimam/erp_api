@@ -1,6 +1,6 @@
 import { BrandList } from './models/brandList.model';
 import { BrandListController } from './brandListcontrollers';
-import { BrandListService } from './BrandList.service';
+import { BrandListService } from './brandList.service';
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 

@@ -1,8 +1,6 @@
-import { JwtAuthGuard } from '../../../auth/jwt-auth.guard';
-import { LocalAuthGuard } from '../../../auth/local-auth.guard';
-import { JwtService } from '@nestjs/jwt';
+
 import { CreateUserManagementDto } from './dto/userManagement.dto';
-import { UserManagement } from './models/UserManagement.model';
+import { UserManagement } from './models/userManagement.model';
 import { UserManagementService } from './userManagement.service';
 import { Body, Controller, Delete, Get, Param, Post, HttpStatus, Res, Put, Request, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
